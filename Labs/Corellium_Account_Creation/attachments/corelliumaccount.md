@@ -5,5 +5,4 @@ Follow these steps to get ready:
 
 1. In a browser of your choice, navigate to https://www.corellium.com/trial
 
-2. Scroll down until you see the following:
-![]()
+2. 
