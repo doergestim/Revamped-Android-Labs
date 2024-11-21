@@ -10,25 +10,22 @@ Corellium WILL CHARGE YOU!!!!!
 ## Creating an Android Device in Corellium
 Login to your Corellium account and select the **DEVICES** tab and click **CREATE DEVICE**.
 
-<!--![Create a New Device](images/create-device.jpg) -->
-
-<img width="477" alt="Screenshot 2023-12-30 at 10 42 47 AM" src="https://github.com/deruke/AndroidLabs/assets/22796374/ba7e60ac-d8e5-4115-8772-b8b9511e5267">
+![](images/createdevice.png)
 
 Next, select "Default Project."
 
-<img width="910" alt="Screenshot 2023-12-30 at 10 52 29 AM" src="https://github.com/deruke/AndroidLabs/assets/22796374/67d2694b-e496-4788-bb53-61e7824f31cf">
-
+![](images/defaultproject.png)
 
 Next, select **ANDROID -> Generic Android** and select it.
 
-<!--![Create an Android Device](images/create-android-device.jpg)-->
+![](images/selectandroidoption.png)
 
+![](images/selectgenericandroid.png)
 
-<img width="830" alt="Screenshot 2023-12-30 at 10 54 52 AM" src="https://github.com/deruke/AndroidLabs/assets/22796374/d94950ec-c6c2-4944-a65b-233b824dd195">
 
 Select the firmware package, **12.0.0 (Build r26 userdebug)**, from the dropdown menu and click **SELECT**.
 
-![Firmware Package](images/android-firmware-package.jpg) 
+![](images/firmwareselect.png)
 
 Leave the checkbox unchecked and select **CREATE DEVICE**
 

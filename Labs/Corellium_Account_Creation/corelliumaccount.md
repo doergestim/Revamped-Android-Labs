@@ -11,4 +11,4 @@ Follow these steps to get ready:
 **Note:** If you do not have an existing Corellium account, you will need to request a trial by going to https://www.corellium.com/trial then scrolling down until you see this:
 ![](attachments/corelliumrequesttrial.png)
 
-3. Once you get logged in to Corellium, 
+3. Once you get logged in to Corellium, you can continue on to 
