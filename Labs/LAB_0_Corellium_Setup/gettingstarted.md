@@ -74,7 +74,9 @@ In this section we will cover two options for establishing remote network capabi
 ### SSH ###
 1. Create a unique SSH keypair (public and private certificates) from your MobileApp VM:
     - From the command prompt, type the following command and hit enter.
-    `ssh-keygen -t ed25519`
+
+    <pre>ssh-keygen -t ed25519</pre>
+
     - For the file name, enter “sshKey”, then hit enter.
     - Hit enter two more times to create the key with no passphrase.
     - The keypair should now be in your CWD (current working directory – to confirm, type the command ‘ls’ and you should see two files
@@ -85,26 +87,33 @@ In this section we will cover two options for establishing remote network capabi
 
 2. Type the following command to display the contents of sshKey.pub to stdout of your terminal.
 
-`cat sshKey.pub`
+<pre>cat sshKey.pub</pre>
 
 ![ssh public key](images/sshKey.pub-contents.jpg)
 
 3. From your Corellium account select "Connect". Then select Admin page at the bottom red box of the "Quick Connect" section.
    
-<img width="920" alt="Screenshot 2023-12-30 at 11 10 20 AM" src="https://github.com/deruke/AndroidLabs/assets/22796374/de07456b-3ade-4086-9be1-eff60e16ca4e">
+![](images/connect_to_admin.png)
 
+**Note: if you get a white screen after clicking "Admin Page", just reload your browser!**
+
+Now, click on "Default Project" to expand:
+
+![](images/clicktoexpand.png)
 
 5. Under the **Authorized Keys** section, click **NEW KEY**, then select **SSH** for the *Key Type*, and copy the contents of your ssh public key (step 2 above) and paste it in the text box here. Click **CREATE**.
 
-![Adding Authorized Key to Corellium](images/adding-public-key.jpg)
+![](images/click_new_key.png)
 
 **NOTE:** Be sure to add the entire contents of your public key - starting with *"ssh-ed25519..."* and ending with your hostname *"...mobileapp@mobileapp-vm"*. The full content of your SSH key will be different.
 
 #### Test the SSH Connection ####
 
-1. Ensure that your Corellium virtual device is powered on.
+1. Navigate back to the devices tab, then ensure that your Corellium virtual device is powered on.
 
-![Device On](images/devices-on.jpg)
+![](images/backtodevices.png)
+
+![](images/devicestatus_andreturn.png)
 
 2. Navigate to the **Connect** menu item and copy the first command listed under **Quick Connect**.
 
