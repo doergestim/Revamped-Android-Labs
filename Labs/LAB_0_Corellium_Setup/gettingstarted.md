@@ -12,6 +12,7 @@ Login to your Corellium account and select the **DEVICES** tab and click **CREAT
 
 ![](images/createdevice.png)
 
+
 Next, select "Default Project."
 
 ![](images/defaultproject.png)
@@ -27,21 +28,27 @@ Select the firmware package, **12.0.0 (Build r26 userdebug)**, from the dropdown
 
 ![](images/firmwareselect.png)
 
+![](images/pressselect.png)
+
 Leave the checkbox unchecked and select **CREATE DEVICE**
 
-![Create Device Confirm](images/create-device-confirm.jpg)
+![](images/creatingdevice.png)
 
 Corellium will then proceed to create the virtual deivce. 
 
-![Creating Device](images/creating-device.jpg)
+![](images/progressbar.png)
 
 Once the build is complete, you should have a virtual Android device with menu options as shown below.
 
-![Android 12 - Rooted](images/android-12-device-rooted.jpg)
+![](images/completedsetup.png)
 
-Please note, if it does not say "Rooted" it is becasue you did not select userdebug.  Please click the trachcan icon, delete the device and start over.
+**Please note, if it does not say "Rooted" next to the device name, it is becasue you did not select userdebug firmware.  Please click the trash icon in the upper right, delete the device and start over from the beginning.**
+
+***
 
 ## Navigating Menu Items in Corellium ##
+
+
 
 The menu items associated with your Android device should look like the following.
 
