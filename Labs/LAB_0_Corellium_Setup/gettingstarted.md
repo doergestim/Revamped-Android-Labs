@@ -177,15 +177,18 @@ An alternative approach to SSH for remote connectivity is to use a VPN. Corelliu
 
 <pre>sudo openvpn ~/Downloads/corellium.com\ VPN\ -\ Default\ Project.ovpn</pre>
 
+When prompted to enter the password for mobileapp, do so.
+
+
  - We can see from the below output that OpenVPN created a new network interface, **tap0**, with the IP address: **10.11.3.2**
 
-![tap0 interface](images/tap0-interface.jpg)
+![](images/sudo_openvpn.png)
 
 **NOTE**: The IP address assigned to the tap0 interface may be different. <ins>Additionally, each time the VPN is established there is a possibility that the assigned IP may change</ins>.
 
-6. Run the `ip` command once again from a different terminal to see the tap0 interface and the currently assigned IP address.
+6. Run the `ip a` command once again from a different terminal to see the tap0 interface and the currently assigned IP address.
 
-`ip a`
+<pre>ip a</pre>
 
 ![tap0 interface assigned IP](images/tap0-interface-w-IP.jpg)
 
