@@ -145,10 +145,7 @@ Now, click on "Default Project" to expand:
 
 ![Terminate SSH Tunnel](images/ssh-terminate.jpg)
 
-*** 
-
-# VPN
-
+## VPN ##
 
 An alternative approach to SSH for remote connectivity is to use a VPN. Corellium offers support for VPN connections via an OpenVPN configuration which is obtained via the Corellium web UI. The Corellium VPN enables us to remotely route network traffic from the virtual mobile device, through our MobileApp VM. From the MobileApp VM, we can then perform network traffic inspection and intercept/manipulate the traffic using tools like Burp Suite.
 
