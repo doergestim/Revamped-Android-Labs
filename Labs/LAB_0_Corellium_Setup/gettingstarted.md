@@ -125,9 +125,9 @@ Now, click on "Default Project" to expand:
 
 4. The above command will create an SSH tunnel between your MobileApp VM and the virtual device in Corellium. The command also sets a *control socket* and binds the connection to `localhost:5001`. Now we can connect the Android Debug Bridge (adb) using the following command.
 
-`adb connect localhost:5001`
+<pre>adb connect localhost:5001</pre>
 
-![ADB Connection](images/adb-commands-1.jpg)
+![](images/adb_connect_localhost.png)
 
 5. With `adb` connected, we can run commands such as: 
 
@@ -135,7 +135,7 @@ Now, click on "Default Project" to expand:
 
 `adb shell` - Shell acess to the Android device
 
-![ADB Commands](images/adb-commands-2.jpg)
+![](images/adb_commands.png)
 
 **NOTE:** There's a dedicated [lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/adb/adb_cheatsheet/adb_cheatsheet.md) on utilizing adb and adb commands.
 
