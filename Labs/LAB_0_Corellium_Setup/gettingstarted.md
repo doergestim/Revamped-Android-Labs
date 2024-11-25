@@ -145,6 +145,7 @@ Now, click on "Default Project" to expand:
 
 ![Terminate SSH Tunnel](images/ssh-terminate.jpg)
 
+***
 ## VPN ##
 
 An alternative approach to SSH for remote connectivity is to use a VPN. Corellium offers support for VPN connections via an OpenVPN configuration which is obtained via the Corellium web UI. The Corellium VPN enables us to remotely route network traffic from the virtual mobile device, through our MobileApp VM. From the MobileApp VM, we can then perform network traffic inspection and intercept/manipulate the traffic using tools like Burp Suite.
@@ -155,7 +156,7 @@ An alternative approach to SSH for remote connectivity is to use a VPN. Corelliu
 
 2. Scroll down to the **Connect via VPN** section and click **DOWNLOAD OVPN FILE**.
 
-![Download OVPN File](images/download-openvpn.jpg)
+![](images/vpnoption.png)
 
 3. Save the downloaded OVPN file to a directory/location on the MobileApp VM.
 <img width="582" alt="Screenshot 2023-12-30 at 11 20 51 AM" src="https://github.com/deruke/AndroidLabs/assets/22796374/4d376964-ea1f-4e00-9e28-5e6581e4b87e">
@@ -164,17 +165,17 @@ An alternative approach to SSH for remote connectivity is to use a VPN. Corelliu
 
 4. Prior to establishing the VPN, run the following command from a terminal session on your MobileApp VM to get a current list of network interfaces.
 
-`ip a`
+<pre>ip a</pre>
 
  - The following screen capture provides an example of the list of network interfaces.
 
- ![List of Interfaces](images/list-interfaces.jpg)
+ ![](images/ip_a_command.png)
 
-**NOTE**: Your output may not match exactly – the key takeaway here is understanding the current network interfaces prior to establishing the VPN.
+**NOTE**: Your output may not match exactly – the key takeaway here is understanding the current existing network interfaces prior to establishing the VPN.
 
 5. Next, run the following command from a terminal session on your MobileApp VM.
 
-`sudo openvpn ~/Downloads/corellium.com\ VPN\ -\ Default\ Project.ovpn`
+<pre>sudo openvpn ~/Downloads/corellium.com\ VPN\ -\ Default\ Project.ovpn</pre>
 
  - We can see from the below output that OpenVPN created a new network interface, **tap0**, with the IP address: **10.11.3.2**
 
