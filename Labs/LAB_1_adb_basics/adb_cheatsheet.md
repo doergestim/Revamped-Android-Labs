@@ -6,20 +6,39 @@ REMEMBER TO POWER OFF YOUR VM WHEN NOT WORKING ON LABS!!!!
 
 Corellium WILL CHARGE YOU!!!!!
 
-This lab will familiarize you with a mobile app testing tool that is indispensible for Anrdoid testing, Android Debug Bridge (adb). You will exercise some of the most common features of adb such as gaining shell access to an Android device, moving files, installing APKs, and monitoring the system logger.
+***
 
-The first step will be to connect to your Android device in Correllium with adb. If you have a local Android device (i.e. plugged directly into your testing system), you generally don't need to perform this step. However, since our Android device is hosted in the cloud, we'll need to take advantage of adb's TCP connection feature to remotely access the device.
+This lab will familiarize you with a mobile app testing tool that is indispensible for Android testing: the Android Debug Bridge (adb). 
 
-Enusre that your SSH tunnel is up with the following command.
+In this lab, you will utilize some of the most common features of adb such as gaining shell access to an Android device, moving files, installing APKs, and monitoring the system logger.
 
+The first step will be connecting to your Android device in Correllium with adb. If you have a local Android device (i.e. plugged directly into your testing system), you generally don't need to perform this step. However, since our Android device is hosted in the cloud, we'll need to take advantage of adb's TCP connection feature to remotely access the device.
 
-`netstat -lntp | grep ssh`
+Before getting started, lets turn on our Corellium Android device:
 
-![](2023-01-13-15-03-49.png)
+![](images/poweron.png)
 
-After verifying that your SSH tunnel is up, connect to your Android device with adb's connect command.
+Next, open a terminal window within the MobileApp VM. Run the following command to connect to the Android device:
 
-`adb connect localhost:5001`
+<pre>ssh -M -Ssock -N -f -L 5001:10.11.1.1:5001 1994e91b-271a-4d17-b536-a1d9998c7319@proxy.corellium.com -i ~/.ssh/id_rsa/sshKey</pre>
+
+This is the same command that can be copied here:
+
+![](images/copycommand.png)
+
+You will see the following:
+
+![](images/connectedtodevice.png)
+
+Once connected, Run the following command in a terminal to ensure that your SSH tunnel is up:
+
+<pre>netstat -lntp | grep ssh</pre>
+
+![](images/ssh_tunnel.png)
+
+After verifying that your SSH tunnel is up, connect to your Android device with adb's connect command:
+
+<pre>adb connect localhost:5001</pre>
 
 Upon establishing the connection, you should see the message, "connected to localhost:5001"
 
@@ -27,11 +46,11 @@ Upon establishing the connection, you should see the message, "connected to loca
 
 To verify access to your Android device, use adb's devices command.
 
-`adb devices` 
+<pre>adb devices</pre>
 
 ![](2023-01-13-15-11-42.png)
 
-With adb connection, you can gain an interactive shell on the device. This is useful if you're just starting to explore the app and you're not quite sure what you your're looking for yet.
+With adb connection, you can gain an interactive shell on the device. This is useful if you're just starting to explore the app and you're not quite sure what you're looking for yet.
 ```
 adb shell
 su
