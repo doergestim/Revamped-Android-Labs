@@ -203,9 +203,12 @@ Once you get to the shell, run the following:
 
 ![](images/ping.png)
 
-8. While the ping command is running in the console session, return to the MobileApp VM and execute the following *tcpdump* command. 
-`sudo tcpdump -nni tap0`
+8. While the ping command is running in the console session, return to the MobileApp VM and execute the following *tcpdump* command:
+
+<pre>sudo tcpdump -nni tap0</pre>
 
  - In the screen capture below, we can see that the virtual mobile device (10.11.0.3) and our MobileApp VM (10.11.3.2) are communicating over a private network connection.
 
  ![tcpdump attached to tap0 interface](images/tcpdump-tap0.jpg)
+
+ When you are finished, you can press `ctrl + c` in both the MobileApp VM and the Corellium console to stop the processes for running.
