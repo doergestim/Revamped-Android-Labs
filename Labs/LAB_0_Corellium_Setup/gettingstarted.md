@@ -190,13 +190,18 @@ When prompted to enter the password for mobileapp, do so.
 
 <pre>ip a</pre>
 
-![tap0 interface assigned IP](images/tap0-interface-w-IP.jpg)
+![](images/tap0_interface.png)
+
+Take note of the tap0 IP Address. You will need it for the next command.
 
 7. Test the VPN connection by navigating back to Corellium’s web UI and selecting the **Console** tab. Then enter the following command in the console shell.
 
-`ping <tap0 assigned IP>`
+![](images/gettoshell.png)
 
-![corellium console - ping tap interface](images/corellium-console-ping.jpg)
+Once you get to the shell, run the following:
+<pre>ping [tap0 assigned IP]</pre>
+
+![](images/ping.png)
 
 8. While the ping command is running in the console session, return to the MobileApp VM and execute the following *tcpdump* command. 
 `sudo tcpdump -nni tap0`
