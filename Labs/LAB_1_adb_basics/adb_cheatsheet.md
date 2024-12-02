@@ -50,13 +50,21 @@ To verify access to your Android device, use adb's devices command.
 
 ![](2023-01-13-15-11-42.png)
 
-With adb connection, you can gain an interactive shell on the device. This is useful if you're just starting to explore the app and you're not quite sure what you're looking for yet.
-```
+With adb connection, you can gain an interactive shell on the device by running the following commands: 
+
+<pre>
 adb shell
 su
 id
-```
+</pre>
+
 ![](2023-01-13-15-21-51.png)
+
+This is useful if you're just starting to explore the app and you're not quite sure what you're looking for yet.
+
+Go ahead and enter `exit` twice to leave the shell.
+
+![](images/exit.png)
 
 If you already know exactly what you're looking for, you can also use adb's shell command to run commands interactively, even to pipe output to your local testing system. For example, maybe you're researching the security of Android's KeyChain. The following command will run on the Android device and pipe the output to your local VM. 
 ```
