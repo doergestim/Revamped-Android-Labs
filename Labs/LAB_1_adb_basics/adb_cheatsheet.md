@@ -130,25 +130,34 @@ Note: to make this easier, you can highlight, right click and copy the directory
 
 ![](images/highlightandcopy.png)
 
-There will likely be ocassions where you need to copy a file from your testing system to the Andrdoid device. For this situation, you can use adb's push command. When copying to a device, be mindful of where you are copying to. Due to Android's file system permissioning, you might accidnatelly try to copy to a read-only location. A common location to copy files to is the `/sdcard/Download/` directory which does not require root access. In the figure below, note how I attempted to copy to the `/tmp` directory. In fact, the `/tmp` does not exist on Android by default.
+There will likely be ocassions where you need to copy a file from your testing system to the Andrdoid device. For this situation, you can use adb's `push` command. When copying to a device, be mindful of where you are copying to. Due to Android's file system permissioning, you might accidentally try to copy to a read-only location. 
 
-![](2023-01-13-16-36-26.png)
+A common location to copy files to is the `/sdcard/Download/` directory which does not require root access. 
+
+In the figure below, I created an example text document containing the classic phrase "Hello World!". Note how I attempted to copy it to the `/tmp` directory and received an error in response. While the error states that it is a "Read-only file system", the `/tmp` directory actually does not exist on Android by default.
+
+![](images/pushexampletextfile.png)
 
 A common testing technique for mobile testing is to determine if sensitive information is being sent to the system logger. The developer may have accidentally left a misplaced debug statement or perhaps the threat of leaking sensitive information in the log was not considered during development. adb's `logcat` command can be used to stream the system logger.
 
-When adb logcat is run without any arguments, it will print literally everything to stdout which can be next to impossible to conduct menaingful analysis. When testing a mobile app, you will likely want to filter logcat's output. There are a few ways you can filter logcat's output. You could use some of logcat's built in filter mechanisms which will filter depending on the log type (e.g. error, informational, debug, all ,etc.). Another way to filter logcat's output is by the package name as this will likely correspond to the process name.
+When adb's `logcat` is ran without any arguments, it will print literally everything, which can make conducting meaningful analysis nearly impossible. When testing a mobile app, you will likely want to filter logcat's output. There are a few ways you can filter logcat's output.
 
-`adb logcat | grep fdroid`
+One way is to use some of logcat's built in filter mechanisms which will filter depending on the log type (e.g. error, informational, debug, all ,etc.). Another way to filter logcat's output is by the package name as this will likely correspond to the process name. This is the method we are going to use. Let's run the following command:
 
-![](2023-01-13-16-52-48.png)
+<pre>adb logcat | grep fdroid</pre>
 
-If you think that the app might be spawning new processes or making inter-process communication (IPC) calls, it might be worthwhile to filter on the process (PID) associated with the app that you're testing. To do do, you can use the `ps` command to find the PID assocaited with the app you're testing and use that as a filter for logcat.
+![](images/logcatgrep.png)
+
+You can use `ctrl + c` in order to get back to the prompt.
+
+If you think that the app might be spawning new processes or making inter-process communication (IPC) calls, it might be worthwhile to filter by the process ID (PID) associated with the app that you're testing. To do do, you can use the `ps` command to find the PID assocaited with the app you're testing and use that as a filter for logcat.
 
 Reminder: Your PID will very likely be different than what is shown below.
 
-```
+<pre>
 adb shell ps | head -n 1
 adb shell ps | grep fdroid
 adb logcat | grep 2783
-```
+</pre>
+
 ![](2023-01-13-17-01-13.png)
