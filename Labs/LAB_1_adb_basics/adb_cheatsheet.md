@@ -67,54 +67,68 @@ Go ahead and enter `exit` twice to leave the shell.
 ![](images/exit.png)
 
 If you already know exactly what you're looking for, you can also use adb's shell command to run commands interactively, even to pipe output to your local testing system. For example, maybe you're researching the security of Android's KeyChain. The following command will run on the Android device and pipe the output to your local VM. 
-```
-adb shell pm list packages | grep key
-```
+
+<pre>adb shell pm list packages | grep key</pre>
+
 ![](2023-01-13-15-28-03.png)
 
 When penetration testing mobile apps, it is possible that you will receive the APK files outside of the Google Play store, as a stand-alone APK file. In which case, you will likely use adb to install the app. This is easily accomplished with adb's install command. After installing the app, you can use adb shell to find the package name after the APK is installed.
 
-*** Installing third-party apps *** 
+***
+# Installing third-party apps
+
 
 Let's play with a third-party app called F-Droid.  Often times you will be given a .apk file to test.  This will walk through how to install those apps outside of the Google Play Store.
 
 First, let's download it.
 
-```
+<pre>
 wget https://f-droid.org/F-Droid.apk
-```
+</pre>
+
+![](images/thirdparty-appswget.png)
+
 Next, let's install it.
 
-```
+<pre>
 adb install F-Droid.apk
-```
-![](2023-01-13-15-49-43.png)
+</pre>
+
+![](images/adbinstall.png)
 
 If the app you are testing is from the Google Play store, then you will want to extract the APK from the device after installing the app. This will allow you to conduct static analysis of the app. To do so, you need to find out the name of the package and the full file path where the APK file is saved to.
 
-To find the package name, use Android's package manager utility, `pm`, to list all of the package names and pipe the output to grep to search for the package that you are testing.
+To find the package name, use Android's package manager utility, `pm`, to list all of the package names and pipe the output to `grep` in order to search for the package that you are testing.
 
-`adb shell pm list packages | grep fdroid`
+<pre>adb shell pm list packages | grep fdroid</pre>
 
 ![](2023-01-13-15-56-38.png)
 
 Use `pm` again, with the package name, to find the full path to the APK.
 
-`adb shell pm path org.fdroid.fdroid`
+<pre>adb shell pm path org.fdroid.fdroid</pre>
 
 ![](2023-01-13-16-00-03.png)
 
-That long, messy string is the full file path that we will use to copy the APK file from the device, with adb's `pull` command.
+Note: The path to the package will be different than what you see here. Each time an APK is installed, the directory path is randomly generated. As a demonstration of this, see the following screenshot where the app has been uninstalled and re-installed. 
 
-*** The official explanation for the name / reason why the name is dynamic is becasue they hate you.
+Notice how the file paths change.
 
-NOTE: Your file path will be different than what is listed in the this guide. The whatamacallit directory that looks weird and random is dynamically generated when an APK is installed. As a demonstration, see the following screenshot where the app has been uninstalled and re-installed. Note the differing file paths.
+![](images/directorystring.png)
 
-![](2023-01-13-16-14-26.png)
+The official explanation for the name / reason why the name is dynamic is becasue they hate you.
 
-`adb pull /data/app/~~fLJz4j7QLJ7egSY0zwaM6A==/org.fdroid.fdroid-lIUaU4jgz_Ym0vVUirMvVA==/base.apk`
+That long, messy string is the full file path that we will use to copy the APK file from the device, with adb's `pull` command. Let's run the following:
+
+<pre>
+adb pull /data/app/~~jyfeRcoBLGcvCLSHewCQ5A==/org.fdroid.fdroid-evU7cPAiO2Ty2n9KRdml-w==/base.apk
+</pre>
 
 ![](2023-01-13-16-23-06.png)
+
+Note: to make this easier, you can highlight, right click and copy the directory path for this command!
+
+![](images/highlightandcopy.png)
 
 There will likely be ocassions where you need to copy a file from your testing system to the Andrdoid device. For this situation, you can use adb's push command. When copying to a device, be mindful of where you are copying to. Due to Android's file system permissioning, you might accidnatelly try to copy to a read-only location. A common location to copy files to is the `/sdcard/Download/` directory which does not require root access. In the figure below, note how I attempted to copy to the `/tmp` directory. In fact, the `/tmp` does not exist on Android by default.
 
