@@ -65,7 +65,10 @@ Enter the VM password if/when prompted.
 Now navigate to localhost:8000, click "Upload and Analyze", and upload an APK file. Processing the APK file will take a while, so let that keep running in the background as we will use it for future labs.
 
 ## Analyzing Other Apps
-You can also test out any app youd like from the playstore. To do this you will need to install OpenGApps. This will give you access to the google playstore. This can be done from the "Apps" tab in Corellium.
-![](images/ss3.png)
-**You will need to log-in with a google account before you can download any apps**
-Then you can simply install apps from the play store as you normally would.
+You can also test out any app youd like from the Play Store. To do this you will need to install `OpenGApps`. This will give you access to the Google Play Store. This can be done from the "Apps" tab in Corellium.
+
+![](images/installopengapps.png)
+
+**Note: You will need to log-in with a Google account before you can download any apps**
+
+Then you can simply install apps from the Play Store as you normally would.
