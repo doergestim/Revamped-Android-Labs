@@ -21,7 +21,7 @@ Your version of the command can be copied here:
 
 ![](images/copycommand.png)
 
-Paste that command into your VM terminal and run it.
+Paste that command into your VM terminal and run it. Be sure to add `-i ~/.ssh/id_rsa/sshKey` to the end of the command.
 
 You will see the following:
 
