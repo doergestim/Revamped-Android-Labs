@@ -7,11 +7,25 @@ REMEMBER TO POWER OFF YOUR VM WHEN NOT WORKING ON LABS!!!!
 Corellium WILL CHARGE YOU!!!!!
 
 ## Downloading the APK
-Make sure you ran the ssh command under the "Connect" tab on corellium:
-`ssh -M -Ssock -N -f -L 5001:<device-address>:5001 <device-id>@proxy.corellium.com`
+Before getting started, lets turn on our Corellium Android device:
 
-Then make sure you are connected to the emulator through adb:
-`adb connect localhost:5001`
+![](images/poweron.png)
+
+Next, open a terminal window within the MobileApp VM. Run the following command to connect to the Android device:
+
+<pre>ssh -M -Ssock -N -f -L 5001:[Your Device Address]:5001 [Your Device ID]@proxy.corellium.com -i ~/.ssh/id_rsa/sshKey</pre>
+
+**Note:** You will have a unique device address and ID.
+
+Your version of the command can be copied here:
+
+![](images/copycommand.png)
+
+Paste that command into your VM terminal and run it.
+
+You will see the following:
+
+![](images/connectedtodevice.png)
 
 The first thing you will need is the application ID of the app we are testing. We will be analyzing F-Droid. On the Corellium interface click on the “Apps” tab and start typing the name of the application. The application ID is found directly under the application name as shown below. 
 <!--![](images/ss1.png)-->

@@ -20,11 +20,15 @@ Before getting started, lets turn on our Corellium Android device:
 
 Next, open a terminal window within the MobileApp VM. Run the following command to connect to the Android device:
 
-<pre>ssh -M -Ssock -N -f -L 5001:10.11.1.1:5001 1994e91b-271a-4d17-b536-a1d9998c7319@proxy.corellium.com -i ~/.ssh/id_rsa/sshKey</pre>
+<pre>ssh -M -Ssock -N -f -L 5001:[Your Device Address]:5001 [Your Device ID]@proxy.corellium.com -i ~/.ssh/id_rsa/sshKey</pre>
 
-This is the same command that can be copied here:
+**Note:** You will have a unique device address and ID.
+
+Your unique version of the command can be copied here:
 
 ![](images/copycommand.png)
+
+Paste that command into your VM terminal and run it.
 
 You will see the following:
 
