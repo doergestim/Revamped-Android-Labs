@@ -42,13 +42,13 @@ After verifying that your SSH tunnel is up, connect to your Android device with 
 
 Upon establishing the connection, you should see the message, "connected to localhost:5001"
 
-![](2023-01-13-15-09-23.png)
+![](images/2023-01-13-15-09-23.png)
 
 To verify access to your Android device, use adb's devices command.
 
 <pre>adb devices</pre>
 
-![](2023-01-13-15-11-42.png)
+![](images/2023-01-13-15-11-42.png)
 
 With adb connection, you can gain an interactive shell on the device by running the following commands: 
 
@@ -58,7 +58,7 @@ su
 id
 </pre>
 
-![](2023-01-13-15-21-51.png)
+![](images/2023-01-13-15-21-51.png)
 
 This is useful if you're just starting to explore the app and you're not quite sure what you're looking for yet.
 
@@ -70,7 +70,7 @@ If you already know exactly what you're looking for, you can also use adb's shel
 
 <pre>adb shell pm list packages | grep key</pre>
 
-![](2023-01-13-15-28-03.png)
+![](images/2023-01-13-15-28-03.png)
 
 When penetration testing mobile apps, it is possible that you will receive the APK files outside of the Google Play store, as a stand-alone APK file. In which case, you will likely use adb to install the app. This is easily accomplished with adb's install command. After installing the app, you can use adb shell to find the package name after the APK is installed.
 
@@ -102,13 +102,13 @@ To find the package name, use Android's package manager utility, `pm`, to list a
 
 <pre>adb shell pm list packages | grep fdroid</pre>
 
-![](2023-01-13-15-56-38.png)
+![](images/2023-01-13-15-56-38.png)
 
 Use `pm` again, with the package name, to find the full path to the APK.
 
 <pre>adb shell pm path org.fdroid.fdroid</pre>
 
-![](2023-01-13-16-00-03.png)
+![](images/2023-01-13-16-00-03.png)
 
 Note: The path to the package will be different than what you see here. Each time an APK is installed, the directory path is randomly generated. As a demonstration of this, see the following screenshot where the app has been uninstalled and re-installed. 
 
@@ -124,7 +124,7 @@ That long, messy string is the full file path that we will use to copy the APK f
 adb pull /data/app/~~jyfeRcoBLGcvCLSHewCQ5A==/org.fdroid.fdroid-evU7cPAiO2Ty2n9KRdml-w==/base.apk
 </pre>
 
-![](2023-01-13-16-23-06.png)
+![](images/2023-01-13-16-23-06.png)
 
 Note: to make this easier, you can highlight, right click and copy the directory path for this command!
 
@@ -160,4 +160,4 @@ adb shell ps | grep fdroid
 adb logcat | grep 2783
 </pre>
 
-![](2023-01-13-17-01-13.png)
+![](images/2023-01-13-17-01-13.png)
