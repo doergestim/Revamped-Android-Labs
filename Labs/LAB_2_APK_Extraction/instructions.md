@@ -27,7 +27,13 @@ You will see the following:
 
 ![](images/connectedtodevice.png)
 
-The first thing you will need is the application ID of the app we are testing. We will be analyzing F-Droid. On the Corellium interface click on the “Apps” tab and start typing the name of the application. The application ID is found directly under the application name as shown below. 
+Now run the following to connect to the local host:
+
+<pre>adb connect localhost:5001</pre>
+
+![](images/2023-01-13-15-09-23.png)
+
+Now that we are connected, the first thing you will need is the application ID of the app we are testing. We will be analyzing F-Droid. On the Corellium interface click on the “Apps” tab and start typing the name of the application. The application ID is found directly under the application name as shown below. 
 <!--![](images/ss1.png)-->
 <img width="836" alt="Screenshot 2023-12-30 at 11 37 38 AM" src="https://github.com/deruke/AndroidLabs/assets/22796374/c5f900b2-2ca2-4eb7-afc2-bfe2552ab56c">
 
