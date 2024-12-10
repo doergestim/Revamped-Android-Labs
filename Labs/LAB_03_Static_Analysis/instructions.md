@@ -2,7 +2,7 @@
 
 I CANNOT STRESS THIS ENOUGH!!!!!!
 
-REMEMBER TO POWER OFF YOUR VM WHEN NOT WORKING ON LABS!!!!
+REMEMBER TO POWER OFF YOUR CORELLIUM DEVICE WHEN NOT WORKING ON LABS!!!!
 
 Corellium WILL CHARGE YOU!!!!!
 
@@ -14,17 +14,21 @@ In your VM web browser open a tab to http://0.0.0.0:8000
 
 Next, lets Upload and Analyze a file.
 
-<img width="1426" alt="Screenshot 2023-12-30 at 11 53 30 AM" src="https://github.com/deruke/AndroidLabs/assets/22796374/2bba5969-4694-4ddc-b304-ce717c7a3f1a">
+![](images/uploadandanalyze.png)
 
-Please select base.apk in your home directory.
+Please select 'final.apk' in your home directory.
+
+![](images/selectfinalapk.png)
 
 It may take a while for the file to finish Analyzing.
 
-After a while you can select RECENT SCANS in the upper left corner.
+After a while you can select `RECENT SCANS` in the upper left corner.
+
+![](images/selectrecentscans.png)
 
 You should see a status of the scan.
 
-<img width="1415" alt="Screenshot 2023-12-30 at 11 57 11 AM" src="https://github.com/deruke/AndroidLabs/assets/22796374/a12a18d7-5270-4e34-acfb-166290adb2ee">
+![](images/recentscan.png)
 
 Please select Static Report from the right side.
 
