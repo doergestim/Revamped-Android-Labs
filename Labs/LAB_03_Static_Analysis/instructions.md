@@ -82,18 +82,21 @@ You should verify that the information displayed in this section is actually sen
 
 ## API
 
-This Section displays the android APIs that the app uses. This section contains a lot of noise, however it can be useful, especially when combined with the search feature.
+This section displays the Android APIs that the app uses. This section contains a lot of noise, however it can be useful, especially when combined with the search feature. Lets navigate to it by using the navigation menu:
 
-<!--![](images/API.png)-->
+![](images/gotoapi.png)
 
-<img width="955" alt="Screenshot 2023-12-30 at 12 07 08 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/d02fd5da-9b36-4223-b0d9-2097d89ee3a5">
+For example, the following screenshot shows us everywhere the command execution API is used. The files displayed are clickable and will show you the API usage location in code.
 
-
-For example, the screenshot above shows us everywhere the command execution API is used. The files displayed are clickable and will show you the API usage location in code.
+![](images/API.png)
 
 ## Browsable Activities
 
-MobSF Extracts a list of "Browsable Activities". These are activities that can be triggered by a web browser to display data referenced by a link. These are worth attention since they can sometimes be leveraged by an attacker to perform web based or intent based attacks.
+Use the navigation menu to click on `Browsable Activities`
+
+![](images/gotobrowsableactivities.png)
+
+MobSF extracts a list of activities that can be triggered by a web browser to display data referenced by a link. These are worth paying attention to, since they can sometimes be leveraged by an attacker to perform web based or internet based attacks.
 
 <!--![](images/browsableactivities.png)-->
 
@@ -105,5 +108,5 @@ MobSF Extracts a list of "Browsable Activities". These are activities that can b
 
 <img width="1424" alt="Screenshot 2023-12-30 at 12 09 00 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/a915b191-061f-4a17-87ba-40236a244dab">
 
-The certificate analysis section will report any known vulnerabilities in the signing schemes of the application. Make sure to validate these before reporting them, report the android versions affected, and maybe even the overall market share of the affected android versions.
+The certificate analysis section will report any known vulnerabilities in the signing schemes of the application. Make sure to validate these before reporting them. When seen fit, report the Android versions affected, and maybe even the overall market share of the those affected versions.
 
