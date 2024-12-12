@@ -42,23 +42,33 @@ Here you can download the decompiled java and smali code, which is the disassemb
 
 ## Permissions
 
-Permissions are gathered from the android manifest file. Each permission is marked with a status, most commonly "dangerous" or "normal". 
-<!--![](images/permissions.png)-->
+Lets take a look at permissions. Click the three lines in the top left corner to bring up the menu, then select `Permissions`.
 
-<img width="1415" alt="Screenshot 2023-12-30 at 12 00 58 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/e62582bc-1d17-48cf-b121-3998d41b8663">
+![](images/permissionselect.png)
 
-Whether a permission is actually dangerous depends on the context of the application, and whether they make sense given the functionallity of the app. Permissions are not the most useful thing for a tester, but could be critical for malware analysis.
+Permissions are gathered from the Android manifest file. Each permission is marked with a status, usually either "dangerous" or "normal". 
+
+![](images/permissions.png)
+
+Whether a permission is actually dangerous depends on both the context and functionality of the application. Permissions are not the most useful thing for a tester, but could be critical for malware analysis.
 
 ## Recon
+The reconnaissance section is especially useful for gaining a better understanding of the application. 
 
-The reconnaissance section is especially useful for gaining a better overall understanding of the application. First lets look at URLs. We can use this to see where the application is making connections to, potentially for malware analysis or testing our access outside of the app.
+First lets look at URLs. Click the three lines in the top left corner to bring up the menu, then select `Reconnaissance` to expand the drop-down menu. Now click `URLs`
 
-<!--![](images/urls.png)-->
+![](images/reconthenurls.png)
 
+ We can use this to see where the application is making connections to, potentially for malware analysis or testing our access outside of the app.
 
-<img width="1268" alt="Screenshot 2023-12-30 at 12 03 44 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/f434f21a-5689-4516-9fe8-6284693653f2">
+![](images/urls.png)
 
-Next we can also look at strings. Android best practices recommend that instead of hardcoding strings into the XML (UI) files, they be inserted as a key value pairs into the "Strings.xml" file and referenced by the layout files. This creates a lot of noise and looking through everything is not likely to be a good use of time.
+We can also look at strings. Go ahead and click on `Strings` within the same navigation menu as before. 
+
+![](images/tostrings.png)
+
+It is recommended that strings are inserted as key value pairs into the "Strings.xml" file and then referenced by the layout files. Hardcoding the strings into the XML (UI) files creates a lot of noise and requires more time to look through everything.
+
 
 MobSF extracts potentially sensitive values from this file and displays them in the "Hardcoded Secrets" tab. You should verify the information displayed in this section is actually sensitive before reporting it.
 
