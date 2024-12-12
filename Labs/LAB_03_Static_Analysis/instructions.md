@@ -22,18 +22,9 @@ Please select 'final.apk' in your home directory.
 
 It may take a while for the file to finish Analyzing.
 
-After a while you can select `RECENT SCANS` in the upper left corner.
+Once the scan finishes, you should see the Static Report of the scan:
 
-![](images/selectrecentscans.png)
-
-You should see a status of the scan.
-
-![](images/recentscan.png)
-
-Please select Static Report from the right side.
-
-<img width="156" alt="Screenshot 2023-12-30 at 11 58 16 AM" src="https://github.com/deruke/AndroidLabs/assets/22796374/53556720-9579-456f-b269-932ca1824e6b">
-
+![](images/scanfinished.png)
 
 The first thing worth paying special attention to is the overview of the app components.
 <!--![](images/exported.png)-->
