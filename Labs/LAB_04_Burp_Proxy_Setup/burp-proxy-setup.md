@@ -2,28 +2,36 @@
 
 I CANNOT STRESS THIS ENOUGH!!!!!!
 
-REMEMBER TO POWER OFF YOUR VM WHEN NOT WORKING ON LABS!!!!
+REMEMBER TO POWER OFF YOUR CORELLIUM DEVICE WHEN NOT WORKING ON LABS!!!!
 
 Corellium WILL CHARGE YOU!!!!!
 
-In this lab we will setup a web proxy using *Burp Suite's Community Edition* and route traffic from our virtual mobile device in Corellium to our MobileApp VM where Burp resides. Following this setup, we will have the capability to intercept web requests made by a given mobile application, as well as inspect and/or manipulate network traffic for the purposes of mobile application testing. 
+***
+
+In this lab we will set up a web proxy using *Burp Suite's Community Edition* and route traffic from our virtual mobile device in Corellium to our MobileApp VM where Burp resides. Following this setup, we will have the capability to intercept web requests made by a given mobile application, as well as inspecting and/or manipulating network traffic for the purposes of mobile application testing. 
 
 In order to ensure network traffic is routed from the virtual mobile device to our MobileApp VM, we first need to establish a VPN connection between the two hosts. More details on how to setup a VPN connection can be found [here](https://github.com/deruke/AndroidLabs/blob/main/Labs/Corellium_Setup/gettingstarted.md#VPN).
 
 ## Open and Configure Burp
-1. With a VPN connection established, return to your MobileApp VM and launch Burp Suite Community Edition by either running to following command or clicking on the Burp icon in the Favorites Toolbar.
+1. With a VPN connection established, return to your MobileApp VM and launch Burp Suite Community Edition by clicking on the Burp icon in the Favorites Toolbar.
+
+![](images/launchburp.png)
+
+2. Once open, select **Temporary project**, then click **Next**
+
+ ![](images/tempthennext.png)
  
- Launch Burp via the Favorites Toolbar.
+ Then make sure **Use Burp Defaults** is selected, and hit **Start Burp**
 
-  ![Launch Burp Suite](images/burp-temp-project-1.jpg)
+ ![](images/defaultstartburp.png)
 
-2. Select **Temporary project**, then click **Next**
+3. Once the project has started, use Burp's menu to navigate to **Proxy -> Options**
 
- ![Launch Burp Suite](images/burp-temp-project.jpg)
-
-3. Using Burp's menu items, navigate to **Proxy -> Options**
+![](images/proxythenoptions.png)
 
 4. Uncheck the "Running" checkbox for interface 127.0.0.1:8080
+
+![](images/uncheckbox.png)
 
 5. Next click **Add**, then **Bind to address -> Specific address**, and select the IP address assigned to the **tap0** interface. Also, enter the port number in the **Bind to port** field, then click **OK**.   
 

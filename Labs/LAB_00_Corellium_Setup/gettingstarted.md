@@ -44,11 +44,7 @@ Once the build is complete, you should have a virtual Android device with menu o
 
 **Please note, if it does not say "Rooted" next to the device name, it is becasue you did not select userdebug firmware.  Please click the trash icon in the upper right, delete the device and start over from the beginning.**
 
-***
-
 ## Navigating Menu Items in Corellium ##
-
-
 
 The menu items associated with your Android device should look like the following.
 
@@ -145,7 +141,7 @@ Now, click on "Default Project" to expand:
 
 ![Terminate SSH Tunnel](images/ssh-terminate.jpg)
 
-***
+
 ## VPN ##
 
 An alternative approach to SSH for remote connectivity is to use a VPN. Corellium offers support for VPN connections via an OpenVPN configuration which is obtained via the Corellium web UI. The Corellium VPN enables us to remotely route network traffic from the virtual mobile device, through our MobileApp VM. From the MobileApp VM, we can then perform network traffic inspection and intercept/manipulate the traffic using tools like Burp Suite.
