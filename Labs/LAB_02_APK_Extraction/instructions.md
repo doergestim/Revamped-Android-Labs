@@ -6,6 +6,8 @@ REMEMBER TO POWER OFF YOUR CORELLIUM DEVICE WHEN NOT WORKING ON LABS!!!!
 
 Corellium WILL CHARGE YOU!!!!!
 
+***
+
 Before getting started, lets turn on our Corellium Android device:
 
 ![](images/poweron.png)
@@ -32,7 +34,6 @@ Now run the following to connect to the local host:
 
 ![](images/2023-01-13-15-09-23.png)
 
-***
 ## Downloading the APK
 
 Now that we are connected, the first thing you will need is the application ID of the app we are testing. We will be analyzing F-Droid. On the Corellium interface click on the “Apps” tab and start typing the name of the application. The application ID is found directly under the application name as shown below. 
@@ -54,6 +55,7 @@ Next, run the final command:
 ![](images/adbpullpath.png)
 
 ## Running MobSF
+
 [MobSF](https://mobsf.github.io/docs/#/) is already installed on your VM. To run the docker container, run this command:
 
 <pre>sudo docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest</pre>
