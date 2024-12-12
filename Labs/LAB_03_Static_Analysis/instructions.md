@@ -59,7 +59,7 @@ First lets look at URLs. Click the three lines in the top left corner to bring u
 
 ![](images/reconthenurls.png)
 
- We can use this to see where the application is making connections to, potentially for malware analysis or testing our access outside of the app.
+ We can use this to see where the application is making connections. This could be useful for malware analysis or testing our access outside of the app.
 
 ![](images/urls.png)
 
@@ -69,8 +69,13 @@ We can also look at strings. Go ahead and click on `Strings` within the same nav
 
 It is recommended that strings are inserted as key value pairs into the "Strings.xml" file and then referenced by the layout files. Hardcoding the strings into the XML (UI) files creates a lot of noise and requires more time to look through everything.
 
+![](images/strings.png)
 
-MobSF extracts potentially sensitive values from this file and displays them in the "Hardcoded Secrets" tab. You should verify the information displayed in this section is actually sensitive before reporting it.
+MobSF extracts potentially sensitive values from this file and displays them in the `Hardcoded Secrets` tab. Lets navigate to it by using the same menu:
+
+![](images/tohardcodedsecrets.png)
+
+You should verify that the information displayed in this section is actually sensitive before reporting it.
 
 <!--![](images/secrets.png)-->
 <img width="485" alt="Screenshot 2023-12-30 at 12 05 39 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/057e6fa8-ae56-4e12-9b2d-662ecb0a7f12">
