@@ -33,13 +33,14 @@ In order to ensure network traffic is routed from the virtual mobile device to o
 
 ![](images/uncheckbox.png)
 
-5. Next click **Add**, then **Bind to address -> Specific address**, and select the IP address assigned to the **tap0** interface. Also, enter the port number in the **Bind to port** field, then click **OK**.   
+5. Next click **Add**, then **Bind to address -> Specific address**, and select the IP address assigned to the **tap0** interface. Also, enter the port number in the **Bind to port** field. 
+When finished click **OK**.   
 
- ![Burp Proxy Configuration](images/burp-configure-listener-1.jpg)
+ ![](images/step5.png)
 
  **NOTE**: The address assigned to your **tap0** interface may be different. To ensure you select the correct IP for Burp to bind to, run the following command from a terminal session on your MobileApp VM.
  
- `ip a show tap0`
+ <pre>ip a show tap0</pre>
  
  ![tap0 interface](images/tap0-interface.jpg)
 
