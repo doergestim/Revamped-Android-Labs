@@ -46,15 +46,27 @@ When finished click **OK**.
 
  6. You should now have an active listener in Burp.
 
- ![Burp Proxy Configuration](images/burp-proxy-options.jpg)
+ ![](images/activelistener.png)
 
-You now have Burp's proxy setup and listening for incoming connections. In the next section of this lab, we will walk through the configuration of the virtual mobile device in Corellium.
+You now have Burp's proxy set up and listening for incoming connections. In the next section of this lab, we will walk through the configuration of the virtual mobile device in Corellium.
 
 ## Configuring the Virtual Mobile Device's Proxy Settings
 
-1.  Navigate back to the Corellium web UI and access your virtual mobile device.
+1.  Navigate back to the Corellium web UI and power on your virtual device.
 
-2. On the virtual mobile device, navigate to **Settings -> Network & internet**.
+![](images/poweron.png)
+
+2. We need to navigate to **Settings -> Network & internet** on our virtual device. To do this, start by clicking on the device screen. Then click and drag down from the top of the device's screen:
+
+![](images/clickanddragdown.png)
+
+Then click in the middle of the screen, and click and drag down again:
+
+![](images/clickanddragagain.png)
+
+Now hit the settings icon in the bottom left corner:
+
+
 
 ![Network and Internet](images/internet-proxy-settings.jpg)
 
