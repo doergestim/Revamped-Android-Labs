@@ -66,7 +66,7 @@ Then click in the middle of the screen, and click and drag down again:
 
 Now hit the settings icon in the bottom left corner:
 
-
+![](images/clicksettings.png)
 
 ![Network and Internet](images/internet-proxy-settings.jpg)
 
