@@ -88,26 +88,17 @@ And finally, click **Network & internet**
 
 ![](images/selecttmobileus.png)
 
-7. Click on the **Proxy** and **Port** fields and enter the value matching Burp's proxy settings. Then select the *Kebab* icon in the top-right corner and click **Save**.
+7. Click on the **Proxy** and **Port** fields and enter the value matching Burp's proxy settings. In our instance, we will set **Proxy** to `10.11.3.2` and the **Port** to `8888`. Then select the *Kebab* icon in the top-right corner and click **Save**.
 
-Kebab Icon Location:
+![](images/setproxyandport.png)
 
-![APN Set](images/apn-proxy-save.jpg)
-
-Click Save
-
-![APN Save](images/apn-save.jpg)
+![](images/hitsave.png)
 
 **IMPORTANT:** If you don't save the proxy settings you will need to repeat the previous steps.
 
 9. Navigate back to **Settings -> Network & internet -> Internet** and select the icon at the top-right corner to reset the network interface. This will reset the virtual device's network interface which enables the proxy settings to be recognized by the device.
 
-![Reset Interface](images/reset-interfaces.jpg)
-
-The Internet connection will cycle momentarily during this process.
-
-![Interface Resetting](images/internet-reset-interfaces.jpg)
-
+![](images/resetinternet.png)
 
 ## Configure the Virtual Mobile Device's Certificate Trust for the Burp Proxy Certifcate Authority (CA) - User-Trust
 
