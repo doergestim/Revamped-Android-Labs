@@ -68,23 +68,25 @@ Now hit the settings icon in the bottom left corner:
 
 ![](images/clicksettings.png)
 
-![Network and Internet](images/internet-proxy-settings.jpg)
+And finally, click **Network & internet**
+
+![](images/networksettings.png)
 
 3. Select **Internet**
 
-![Internet](images/internet-proxy-settings-1.jpg)
+![](images/selectinternetsettings.png)
 
 4. Click on the *gear* icon of the *T-Mobile* connection.
 
-![T-Mobile](images/internet-proxy-settings-2.jpg)
+![](images/tmobilesettings.png)
 
 5. Under the settings for the *T-Mobile* interface, scroll down and select **Access Point Names**
 
-![APN Select](images/apn-select.jpg)
+![](images/selectaccesspointnames.png)
 
 6. Select the **T-Mobile US** APN.
 
-![APN Select](images/apn.jpg)
+![](images/selecttmobileus.png)
 
 7. Click on the **Proxy** and **Port** fields and enter the value matching Burp's proxy settings. Then select the *Kebab* icon in the top-right corner and click **Save**.
 
