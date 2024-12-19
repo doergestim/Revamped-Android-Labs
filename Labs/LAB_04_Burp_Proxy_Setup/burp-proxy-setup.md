@@ -106,23 +106,29 @@ The following steps will walk you through the installation of Burp's CA certific
 
 **IMPORTANT:** Starting with Nougat (Android 7.0 - API level 24) certificates installed to the User-Trust store are ignored by default. However, with Corellium's implementation of Android devices, some native applications have been "patched" to trust the user cert store. If you are using a different mobile device solution for testing, Android devices 7.0+ (API >= 24) will require the Burp CA cert to be installed to the System-Trust store (see [Lab 5](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_X_Import-Burp-Certificate-to-System-Trust-Store/burp-proxy-system-cert-trust.md) for adding Burp's CA to the System-Trust on Android devices).  
 
-1. Return to your instance of Burp running on the MobileApp VM and navigate to: **Proxy -> Options** and click on **Import / export CA certificate**.
+1. Return to your instance of Burp running on the MobileApp VM and navigate to: **Proxy -> Options** then click on **Import / export CA certificate**.
 
-![Export Burp CA Certificate](images/burp-export-CA-cert.jpg)
+![](images/importcertificate.png)
 
 2. Select the **Certificate in DER format** and then click **Next**.
 
-![Export Burp CA as DER](images/burp-export-cert-DER-format.jpg)
+![](images/certificateinder.png)
 
-3. Select a location to save the certifcate.
+3. Now, hit **Select File...** and navigate into the **Downloads** folder. Then we need to name the file. In our case, we named it `BurpCA.cer`.
 
-![Save Burp Certificate](images/burp-export-cert-filename.jpg)
+![](images/exportcert.png)
 
-4. Go back to your Corellium instance and click **Files** in the menu, then navigate to **/mnt/sdcard/Download/** and upload the Burp CA file exported in the previous step.
+![](images/downloadsandnamefile.png)
+
+4. Go back to your Corellium instance and click **Files** in the navigation menu. Then enter `/mnt/sdcard/Download` into the search bar and upload the Burp CA file exported in the previous step.
 
 ![Upload Certificate to Device](images/burp-CA-cert-upload.jpg)
 
 ![Upload Certificate to Device](images/burp-CA-cert-upload-1.jpg)
+
+Now hit **Save**. You should see something similar to the following:
+
+![](images/savenextcert.png)
 
 5. Return to the virtual mobile device's home screen (in Corellium) and select the **Settings** icon.
 
