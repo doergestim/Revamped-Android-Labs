@@ -120,15 +120,15 @@ The following steps will walk you through the installation of Burp's CA certific
 
 ![](images/downloadsandnamefile.png)
 
+Now hit **Save**. You should see something similar to the following:
+
+![](images/savenextcert.png)
+
 4. Go back to your Corellium instance and click **Files** in the navigation menu. Then enter `/mnt/sdcard/Download` into the search bar and upload the Burp CA file exported in the previous step.
 
 ![Upload Certificate to Device](images/burp-CA-cert-upload.jpg)
 
 ![Upload Certificate to Device](images/burp-CA-cert-upload-1.jpg)
-
-Now hit **Save**. You should see something similar to the following:
-
-![](images/savenextcert.png)
 
 5. Return to the virtual mobile device's home screen (in Corellium) and select the **Settings** icon.
 
