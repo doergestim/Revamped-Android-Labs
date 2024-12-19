@@ -102,9 +102,9 @@ And finally, click **Network & internet**
 
 ## Configure the Virtual Mobile Device's Certificate Trust for the Burp Proxy Certifcate Authority (CA) - User-Trust
 
-The following steps will walk you through the installation of Burp's CA certificate to the User-Trust Store on your virtual mobile device in Corellium.
+The following steps will walk you through the installation of Burp's CA certificate to the User-Trust Store on your Corellium virtual mobile device.
 
-**IMPORTANT:** Starting with Nougat (Android 7.0 - API level 24) certificates installed to the User-Trust store are ignored by default; however, with Corellium's implementation of Android devices, some naitive applications have been "patched" to trust the user cert store. If you are using a different mobile device solution for testing, Android devivces 7.0+ (API >= 24) will require the Burp CA cert to be installed to the System-Trust store (see [Lab 5](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_X_Import-Burp-Certificate-to-System-Trust-Store/burp-proxy-system-cert-trust.md) for adding Burp's CA to the System-Trust on Android devices).  
+**IMPORTANT:** Starting with Nougat (Android 7.0 - API level 24) certificates installed to the User-Trust store are ignored by default. However, with Corellium's implementation of Android devices, some native applications have been "patched" to trust the user cert store. If you are using a different mobile device solution for testing, Android devices 7.0+ (API >= 24) will require the Burp CA cert to be installed to the System-Trust store (see [Lab 5](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_X_Import-Burp-Certificate-to-System-Trust-Store/burp-proxy-system-cert-trust.md) for adding Burp's CA to the System-Trust on Android devices).  
 
 1. Return to your instance of Burp running on the MobileApp VM and navigate to: **Proxy -> Options** and click on **Import / export CA certificate**.
 
