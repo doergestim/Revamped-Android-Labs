@@ -34,19 +34,19 @@ If you are using a different mobile device solution for testing, Android devices
 
 4. From a terminal session, type the following `openssl` command to convert the certificate from DER to PEM.
 
-`openssl x509 -inform DER -in BurpCA.cer -out BurpCA.pem`
+<pre>openssl x509 -inform DER -in BurpCA.cer -out BurpCA.pem</pre>
 
 ![Export Burp CA Certificate - Save File](images/burp-convert-to-PEM.jpg)
 
 5. Use the `openssl` command once again to identify the `subject_hash_old` value.
 
-`openssl x509 -inform PEM -subject_hash_old -in BurpCA.pem | head -1`
+<pre>openssl x509 -inform PEM -subject_hash_old -in BurpCA.pem | head -1</pre>
 
 ![Burp CA - subject_hash_old](images/burp-CA-subject-hash.jpg)
 
 6. Rename the pem-formated certificate to `<hash>.0`
 
-`mv BurpCA.pem 9a5ba575.0`
+<pre>mv BurpCA.pem 9a5ba575.0</pre>
 
 ![Burp CA - Rename](images/burp-CA-subject-hash-rename.jpg)
 
@@ -56,8 +56,9 @@ If you are using a different mobile device solution for testing, Android devices
 
 ![adb connect](images/adb-connect.jpg)
 
-**NOTE**: Reference [LAB 1](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_1_adb_basics/adb_cheatsheet.md) for connectivity and use of the Android Debug Bridge (adb).
-**NOTE**: The screen capture below is an example of the adb tool used to connect to the virtual mobile device with a VPN established between Corellium and the MobileApp VM. To establish a connection over SSH instead, please see the establishing an [SSH Connection](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md#SSH) section the [Getting Started Lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md).
+**NOTE**: Reference [LAB 1](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_1_adb_basics/adb_cheatsheet.md) for instructions on how to connect and how to use the Android Debug Bridge (adb).
+
+**NOTE**: The screen capture below is an example of the adb tool used to connect to the virtual mobile device with a VPN established between Corellium and the MobileApp VM. To establish a connection over SSH instead, please see the establishing an [SSH Connection](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md#SSH) section in the [Getting Started Lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md).
 
 2. Copy the certificate to the device. We can use `adb` to copy the certificate over, but since it has to be copied to the `/system` filesystem, we have to remount it as writable. As root, we will remount and push the certificate to the local file system of the virtual mobile device.
 
