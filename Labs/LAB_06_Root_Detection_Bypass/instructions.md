@@ -35,8 +35,12 @@ Next, let's install the app on our phone by pushing it through adb.
 
 <img width="315" alt="Screenshot 2023-12-30 at 2 05 02 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/421c3f57-5dca-48d6-a596-294ed2c58f12">
 
+Now we need to open up TheHackerBank app. To do this, navigate back to the `Apps` page of your Corellium device:
 
-Opening the app on your phone we see that we do not have the option to do anything other than aknowledge the alert, which consequently closes the application.
+![](images/launchhackerbank.png)
+
+After opening the app on your phone we see that we do not have the option to do anything other than acknowledge the alert, which consequently closes the application.
+
 ![screenshot](images/ss0.png)
 
 **The following Commands are for reference only and do not need to be run on the Corellium device since it has the frida server pre-installed.**
