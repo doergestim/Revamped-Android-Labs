@@ -56,7 +56,9 @@ If you are using a different mobile device solution for testing, Android devices
 
 ![adb connect](images/adb-connect.jpg)
 
-**NOTE**: Reference [LAB 1](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_1_adb_basics/adb_cheatsheet.md) for instructions on how to connect and how to use the Android Debug Bridge (adb).
+An important thing to note, if you run this command and see more than one device (such as localhost:5001), you will need to run `adb disconnect [device name]` so you can continue on to the next steps.
+
+**NOTE**: Reference [LAB 1](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_1_adb_basics/adb_cheatsheet.md) for instructions on how to connect and how to use the Android Debug Bridge (adb). 
 
 **NOTE**: The screen capture below is an example of the adb tool used to connect to the virtual mobile device with a VPN established between Corellium and the MobileApp VM. To establish a connection over SSH instead, please see the establishing an [SSH Connection](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md#SSH) section in the [Getting Started Lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md).
 
@@ -68,20 +70,26 @@ As root, we will remount and push the certificate to the local file system of th
 
 <pre>adb remount</pre>
 
-<pre>adb push [cert].0 /sdcard/</pre>
+<pre>adb push [Cert].0 /sdcard/</pre>
 
 ![adb root](images/adb-as-root.jpg)
 
-3. Drop into a shell (`adb shell`) and move the file to `/system/etc/security/cacerts` and run the `chmod` command with permissions set to **644**:
+3. We need to drop into a shell and move the file to `/system/etc/security/cacerts` and run the `chmod` command with permissions set to **644**:
 
+Start by running the following:
+<pre>adb shell</pre>
 
-`adb shell mv /sdcard/9a5ba575.0 /system/etc/security/cacerts/`
+Now move the file to the correct location:
 
-`adb shell chmod 644 /system/etc/security/cacerts/9a5ba575.0`
+<pre>mv /sdcard/[Cert].0 /system/etc/security/cacerts/</pre>
+
+And finally, change the permissions:
+
+<pre>chmod 644 /system/etc/security/cacerts/9a5ba575.0</pre>
 
 4. Run the `ls` command to verify the correct permissions are set.
 
-`adb shell ls -lah /system/etc/security/cacerts/9a5ba575.0`
+<pre>ls -lah /system/etc/security/cacerts/[Cert].0</pre>
 
 ![adb add cert and set permissions](images/adb-push-cert-to-system-1.jpg)
 
