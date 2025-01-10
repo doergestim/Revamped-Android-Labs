@@ -56,24 +56,16 @@ After opening the app on your phone we see that we do not have the option to do 
 
 We will use [This script](https://codeshare.frida.re/@dzonerzy/fridantiroot/) from Frida Codeshare to bypass root detection on our target.
 
-But first we need to install Frida on the phone.  On the left side of your device screen in Corellium select Frida.
+But first we need to install Frida on the phone.  
+On the left side of your device screen in Corellium select `Frida` then click `Select a Process`.
 
-<img width="89" alt="Screenshot 2023-12-30 at 2 19 08 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/6ad475b2-ebb2-42e8-b805-9f1a620e8656">
+![](images/selectfrida.png)
 
-Next, select "Select a Process".
+Wait till it loads the processes then select `TheHackerBank` and then `Attach`:
 
-<img width="217" alt="Screenshot 2023-12-30 at 2 20 58 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/6f112142-bfb1-4416-9599-d31794075f67">
+![](images/pickhackerbank.png)
 
-Wait till it loads the processes then select TheHackerBank.
-
-
-<img width="291" alt="Screenshot 2023-12-30 at 2 22 07 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/3a407b63-be38-4900-9a90-86d900590e8b">
-
-Then select ATTACH.
-
-
-
-You can either download the script, and run it with the `-l` option, or, run it directly from the website with ` --codeshare dzonerzy/fridantiroot`
+You can either download the script, and run it with the `-l` option, or, run it directly from the website with `--codeshare dzonerzy/fridantiroot`
 
 Run the following command from a terminal on your VM:
  `frida --codeshare dzonerzy/fridantiroot -U -f com.bhis.thehackerbank`
