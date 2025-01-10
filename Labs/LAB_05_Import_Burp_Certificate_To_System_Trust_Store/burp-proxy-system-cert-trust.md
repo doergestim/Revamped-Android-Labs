@@ -20,11 +20,11 @@ If you are using a different mobile device solution for testing, Android devices
 ## Export Burp's CA Certficate and Prep for Install
 1. Return to Burp and navigate to **Proxy -> Options** and click **Import/export CA certificate**.
 
-![Export Burp CA Certificate](images/burp-export-CA-cert-1.jpg)
+![Export Burp CA Certificate](images/importcert.png)
 
 2. Select **Certificate in DER format**, then click **Next**
 
-![Export Burp CA Certificate - DER Format](images/burp-export-CA-DER-format.jpg)
+![Export Burp CA Certificate - DER Format](images/saveasder.png)
 
 3. Save the file locally on the MobileApp VM.
 
@@ -70,7 +70,7 @@ As root, we will remount and push the certificate to the local file system of th
 
 <pre>adb remount</pre>
 
-<pre>adb push [Cert].0 /sdcard/</pre>
+<pre>adb push [cert].0 /sdcard/</pre>
 
 ![adb root](images/adb-as-root.jpg)
 
@@ -81,7 +81,7 @@ Start by running the following:
 
 Now move the file to the correct location:
 
-<pre>mv /sdcard/[Cert].0 /system/etc/security/cacerts/</pre>
+<pre>mv /sdcard/[cert].0 /system/etc/security/cacerts/</pre>
 
 And finally, change the permissions:
 
@@ -89,7 +89,7 @@ And finally, change the permissions:
 
 4. Run the `ls` command to verify the correct permissions are set.
 
-<pre>ls -lah /system/etc/security/cacerts/[Cert].0</pre>
+<pre>ls -lah /system/etc/security/cacerts/[cert].0</pre>
 
 ![adb add cert and set permissions](images/adb-push-cert-to-system-1.jpg)
 
