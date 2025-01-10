@@ -95,9 +95,9 @@ And finally, change the permissions:
 
 5. Within the adb shell, run the `reboot` command and hit enter to reboot your virtual device. (May take a minute for the UI to come back up)
 
-## Verify Certificate was added Successfully
+## Verify that Certificate was Added Successfully
 
-1. Return to your virtual device in Corellium and navigate to **Settings -> Security -> Encryption & credentials -> Trusted credentials -> System**. Then scroll down until you see *PortSwigger - PortSwiggerCA*.
+Return to your virtual device in Corellium and navigate to **Settings -> Security -> Encryption & Credentials -> Trusted Credentials -> System**. Then scroll down until you see *PortSwigger - PortSwiggerCA*.
 
 ![Burp CA Certificate Installed in System Store](images/burp-cert-system-store.jpg)
 
