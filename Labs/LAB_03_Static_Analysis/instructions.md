@@ -14,7 +14,8 @@ Let's load up an app and look at it.
 
 In your VM web browser open a tab to http://0.0.0.0:8000
 
-Next, lets Upload and Analyze a file.
+Next, lets Upload and Analyze a file. 
+Download it here: ```https://github.com/strandjs/IntroLabs/blob/master/IntroClassFiles/Tools/final.apk```
 
 ![](images/uploadandanalyze.png)
 
