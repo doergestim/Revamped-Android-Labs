@@ -60,11 +60,15 @@ If you are using a different mobile device solution for testing, Android devices
 
 **NOTE**: The screen capture below is an example of the adb tool used to connect to the virtual mobile device with a VPN established between Corellium and the MobileApp VM. To establish a connection over SSH instead, please see the establishing an [SSH Connection](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md#SSH) section in the [Getting Started Lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md).
 
-2. Copy the certificate to the device. We can use `adb` to copy the certificate over, but since it has to be copied to the `/system` filesystem, we have to remount it as writable. As root, we will remount and push the certificate to the local file system of the virtual mobile device.
+2. Copy the certificate to the device. We can use `adb` to copy the certificate over, but since it has to be copied to the `/system` filesystem, we have to remount it as writable. To start, we need to become root. Let's run the following command:
 
-`adb root`
-`adb remount`
-`adb push <cert>.0 /sdcard/`
+<pre>adb root</pre>
+
+As root, we will remount and push the certificate to the local file system of the virtual mobile device. To do so, let's run the following commands:
+
+<pre>adb remount</pre>
+
+<pre>adb push [cert].0 /sdcard/</pre>
 
 ![adb root](images/adb-as-root.jpg)
 
