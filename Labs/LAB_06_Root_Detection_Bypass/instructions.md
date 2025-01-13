@@ -26,12 +26,11 @@ Now let's install the application on our phone.
 
 First, lets connect via adb.
 
-`adb connect 10.11.1.1:5001 `
-
+<pre>adb connect 10.11.1.1:5001</pre>
 
 Next, let's install the app on our phone by pushing it through adb.
 
-```adb install final.apk```
+<pre>adb install final.apk</pre>
 
 <img width="315" alt="Screenshot 2023-12-30 at 2 05 02 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/421c3f57-5dca-48d6-a596-294ed2c58f12">
 
