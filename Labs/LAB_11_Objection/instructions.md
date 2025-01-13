@@ -3,8 +3,7 @@ Objection is a mobile exploration and exploitation framework built on top of Fri
 
 In this lab we are going walk through using objection to analyze our metasploit patched APK.
 
-### Patching the APK ###
-***
+## Patching the APK ##
 Before you can use any of the objection commands on an Android application, the application's APK itself needs to be patched and code signed to load the frida-gadget.so on start. 
 
 
@@ -57,15 +56,14 @@ Static Analysis Revamped
 
 can also be used to list services and receivers.
 
-### Spying On A Class or Method ###
-***
+## Spying On A Class or Method ##
 To get a list of classes run the following command
 `android hooking search classes com.bhis.thehackerb
 ank`
 `android hooking watch class_method asvid.github.io.fridaapp.MainActivity.sum --dump-args --dump-backtrace --dump-return`
 
-### Logging ###
-***
+## Logging ##
+
 All commands issued,along with the output generated is logged to files on the host machine at the following locations:
 * `~/.objection/objection.log`
 * `~/.objection/objection_history`
