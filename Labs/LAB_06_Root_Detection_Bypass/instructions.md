@@ -51,7 +51,7 @@ Next, let's install the app on our phone by pushing it through adb.
 
 Now we need to launch TheHackerBank app. To do this, navigate back to the `Apps` page of your Corellium device and find `TheHackerBank`:
 
->[!Note]
+>[!TIP]
 >You can use the search bar to find it quicker!
 
 ![](images/launchhackerbank.png)
