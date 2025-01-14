@@ -44,7 +44,8 @@ Once the build is complete, you should have a virtual Android device with menu o
 
 ![](images/completedsetup.png)
 
-**Please note, if it does not say "Rooted" next to the device name, it is becasue you did not select userdebug firmware.  Please click the trash icon in the upper right, delete the device and start over from the beginning.**
+>[!Note]
+>Please note, if it does not say "Rooted" next to the device name, it is becasue you did not select userdebug firmware.  Please click the trash icon in the upper right, delete the device and start over from the beginning.
 
 ## Navigating Menu Items in Corellium ##
 
@@ -93,7 +94,8 @@ In this section we will cover two options for establishing remote network capabi
    
 ![](images/connect_to_admin.png)
 
-**Note: if you get a white screen after clicking "Admin Page", just reload your browser!**
+>[!Note]
+>If you get a white screen after clicking "Admin Page", just reload your browser!
 
 Now, click on "Default Project" to expand:
 
@@ -103,7 +105,8 @@ Now, click on "Default Project" to expand:
 
 ![](images/click_new_key.png)
 
-**NOTE:** Be sure to add the entire contents of your public key - starting with *"ssh-ed25519..."* and ending with your hostname *"...mobileapp@mobileapp-vm"*. The full content of your SSH key will be different.
+>[!Note]
+>Be sure to add the entire contents of your public key - starting with *"ssh-ed25519..."* and ending with your hostname *"...mobileapp@mobileapp-vm"*. The full content of your SSH key will be different.
 
 #### Test the SSH Connection ####
 
@@ -150,7 +153,8 @@ An alternative approach to SSH for remote connectivity is to use a VPN. Corelliu
 
 1.	To begin, navigate back to the Corellium web UI and access your virtual mobile device. Then click on the **Connect** tab.
 
-**NOTE**: Ensure that your virtual device is powered on.
+>[!Note]
+>Ensure that your virtual device is powered on.
 
 2. Scroll down to the **Connect via VPN** section and click **DOWNLOAD OVPN FILE**.
 
@@ -182,7 +186,9 @@ When prompted to enter the password for mobileapp, do so.
 
 ![](images/sudo_openvpn.png)
 
-**NOTE**: The IP address assigned to the tap0 interface may be different. <ins>Additionally, each time the VPN is established there is a possibility that the assigned IP may change</ins>.
+>[!Note]
+>The IP address assigned to the tap0 interface may be different. 
+><ins>Additionally, each time the VPN is established there is a possibility that the assigned IP may change</ins>.
 
 6. Run the `ip a` command once again from a different terminal to see the tap0 interface and the currently assigned IP address.
 
