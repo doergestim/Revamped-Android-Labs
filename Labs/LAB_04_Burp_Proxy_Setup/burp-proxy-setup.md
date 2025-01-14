@@ -1,12 +1,12 @@
 # Setup Burp Suite for Proxy and Interception Testing 
 
-I CANNOT STRESS THIS ENOUGH!!!!!!
-
-REMEMBER TO <b style="color:red;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
-
-<b style="color:red;">CORELLIUM WILL CHARGE YOU!!!!!</b>
-
-***
+>[!WARNING]
+>
+> I CANNOT STRESS THIS ENOUGH!!!!!!
+>
+>REMEMBER TO <b style="color:#FF0000;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
+>
+><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
 In this lab we will set up a web proxy using *Burp Suite's Community Edition* and route traffic from our virtual mobile device in Corellium to our MobileApp VM where Burp resides. Following this setup, we will have the capability to intercept web requests made by a given mobile application, as well as inspecting and/or manipulating network traffic for the purposes of mobile application testing. 
 

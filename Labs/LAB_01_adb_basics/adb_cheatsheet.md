@@ -1,12 +1,12 @@
 # Become an `adb` Ninja #
 
-I CANNOT STRESS THIS ENOUGH!!!!!!
-
-REMEMBER TO <b style="color:red;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
-
-<b style="color:red;">CORELLIUM WILL CHARGE YOU!!!!!</b>
-
-***
+>[!WARNING]
+>
+> I CANNOT STRESS THIS ENOUGH!!!!!!
+>
+>REMEMBER TO <b style="color:#FF0000;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
+>
+><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
 This lab will familiarize you with a mobile app testing tool that is indispensible for Android testing: the Android Debug Bridge (adb). 
 

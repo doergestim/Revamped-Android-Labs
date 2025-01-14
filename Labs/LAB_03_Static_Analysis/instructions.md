@@ -1,12 +1,12 @@
 # Static Analysis with MobSF #
 
-I CANNOT STRESS THIS ENOUGH!!!!!!
-
-REMEMBER TO <b style="color:red;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
-
-<b style="color:red;">CORELLIUM WILL CHARGE YOU!!!!!</b>
-
-***
+>[!WARNING]
+>
+> I CANNOT STRESS THIS ENOUGH!!!!!!
+>
+>REMEMBER TO <b style="color:#FF0000;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
+>
+><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
 In this lab we will be using MobSF to analyze an APK. You can also use the app uploaded for analysis in the "APK_Extraction" lab, or look at one of the pre-generated reports in the course materials section. As an example we will be using the F-Droid app. You are encouraged to repeat this analysis using TheHackerBank app later in the class. Your goal is to analyze ther results and note down anything that stands out for later use.
 

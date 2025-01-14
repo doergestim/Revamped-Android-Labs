@@ -1,12 +1,12 @@
 # Extracting an APK for static analysis
 
-I CANNOT STRESS THIS ENOUGH!!!!!!
-
-REMEMBER TO <b style="color:red;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
-
-<b style="color:red;">CORELLIUM WILL CHARGE YOU!!!!!</b>
-
-***
+>[!WARNING]
+>
+> I CANNOT STRESS THIS ENOUGH!!!!!!
+>
+>REMEMBER TO <b style="color:#FF0000;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
+>
+><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
 Before getting started, lets turn on our Corellium Android device:
 
