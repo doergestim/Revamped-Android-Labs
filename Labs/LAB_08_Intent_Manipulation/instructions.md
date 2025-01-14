@@ -6,7 +6,7 @@
 >
 >REMEMBER TO <b style="color:#FF0000;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
 >
-><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
+><span style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
 ***
 
