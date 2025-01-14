@@ -45,7 +45,7 @@ Once the build is complete, you should have a virtual Android device with menu o
 ![](images/completedsetup.png)
 
 >[!Note]
->Please note, if it does not say "Rooted" next to the device name, it is becasue you did not select userdebug firmware.  Please click the trash icon in the upper right, delete the device and start over from the beginning.
+>If it does not say "Rooted" next to the device name, it is because you did not select userdebug firmware. Please click the trash icon in the upper right, delete the device and start over from the beginning.
 
 ## Navigating Menu Items in Corellium ##
 
