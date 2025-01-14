@@ -1,10 +1,12 @@
-# Intent Manipulation 1 #
+# Intent Manipulation #
 
 I CANNOT STRESS THIS ENOUGH!!!!!!
 
-REMEMBER TO POWER OFF YOUR VM WHEN NOT WORKING ON LABS!!!!
+REMEMBER TO POWER OFF YOUR CORELLIUM DEVICE WHEN NOT WORKING ON LABS!!!!
 
-Corellium WILL CHARGE YOU!!!!!
+**CORELLIUM WILL CHARGE YOU!!!!!**
+
+***
 
 In this lab we will be using "Intents" to bypass access controls.
 
