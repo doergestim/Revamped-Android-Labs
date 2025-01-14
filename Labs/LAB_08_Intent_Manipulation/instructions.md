@@ -18,7 +18,8 @@ However, sometimes intents can be sent between applications. A legitimate exampl
 
 So in order to analyze intents on our device, we need to create a <a href="https://www.blackhillsinfosec.com/field-guide-to-the-android-manifest-file/">manifest file</a>.  
 
-**Note:** before we begin, make sure that your VPN connection is established, and that your device is connected.
+>[!Note] 
+>Before we begin, make sure that your VPN connection is established, and that your device is connected.
 
 In a terminal on our MobileApp VM, navigate to the directory that has the `final.apk` file that we downloaded in Lab 6. In our case, that will be the `Downloads` directory.
 
