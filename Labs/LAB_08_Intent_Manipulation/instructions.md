@@ -2,9 +2,9 @@
 
 I CANNOT STRESS THIS ENOUGH!!!!!!
 
-REMEMBER TO POWER OFF YOUR CORELLIUM DEVICE WHEN NOT WORKING ON LABS!!!!
+REMEMBER TO <b style="color:red;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
 
-**CORELLIUM WILL CHARGE YOU!!!!!**
+<b style="color:red;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
 ***
 
@@ -16,7 +16,12 @@ An "intent" is a "message object" typically used communicate between different a
 
 However, sometimes intents can be sent between applications. A legitimate example of this might be your camera accepting an intent from your banking app in order to take a photo of a check.
 
-By analyzing the <a href="https://www.blackhillsinfosec.com/field-guide-to-the-android-manifest-file/">manifest file</a> of our app, we noticed the following activity is exported.
+So in order to analyze intents on our device, we need to create a <a href="https://www.blackhillsinfosec.com/field-guide-to-the-android-manifest-file/">manifest file</a>.  
+
+**Note:** before we begin, make sure that your VPN connection is established, and that your device is connected.
+
+In a terminal on our MobileApp VM, navigate to the directory that has the `final.apk` file that we downloaded in Lab 6.
+
 ```xml
 <activity
     android:name=".AccountDetails"
@@ -30,13 +35,14 @@ By analyzing the <a href="https://www.blackhillsinfosec.com/field-guide-to-the-a
 This means the activity can be launched by a process outside of the application. For our example, we will use our best friend `adb`.
 
 ## Invoking Intents from ADB ##
-using the adb shell we can execute a specific activity within the app.
 
-The below command executes the activity specifies after the -n option.
+By using the adb shell, we can execute a specific activity within the app.
 
-`adb shell am start -n com.bhis.thehackerbank/.{ACTIVITY NAME}`
+The following command executes the specified activity after the `-n` option.
 
-The name of each activity present in the application can be found in the manifest file 
+<pre>adb shell am start -n com.bhis.thehackerbank/.{ACTIVITY NAME}</pre>
+
+The name of each activity present in the application can be found in the <a href="https://www.blackhillsinfosec.com/field-guide-to-the-android-manifest-file/">manifest file</a>.
 
 ![Redacted](images/redacted.png)
 

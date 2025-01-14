@@ -2,9 +2,9 @@
 
 I CANNOT STRESS THIS ENOUGH!!!!!!
 
-REMEMBER TO POWER OFF YOUR VM WHEN NOT WORKING ON LABS!!!!
+REMEMBER TO <b style="color:red;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
 
-**CORELLIUM WILL CHARGE YOU!!!!!**
+<b style="color:red;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 ***
 
 In this lab, we are going to investigate the file system of the application TheHackerBank.
