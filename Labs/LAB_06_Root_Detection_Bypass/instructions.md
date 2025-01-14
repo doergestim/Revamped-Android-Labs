@@ -8,39 +8,55 @@ Corellium WILL CHARGE YOU!!!!!
 
 ***
 
-There are two potential methods of bypassing root detection, statically, by removing the relevant code and recompiling the apk, or dynamically.
-In this lab, we will bypass the root detection at runtime using Frida.
-The target application is `Hacker Bank Mobile`.
+There are two potential methods of bypassing root detection: statically, by removing the relevant code and recompiling the apk, or dynamically.
+
+In this lab, we will bypass the root detection at runtime using Frida. The target application is `The Hacker Bank`.
 
 Let's install that app now.
 
-Please download the following file.
+First, please download the following file.
 
 ```https://github.com/strandjs/IntroLabs/blob/master/IntroClassFiles/Tools/final.apk```
 
-We also need to ensure the VPN is up and running.
+Next, we need to ensure the VPN is up and running. 
 
-<img width="637" alt="Screenshot 2023-12-30 at 1 57 21 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/abc319aa-b287-4113-974c-6d8b37c646a6">
+**Note:** the following command can likely be used to do so:
+
+<pre>sudo openvpn ~/Downloads/corellium.com\ VPN\ -\ Default\ Project.ovpn</pre>
+
+![](images/launchvpn.png)
 
 Now let's install the application on our phone.
 
-First, lets connect via adb.
+Start by connecting via adb.
 
 <pre>adb connect 10.11.1.1:5001</pre>
 
+**Note:** to check that you successfully connected the device, use the following command:
+
+<pre>adb devices -l</pre>
+
+![](images/deviceconnected.png)
+
 Next, let's install the app on our phone by pushing it through adb.
+
+**Note:** before running the following command, ensure that you are in the directory where `final.apk` was downloaded to. In this instance, our file is located within the `Downloads` directory.
 
 <pre>adb install final.apk</pre>
 
-<img width="315" alt="Screenshot 2023-12-30 at 2 05 02 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/421c3f57-5dca-48d6-a596-294ed2c58f12">
+![](images/installapp.png)
 
-Now we need to open up TheHackerBank app. To do this, navigate back to the `Apps` page of your Corellium device:
+Now we need to launch TheHackerBank app. To do this, navigate back to the `Apps` page of your Corellium device and find `TheHackerBank`:
+
+**Note:** you can use the search bar to find it quicker!
 
 ![](images/launchhackerbank.png)
 
 After opening the app on your phone we see that we do not have the option to do anything other than acknowledge the alert, which consequently closes the application.
 
-![screenshot](images/ss0.png)
+![](images/rootdetected.png)
+
+For the next part of the lab, we are going to use Frida to bypass the root detection. Now, usually we would need to install Frida, but luckily for us, our Corellium device already has it installed!
 
 **The following Commands are for reference only and do not need to be run on the Corellium device since it has the frida server pre-installed.**
 
@@ -53,9 +69,10 @@ After opening the app on your phone we see that we do not have the option to do 
 * `adb shell "/data/local/tmp/frida-server &"`
 **End of reference commands.**-->
 
-We will use [This script](https://codeshare.frida.re/@dzonerzy/fridantiroot/) from Frida Codeshare to bypass root detection on our target.
+We will be using [This script](https://codeshare.frida.re/@dzonerzy/fridantiroot/) from Frida Codeshare to bypass root detection on our target.
 
-But first we need to install Frida on the phone.  
+But first we need to attach an existing process to Frida on the phone.  
+
 On the left side of your device screen in Corellium select `Frida` then click `Select a Process`.
 
 ![](images/selectfrida.png)
@@ -64,19 +81,22 @@ Wait till it loads the processes then select `TheHackerBank` and then `Attach`:
 
 ![](images/pickhackerbank.png)
 
-You can either download the script, and run it with the `-l` option, or, run it directly from the website with `--codeshare dzonerzy/fridantiroot`
+Once the process is attached, open up a terminal in the VM.
 
-Run the following command from a terminal on your VM:
- `frida --codeshare dzonerzy/fridantiroot -U -f com.bhis.thehackerbank`
+<!--You can either download the script, and run it with the `-l` option, or, run it directly from the website with `--codeshare dzonerzy/fridantiroot-->
+
+Now run the following command:
+
+ <pre>frida --codeshare dzonerzy/fridantiroot -U -f com.bhis.thehackerbank</pre>
 
  the `-U` option tells frida to connect to the usb device (in our case the emulator "appears" as a usb device).
 
  The `-f` option specifies the target application ID that we want to load. The application should **not** be running already. the `-f` flag will spawn the process.
 
-The command output should look exactly like the screenshot below. Make sure to enter `y` when prompted if you would like to trust the project.
-![screenshot](images/ss1.png)
+![](images/runtheterminalcommand.png)
 
-Looking back to your emulator screen you will now notice that the app has been launched, but this time root detection was not triggered.
-![screenshot](images/ss2.png)
+**Note:** if prompted, enter `y` when  if you would like to trust the project.
 
-Your username is `notahacker` as shown, and your password is `654321`
+After doing this, we can go back to our Corellium device. You should now see that the app has been launched, but this time root detection was not triggered!
+
+![](images/norootdetectiontriggered.png)
