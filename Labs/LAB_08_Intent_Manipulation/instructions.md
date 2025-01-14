@@ -18,7 +18,7 @@ However, sometimes intents can be sent between applications. A legitimate exampl
 
 So in order to analyze intents on our device, we need to create a <a href="https://www.blackhillsinfosec.com/field-guide-to-the-android-manifest-file/">manifest file</a>.  
 
->[!Note] 
+>[!IMPORTANT] 
 >Before we begin, make sure that your VPN connection is established, and that your device is connected.
 
 In a terminal on our MobileApp VM, navigate to the directory that has the `final.apk` file that we downloaded in Lab 6. In our case, that will be the `Downloads` directory.
@@ -82,19 +82,30 @@ The following command executes the specified activity after the `-n` option.
 
 <pre>adb shell am start -n com.bhis.thehackerbank/.{ACTIVITY NAME}</pre>
 
-The name of each activity present in the application can be found in the <a href="https://www.blackhillsinfosec.com/field-guide-to-the-android-manifest-file/">manifest file</a>.
+The name of each activity present in the application can be found in the <a href="https://www.blackhillsinfosec.com/field-guide-to-the-android-manifest-file/">manifest file</a>, but for this example, we will use the expanded entry from earlier:
+
+![](images/expandedexample.png)
+
+In the expanded entry, we see that the activity name is `.AccountDetails`, so we will substitute that into the above command and run it in our MobileApp VM terminal:
+
+<pre>adb shell am start -n com.bhis.thehackerbank/.AccountDetails</pre>
+
+![](images/startingintent.png)
+
+Now, if we navigate back to our Corellium device, we should see this:
 
 ![Redacted](images/redacted.png)
 
-`adb shell am start -n com.bhis.thehackerbank/.AccountDetails`
-
 We can also pass data when starting intents with ADB. For example, running the below command results in a different result than running the command above.
 
-`adb shell am start -n com.bhis.thehackerbank/.AccountDetails --es "USER_COOKIE" "nothinginparticular"`
+<pre>adb shell am start -n com.bhis.thehackerbank/.AccountDetails --es "USER_COOKIE" "nothinginparticular"</pre>
 
-When executed correctly, the app will behave slightly differently.<br>
-![Redacted v2](images/redacted2.png)
+![](images/hasextras.png)
 
-The command above requires us to know the name of the intent extra. These can be found by looking at the source code in a program such as jadx.
+When executed correctly, the app will behave slightly differently, and you should something similar to the following:
 
-Another thing to check at this point is where you can go from here. With this application, pressing the back arrow will result in the application crashing, however this is not always the case.
+![Redacted v2](images/extrasredacted.png)
+
+The second command requires us to know the name of the intent extra. These can be found by looking at the source code in a program such as `jadx`.
+
+At this point, another thing to check is where you can go from here. With this application, pressing the back arrow will result in the application crashing, however this is not always the case...
