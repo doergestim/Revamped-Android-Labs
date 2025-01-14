@@ -8,12 +8,13 @@ REMEMBER TO POWER OFF YOUR CORELLIUM DEVICE WHEN NOT WORKING ON LABS!!!!
 
 ***
 
-In this lab we will be using "Intents" to bypass access controls.
-
 ## What is an intent? ##
+
+In this lab we will be using "intents" to bypass access controls.
+
 An "intent" is a "message object" typically used communicate between different activities in your application.
 
-Sometimes however, intents can be sent between applications. A legitimate example of this might be your camera accepting an intent from your banking app in order to take a photo of a check.
+However, sometimes intents can be sent between applications. A legitimate example of this might be your camera accepting an intent from your banking app in order to take a photo of a check.
 
 By analyzing the <a href="https://www.blackhillsinfosec.com/field-guide-to-the-android-manifest-file/">manifest file</a> of our app, we noticed the following activity is exported.
 ```xml
