@@ -108,4 +108,6 @@ When executed correctly, the app will behave slightly differently, and you shoul
 
 The second command requires us to know the name of the intent extra. These can be found by looking at the source code in a program such as `jadx`.
 
-At this point, another thing to check is where you can go from here. With this application, pressing the back arrow will result in the application crashing, however this is not always the case...
+At this point, another thing to check is where you can go from here. With this application, pressing the back arrow will result in the application crashing.
+
+However this is not always the case...
