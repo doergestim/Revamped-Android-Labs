@@ -65,7 +65,9 @@ These are all of the exported activities. The following is an expansion of one o
 </activity>
 ```
 
-Things like searches, check deposits, etc., will all show up here, meaning that they are accessible to us. This also means that the activity can be launched by a process outside of the application.
+Things like searches, check deposits, etc., will all show up here, meaning that they are accessible to us. 
+
+This also means that the activity can be launched by a process outside of the application.
 
 For our example, we will do this by using our best friend `adb`.
 
