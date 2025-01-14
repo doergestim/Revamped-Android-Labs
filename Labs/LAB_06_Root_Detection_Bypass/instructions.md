@@ -20,7 +20,8 @@ First, please download the following file.
 
 Next, we need to ensure the VPN is up and running. 
 
-**Note:** the following command can likely be used to do so:
+>[!Note]
+>The following command can likely be used to do so:
 
 <pre>sudo openvpn ~/Downloads/corellium.com\ VPN\ -\ Default\ Project.ovpn</pre>
 
@@ -32,7 +33,8 @@ Start by connecting via adb.
 
 <pre>adb connect 10.11.1.1:5001</pre>
 
-**Note:** to check that you successfully connected the device, use the following command:
+>[!Note]
+>To check that you successfully connected the device, use the following command:
 
 <pre>adb devices -l</pre>
 
@@ -40,7 +42,8 @@ Start by connecting via adb.
 
 Next, let's install the app on our phone by pushing it through adb.
 
-**Note:** before running the following command, ensure that you are in the directory where `final.apk` was downloaded to. In this instance, our file is located within the `Downloads` directory.
+>[!Note]
+>Before running the following command, ensure that you are in the directory where `final.apk` was downloaded to. In this instance, our file is located within the `Downloads` directory.
 
 <pre>adb install final.apk</pre>
 
@@ -48,7 +51,8 @@ Next, let's install the app on our phone by pushing it through adb.
 
 Now we need to launch TheHackerBank app. To do this, navigate back to the `Apps` page of your Corellium device and find `TheHackerBank`:
 
-**Note:** you can use the search bar to find it quicker!
+>[!Note]
+>You can use the search bar to find it quicker!
 
 ![](images/launchhackerbank.png)
 
@@ -58,9 +62,10 @@ After opening the app on your phone we see that we do not have the option to do 
 
 For the next part of the lab, we are going to use Frida to bypass the root detection. Now, usually we would need to install Frida, but luckily for us, our Corellium device already has it installed!
 
+<!--
 **The following Commands are for reference only and do not need to be run on the Corellium device since it has the frida server pre-installed.**
 
-<!--Typically, we would need to upload and start the Frida server on the device we are testing. That can be accomplished by restarting adb as root, and running the following commands:
+Typically, we would need to upload and start the Frida server on the device we are testing. That can be accomplished by restarting adb as root, and running the following commands:
 
 * `adb push ~/Downloads/frida-server-15.2.2-android-x86 /data/local/tmp/frida-server`
 
@@ -95,7 +100,8 @@ Now run the following command:
 
 ![](images/runtheterminalcommand.png)
 
-**Note:** if prompted, enter `y` when  if you would like to trust the project.
+>[!Note]
+>If prompted, enter `y` when  if you would like to trust the project.
 
 After doing this, we can go back to our Corellium device. You should now see that the app has been launched, but this time root detection was not triggered!
 

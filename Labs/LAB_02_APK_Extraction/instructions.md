@@ -8,7 +8,7 @@
 >
 ><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
-Before getting started, lets turn on our Corellium Android device:
+Before getting started, let's turn on our Corellium Android device:
 
 ![](images/poweron.png)
 
@@ -16,7 +16,8 @@ Next, open a terminal window within the MobileApp VM. Run the following command 
 
 <pre>ssh -M -Ssock -N -f -L 5001:[Your Device Address]:5001 [Your Device ID]@proxy.corellium.com -i ~/.ssh/id_rsa/sshKey</pre>
 
-**Note:** You will have a unique device address and ID.
+>[!Note]
+>You will have a unique device address and ID.
 
 Your version of the command can be copied here:
 
@@ -81,6 +82,7 @@ You can also test out any app youd like from the Play Store. To do this you will
 
 ![](images/installopengapps.png)
 
-**Note: You will need to log-in with a Google account before you can download any apps**
+>[!Note]
+>You will need to log-in with a Google account before you can download any apps
 
 Then you can simply install apps from the Play Store as you normally would.

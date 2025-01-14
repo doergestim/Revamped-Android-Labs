@@ -14,7 +14,7 @@ Let's load up an app and look at it.
 
 In your VM web browser open a tab to http://0.0.0.0:8000
 
-Next, lets Upload and Analyze a file. 
+Next, let's Upload and Analyze a file. 
 Download it here: https://github.com/strandjs/IntroLabs/blob/master/IntroClassFiles/Tools/final.apk
 
 ![](images/uploadandanalyze.png)
@@ -43,7 +43,7 @@ Here you can download the decompiled java and smali code, which is the disassemb
 
 ## Permissions
 
-Lets take a look at permissions. Click the three lines in the top left corner to bring up the menu, then select `Permissions`.
+Let's take a look at permissions. Click the three lines in the top left corner to bring up the menu, then select `Permissions`.
 
 ![](images/permissionselect.png)
 
@@ -56,7 +56,7 @@ Whether a permission is actually dangerous depends on both the context and funct
 ## Recon
 The reconnaissance section is especially useful for gaining a better understanding of the application. 
 
-First lets look at URLs. Click the three lines in the top left corner to bring up the menu, then select `Reconnaissance` to expand the drop-down menu. Now click `URLs`
+First let's look at URLs. Click the three lines in the top left corner to bring up the menu, then select `Reconnaissance` to expand the drop-down menu. Now click `URLs`
 
 ![](images/reconthenurls.png)
 
@@ -72,7 +72,7 @@ It is recommended that strings are inserted as key value pairs into the "Strings
 
 ![](images/strings.png)
 
-MobSF extracts potentially sensitive values from this file and displays them in the `Hardcoded Secrets` tab. Lets navigate to it by using the same menu:
+MobSF extracts potentially sensitive values from this file and displays them in the `Hardcoded Secrets` tab. Let's navigate to it by using the same menu:
 
 ![](images/tohardcodedsecrets.png)
 
@@ -83,7 +83,7 @@ You should verify that the information displayed in this section is actually sen
 
 ## API
 
-This section displays the Android APIs that the app uses. This section contains a lot of noise, however it can be useful, especially when combined with the search feature. Lets navigate to it by using the navigation menu:
+This section displays the Android APIs that the app uses. This section contains a lot of noise, however it can be useful, especially when combined with the search feature. Let's navigate to it by using the navigation menu:
 
 ![](images/gotoapi.png)
 

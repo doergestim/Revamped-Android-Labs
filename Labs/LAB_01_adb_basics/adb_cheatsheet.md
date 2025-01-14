@@ -14,7 +14,7 @@ In this lab, you will utilize some of the most common features of adb such as ga
 
 The first step will be connecting to your Android device in Correllium with adb. If you have a local Android device (i.e. plugged directly into your testing system), you generally don't need to perform this step. However, since our Android device is hosted in the cloud, we'll need to take advantage of adb's TCP connection feature to remotely access the device.
 
-Before getting started, lets turn on our Corellium Android device:
+Before getting started, let's turn on our Corellium Android device:
 
 ![](images/poweron.png)
 
@@ -22,7 +22,8 @@ Next, open a terminal window within the MobileApp VM. Run the following command 
 
 <pre>ssh -M -Ssock -N -f -L 5001:[Your Device Address]:5001 [Your Device ID]@proxy.corellium.com -i ~/.ssh/id_rsa/sshKey</pre>
 
-**Note:** You will have a unique device address and ID.
+>[!Note]
+>You will have a unique device address and ID.
 
 Your unique version of the command can be copied here:
 
