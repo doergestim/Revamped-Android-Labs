@@ -8,7 +8,6 @@
 >
 ><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
-
 ## What is an intent? ##
 
 In this lab we will be using "intents" to bypass access controls.
@@ -21,7 +20,39 @@ So in order to analyze intents on our device, we need to create a <a href="https
 
 **Note:** before we begin, make sure that your VPN connection is established, and that your device is connected.
 
-In a terminal on our MobileApp VM, navigate to the directory that has the `final.apk` file that we downloaded in Lab 6.
+In a terminal on our MobileApp VM, navigate to the directory that has the `final.apk` file that we downloaded in Lab 6. In our case, that will be the `Downloads` directory.
+
+Next, we need to run the following command:
+
+<pre>apktool d final.apk</pre>
+
+![](images/runapktooldfinal.png)
+
+This command will take the `final.apk` file and decompress it (since it is a zip) into multiple different directories. 
+
+This allows us to go through and look at the `manifest.xml` file.
+
+Once this process finishes, go ahead and navigate into the `final` directory and run `ls` to list the contents of the folder:
+
+![](images/androidmanifestxml.png)
+
+As you can see, we now have a file named `AndroidManifest.xml`. This is where we will be looking for the intents that we can access and manipulate.
+
+Let's continue by running the following command:
+
+<pre>less AndroidManifest.xml</pre>
+
+Now we can press forward slash (`/`) to initiate a search of the output. 
+
+We want to search for activities, so let's type `activity` and hit `Enter`:
+
+![](images/searchless.png)
+
+If done correctly, you should see this:
+
+![](images/searchresult.png)
+
+These are all of the exported activities. The following is an expansion of one of the entries to provide more context:
 
 ```xml
 <activity
@@ -33,7 +64,12 @@ In a terminal on our MobileApp VM, navigate to the directory that has the `final
             android:value="" />
 </activity>
 ```
-This means the activity can be launched by a process outside of the application. For our example, we will use our best friend `adb`.
+
+Things like searches, check deposits, etc., will all show up here, meaning that they are accessible to us. This also means that the activity can be launched by a process outside of the application.
+
+For our example, we will do this by using our best friend `adb`.
+
+Before moving on, go ahead and press `Q` in the terminal to exit the `less` view.
 
 ## Invoking Intents from ADB ##
 
