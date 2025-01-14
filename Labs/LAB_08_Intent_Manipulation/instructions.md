@@ -1,14 +1,13 @@
 # Intent Manipulation #
 
->[!CAUTION]
+>[!WARNING]
 >
 > I CANNOT STRESS THIS ENOUGH!!!!!!
 >
 >REMEMBER TO <b style="color:#FF0000;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
 >
-><span style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</span>
+><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
-***
 
 ## What is an intent? ##
 
