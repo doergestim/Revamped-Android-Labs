@@ -1,15 +1,26 @@
 # Static & Dynamic Analysis with Objection #
+
+>[!WARNING]
+>
+> I CANNOT STRESS THIS ENOUGH!!!!!!
+>
+>REMEMBER TO <b style="color:#FF0000;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
+>
+><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
+
 Objection is a mobile exploration and exploitation framework built on top of Frida. It provides many helpful tools for inspecting device memory and processes, as well as displaying classes and activities, things which typically fall under the category of static analysis.
 
 In this lab we are going walk through using objection to analyze our metasploit patched APK.
 
 ## Patching the APK ##
-Before you can use any of the objection commands on an Android application, the application's APK itself needs to be patched and code signed to load the frida-gadget.so on start. 
+Before you can use any of the objection commands on an Android application, the application's APK itself needs to be patched and code signed to load the `frida-gadget.so` on start. 
 
-
-First connect to the device using adb (this is necessary for objection to determine the architecture) and then run the following command:  
+First, connect to the device using adb (this is necessary for objection to determine the architecture) and then run the following command:  
 
 <pre>objection patchapk -2 --source app.apk</pre>
+
+>[!Note]
+>If prompted, you might need to run `apt install apksigner` as root.
 
 The `-2` tells objection to pass the `--use-aapt2` flag to apktool. This is necesary with many newer apps.
 
@@ -47,7 +58,8 @@ You can enter some typical unix commands such as `ls` and `pwd` into the REPL as
 
 There are also some built in scripts to do things such as bpyass ssl pinning
 
-![](images/05.png)
+![](images/sslpining.png)
+
 You might notice that on the hacker bank, this does not work. Objection is simply using fridascripts under the hood, and we need to find a different frida script.
 
 If you wish to run a command on the host os, preface the command with a `!` for example: `!ls`
