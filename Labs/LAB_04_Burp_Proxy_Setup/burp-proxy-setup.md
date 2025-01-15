@@ -205,6 +205,12 @@ Follow the below items to ensure all required steps have been taken:
     - If the **tap0** interface receives a different IP than what was previously set in Burp: update the settings in Burp as well as the proxy settings on the device.
     - Be sure to save the proxy settings on the virtual device 
 
+***                                                                 
 
+<b><i>Continuing the course? </br>[Next Lab](/Labs/LAB_05_Import_Burp_Certificate_To_System_Trust_Store/burp-proxy-system-cert-trust.md)</i></b>
+
+<b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_03_Static_Analysis/instructions.md)</i></b>
+
+<b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>
 
 

@@ -86,3 +86,11 @@ You can also test out any app youd like from the Play Store. To do this you will
 >You will need to log-in with a Google account before you can download any apps
 
 Then you can simply install apps from the Play Store as you normally would.
+
+***                                                                 
+
+<b><i>Continuing the course? </br>[Next Lab](/Labs/LAB_03_Static_Analysis/instructions.md)</i></b>
+
+<b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_01_adb_basics/adb_cheatsheet.md)</i></b>
+
+<b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>

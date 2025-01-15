@@ -111,3 +111,10 @@ MobSF extracts a list of activities that can be triggered by a web browser to di
 
 The certificate analysis section will report any known vulnerabilities in the signing schemes of the application. Make sure to validate these before reporting them. When seen fit, report the Android versions affected, and maybe even the overall market share of the those affected versions.
 
+***                                                                 
+
+<b><i>Continuing the course? </br>[Next Lab](/Labs/LAB_04_Burp_Proxy_Setup/burp-proxy-setup.md)</i></b>
+
+<b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_02_APK_Extraction/instructions.md)</i></b>
+
+<b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>

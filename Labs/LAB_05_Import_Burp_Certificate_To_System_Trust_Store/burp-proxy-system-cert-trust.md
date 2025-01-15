@@ -108,3 +108,10 @@ Return to your virtual device in Corellium and navigate to **Settings -> Securit
 
 ![Burp CA Certificate Installed in System Store](images/burp-cert-system-store.jpg)
 
+***                                                                 
+
+<b><i>Continuing the course? </br>[Next Lab](/Labs/LAB_06_Root_Detection_Bypass/instructions.md)</i></b>
+
+<b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_04_Burp_Proxy_Setup/burp-proxy-setup.md)</i></b>
+
+<b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>

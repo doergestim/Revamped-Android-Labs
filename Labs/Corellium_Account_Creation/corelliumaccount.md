@@ -13,11 +13,10 @@ Follow these steps to get ready:
 >
 >![](attachments/corelliumrequesttrial.png)
 
-3. Once you get logged in to Corellium, you can continue on to the [next lab](/Labs/LAB_00_Corellium_Setup/gettingstarted.md)
+3. Once you get logged in to Corellium, you can continue on to the next lab!
 
 ***                                                                 
 
-<b><i>Looking for a different Lab?</i></b>
+<b><i>Continuing the course? </br>[Next Lab](/Labs/LAB_00_Corellium_Setup/gettingstarted.md)</i></b>
 
-[Click here to get back to the Lab Directory](/navigation.md)
-
+<b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>

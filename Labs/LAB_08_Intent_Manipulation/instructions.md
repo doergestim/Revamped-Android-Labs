@@ -111,3 +111,9 @@ The second command requires us to know the name of the intent extra. These can b
 At this point, another thing to check is where you can go from here. With this application, pressing the back arrow will result in the application crashing.
 
 However this is not always the case...
+
+***                                                                 
+
+<b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_06_Root_Detection_Bypass/instructions.md)</i></b>
+
+<b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>

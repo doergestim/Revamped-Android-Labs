@@ -106,3 +106,11 @@ Now run the following command:
 After doing this, we can go back to our Corellium device. You should now see that the app has been launched, but this time root detection was not triggered!
 
 ![](images/norootdetectiontriggered.png)
+
+***                                                                 
+
+<b><i>Continuing the course? </br>[Next Lab](/Labs/LAB_08_Intent_Manipulation/instructions.md)</i></b>
+
+<b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_05_Import_Burp_Certificate_To_System_Trust_Store/burp-proxy-system-cert-trust.md)</i></b>
+
+<b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>
