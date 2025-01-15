@@ -17,7 +17,7 @@ Tools Used in This Lab:
 
 ## Generate a Meterpreter Payload for Android ##
 
-TODO: Run `msfvenom -h` in VM to initialize msf. Otherwise, the next step will hang.
+Let's start by running `msfvenom -h` in VM to initialize msf. Otherwise, the next step will hang.
 
 Metasploit Framework provides a handful of payloads that target the Android platform. Run the following command to see what's available.
 
@@ -44,7 +44,7 @@ The process of backdooring an APK is relatively straight forward as can be seen 
 
 TODO: Ensure that HackerBank app APK file is in VM
 
-TODO: Add android_embedit.py to VM
+TODO: Add android_embedit.py to VM. You can download it with the link above.
 
 Run the following command to get an idea of how to use `android_embedit.py`.
 
@@ -58,9 +58,11 @@ The two required arguments are the original APK and the "malicious" APK that you
 
 ![](images/2023-02-09-11-14-22.png)
 
+Uh oh. We got an error message. Let's take a closer look at what's going on to figure out why the script failed.
+
 ## Smoke Check: Decompile then Build ##
 
-Uh oh. We got an error message. Let's take a closer look at what's going on to figure out why the script failed. As an initial troubleshooting step, let's try to decompile the app and rebuild it without making any changes to it. That will tell us if our tool chain is working. We'll use `apktool` for this step.
+ As an initial troubleshooting step, let's try to decompile the app and rebuild it without making any changes to it. That will tell us if our tool chain is working. We'll use `apktool` for this step.
 
 TODO: Ensure apktool version 2.7.0 is in VM. The apktool package is 2.5.0 and does not work with HackerBank.
 
