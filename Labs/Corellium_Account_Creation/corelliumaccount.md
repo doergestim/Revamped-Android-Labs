@@ -8,7 +8,16 @@ Follow these steps to get ready:
 2. Next, login to your Corellium account by clicking the button in the top right:
 ![](attachments/corelliumlogin.png)
 
-**Note:** If you do not have an existing Corellium account, you will need to request a trial by going to https://www.corellium.com/trial then scrolling down until you see this:
-![](attachments/corelliumrequesttrial.png)
+>[!Note]
+>If you do not have an existing Corellium account, you will need to request a trial by going to https://www.corellium.com/trial then scrolling down until you see this:
+>
+>![](attachments/corelliumrequesttrial.png)
 
-3. Once you get logged in to Corellium, you can continue on to 
+3. Once you get logged in to Corellium, you can continue on to the [next lab](/Labs/LAB_00_Corellium_Setup/gettingstarted.md)
+
+***                                                                 
+
+<b><i>Looking for a different Lab?</i></b>
+
+[Click here to get back to the Lab Directory](/navigation.md)
+
