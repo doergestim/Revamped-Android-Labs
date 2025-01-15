@@ -38,7 +38,7 @@ We will take the files off of the device for offline analysis.
 
 There are several ways this can be done:
 
-## Backup Method #1
+## Method #1: Creating a Backup
 One option is to make a backup of the app. We will be able to do this only if allowbackup="true" in the manifest file.
 
 <pre>adb backup -f Backup.ab  com.bhis.thehackerbank</pre>
@@ -49,7 +49,7 @@ Navigate back to your Corellium device. You will need to click `BACK UP MY DATA`
 
 ![](images/backupmydata.png)
 
-## Backup Method #2
+## Method #2: Using `adb pull`
 
 Another method is to download all of the application's data with the `adb pull` command:
 
@@ -60,7 +60,7 @@ Another method is to download all of the application's data with the `adb pull` 
 
 ## Analysis
 
-If there is a large amount of data contained in the backup, it may be beneficial to move the data to a tar archive on the system before pulling it down.
+If there is a large amount of data contained in the output file, it may be beneficial to move the data to a tar archive on the system before pulling it down.
 
 <pre>tar cvzf filesystem.tar.gz /data/data/[package-name]</pre>
 
