@@ -8,7 +8,8 @@ Before you can use any of the objection commands on an Android application, the 
 
 
 First connect to the device using adb (this is necessary for objection to determine the architecture) and then run the following command:  
-`objection patchapk -2 --source app.apk`
+
+<pre>objection patchapk -2 --source app.apk</pre>
 
 The `-2` tells objection to pass the `--use-aapt2` flag to apktool. This is necesary with many newer apps.
 
@@ -21,21 +22,27 @@ Next we launch the app and run `frida-ps -Ua` to list all running applications o
 ![](images/fridaps.png)
 
 Enter the Objection REPL using the following command:
-`objection -g <pid> explore`
+
+<pre>objection -g [pid] explore</pre>
 
 ![](images/repl.png)
 
 From here we can explore the filesystem, upload and download files, and explore application components and classes.
 
-Running `android shell_exec whoami` will execute the `whoami` command on thedevice. You are running as the application and will therefore see the applications user ID. (remember from previously that all apps are a linux user.)
+Running `android shell_exec whoami` will execute the `whoami` command on the device. You are running as the application and will therefore see the applications user ID. 
 
-By default, objection will start up in the main application build path. Running the `env` command. This will show the locations of the applications Files, Caches and other directories:internal storage of the application.
+>[!Note]
+>Remember from previously that all apps are linux user based.
+
+By default, objection will start up in the main application build path. 
+
+Go ahead and run the `env` command. This will show the internal storage of the application, revealing the locations of files, caches, and other directories.
 
 ![](images/env.png)
 
 You can enter some typical unix commands such as `ls` and `pwd` into the REPL as well.
 
-`file download <remote path> <local path>`
+<pre>file download [remote path] <local path></pre>
 `file upload <local path> <remote path>`
 
 There are also some built in scripts to do things such as bpyass ssl pinning

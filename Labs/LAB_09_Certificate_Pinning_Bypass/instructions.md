@@ -1,3 +1,4 @@
+<!--
 # Bypassing Certificate Pinning with Frida #
 ### What is certificate pinning?
 One of the many things that happens during the TLS handshake is the server sends the client its certificate which includes the servers public key. The client then checks the validity of that certificate.
@@ -53,4 +54,5 @@ If you want to add some data to the request, you can do so through the burp prox
 ![screenshot](images/request.png)
 
 You need a newline before the data, otherwise it will be interpreted as a header. Also don't forget the two newlines at the end!
-
+-->
+# This lab has been nuked for the time being as per JS 1/13/25
