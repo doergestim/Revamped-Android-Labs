@@ -1,4 +1,5 @@
-# Setting up Corellium and Establishing Remote Connections
+
+# Setting up Corellium and Establishing Remote Connections - Part 1
 Corellium URL: https://app.corellium.com/login
 
 >[!WARNING]
@@ -47,6 +48,9 @@ Once the build is complete, you should have a virtual Android device with menu o
 >[!Note]
 >If it does not say "Rooted" next to the device name, it is because you did not select userdebug firmware. Please click the trash icon in the upper right, delete the device and start over from the beginning.
 
+***
+
+# Setting up Corellium and Establishing Remote Connections - Part 2 #
 ## Navigating Menu Items in Corellium ##
 
 The menu items associated with your Android device should look like the following.
