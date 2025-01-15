@@ -1,4 +1,4 @@
-# Android Lab's Navigation Directory
+# Welcome to the Android Labs Directory!
 
 [Android Labs]()
 
