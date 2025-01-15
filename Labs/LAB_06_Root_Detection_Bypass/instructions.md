@@ -1,4 +1,4 @@
-## Bypassing Root Detection using Frida
+# Bypassing Root Detection using Frida
 
 >[!WARNING]
 >
