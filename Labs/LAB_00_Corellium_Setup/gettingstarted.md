@@ -71,7 +71,7 @@ The following list contains a high-level description of each menu item.
 
 ## Remotely Connecting to your Virtual Mobile Device ##
 
-Establishing a network connection between your mobile device and your testing platform is required to perform actions such as proxying and intercepting Internet traffic, which enables security practitioners to further evaluate a given mobile application under an active/running state. Additionally, tools like the Android Debugger (adb) can be leveraged remotely from the tester’s virtual machine to the virtual mobile device running in Corellium. 
+Establishing a network connection between your mobile device and your testing platform is required to perform actions such as proxying and intercepting internet traffic, which enables security practitioners to further evaluate a given mobile application under an active/running state. Additionally, tools like the Android Debugger (adb) can be leveraged remotely from the tester’s virtual machine to the virtual mobile device running in Corellium. 
 In this section we will cover two options for establishing remote network capabilities to/from your MobileApp Virtual Machine and the virtual mobile device running in Corellium: SSH and VPN.
 
 ### SSH ###
@@ -82,19 +82,19 @@ In this section we will cover two options for establishing remote network capabi
 
     - For the file name, enter “sshKey”, then hit enter.
     - Hit enter two more times to create the key with no passphrase.
-    - The keypair should now be in your CWD (current working directory – to confirm, type the command ‘ls’ and you should see two files
+    - The keypair should now be in your CWD (current working directory – to confirm, type the command `ls` and you should see two files:
         - sshKey – this is your private key and should remain on your MobileApp VM.
         - sshKey.pub – this is your public certificate, the contents of which will need to be added to your Corellium instance.
 
-![ssh keypair](images/ssh-keypair.jpg)
+![ssh keypair](images/sshkeycreation.png)
 
-2. Type the following command to display the contents of sshKey.pub to stdout of your terminal.
+2. Type the following command to display the contents of sshKey.pub to stdout of your terminal. We are going to need this output later, so go ahead and highlight and copy it.
 
 <pre>cat sshKey.pub</pre>
 
-![ssh public key](images/sshKey.pub-contents.jpg)
+![ssh public key](images/copysshpub.png)
 
-3. From your Corellium account select "Connect". Then select Admin page at the bottom red box of the "Quick Connect" section.
+3. Head back over to your Corellium device. From the menu, select "Connect". Then select Admin page at the bottom red box of the "Quick Connect" section.
    
 ![](images/connect_to_admin.png)
 
@@ -107,7 +107,7 @@ Now, click on "Default Project" to expand:
 
 5. Under the **Authorized Keys** section, click **NEW KEY**, then select **SSH** for the *Key Type*, and copy the contents of your ssh public key (step 2 above) and paste it in the text box here. Click **CREATE**.
 
-![](images/click_new_key.png)
+![](images/createnewkey.png)
 
 >[!Note]
 >Be sure to add the entire contents of your public key - starting with *"ssh-ed25519..."* and ending with your hostname *"...mobileapp@mobileapp-vm"*. The full content of your SSH key will be different.
