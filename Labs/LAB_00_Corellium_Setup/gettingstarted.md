@@ -107,6 +107,9 @@ Now, click on "Default Project" to expand:
 
 5. Under the **Authorized Keys** section, click **NEW KEY**, then select **SSH** for the *Key Type*, and copy the contents of your ssh public key (step 2 above) and paste it in the text box here. Click **CREATE**.
 
+>[!Important]
+>Even though there is a Key Type option that says "ADB - Android devices", you must select the SSH method.
+
 ![](images/createnewkey.png)
 
 >[!Note]
@@ -126,7 +129,7 @@ Now, click on "Default Project" to expand:
 
 3. Return to your MobileApp VM, then paste the command into a terminal session. The command will be slightly different for each student; however, be sure to add the `-i sshKey` at the end of the command you just pasted.
 
-![Connect - SSH Command](images/ssh-connect-command.jpg)
+![Connect - SSH Command](images/connectingtossh.png)
 
 4. The above command will create an SSH tunnel between your MobileApp VM and the virtual device in Corellium. The command also sets a *control socket* and binds the connection to `localhost:5001`. Now we can connect the Android Debug Bridge (adb) using the following command.
 
@@ -142,14 +145,13 @@ Now, click on "Default Project" to expand:
 
 ![](images/adb_commands.png)
 
-**NOTE:** There's a dedicated [lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/adb/adb_cheatsheet/adb_cheatsheet.md) on utilizing adb and adb commands.
+>[!Note] There is a dedicated [lab](/Labs/LAB_01_adb_basics/adb_cheatsheet.md) on utilizing adb and adb commands.
 
 6. Finally, to terminate the SSH tunnel run the following command.
 
-`ssh -Ssock -O exit proxy.corellium.com`
+<pre>ssh -Ssock -O exit proxy.corellium.com</pre>
 
-![Terminate SSH Tunnel](images/ssh-terminate.jpg)
-
+![Terminate SSH Tunnel](images/adblist.png)
 
 ## VPN ##
 
@@ -165,9 +167,13 @@ An alternative approach to SSH for remote connectivity is to use a VPN. Corelliu
 ![](images/vpnoption.png)
 
 3. Save the downloaded OVPN file to a directory/location on the MobileApp VM.
-<img width="582" alt="Screenshot 2023-12-30 at 11 20 51 AM" src="https://github.com/deruke/AndroidLabs/assets/22796374/4d376964-ea1f-4e00-9e28-5e6581e4b87e">
 
-![Downloaded OVPN File](images/openvpn-local.jpg)
+>[!Note]
+>To do this, you can copy and paste the file into your VM from your host device, just make sure that it ends up in your `Downloads` folder on the VM.
+
+![](images/pastovpnfile.png)
+
+![Downloaded OVPN File](images/showthefile.png)
 
 4. Prior to establishing the VPN, run the following command from a terminal session on your MobileApp VM to get a current list of network interfaces.
 
@@ -177,7 +183,8 @@ An alternative approach to SSH for remote connectivity is to use a VPN. Corelliu
 
  ![](images/ip_a_command.png)
 
-**NOTE**: Your output may not match exactly – the key takeaway here is understanding the current existing network interfaces prior to establishing the VPN.
+>[!Note]
+>Your output may not match exactly – the key takeaway here is understanding the current existing network interfaces prior to establishing the VPN.
 
 5. Next, run the following command from a terminal session on your MobileApp VM.
 
@@ -217,7 +224,7 @@ Once you get to the shell, run the following:
 
  - In the screen capture below, we can see that the virtual mobile device (10.11.0.3) and our MobileApp VM (10.11.3.2) are communicating over a private network connection.
 
- ![tcpdump attached to tap0 interface](images/tcpdump-tap0.jpg)
+ ![tcpdump attached to tap0 interface](images/pingcorellium.png)
 
  When you are finished, you can press `ctrl + c` in both the MobileApp VM and the Corellium console to stop the processes for running.
 
