@@ -145,7 +145,8 @@ Now, click on "Default Project" to expand:
 
 ![](images/adb_commands.png)
 
->[!Note] There is a dedicated [lab](/Labs/LAB_01_adb_basics/adb_cheatsheet.md) on utilizing adb and adb commands.
+>[!Note] 
+>There is a dedicated [lab](/Labs/LAB_01_adb_basics/adb_cheatsheet.md) on utilizing adb and adb commands.
 
 6. Finally, to terminate the SSH tunnel run the following command.
 
