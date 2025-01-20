@@ -14,7 +14,7 @@ Before getting started, let's turn on our Corellium Android device:
 
 Next, open a terminal window within the MobileApp VM. Run the following command to connect to the Android device:
 
-<pre>ssh -M -Ssock -N -f -L 5001:[Your Device Address]:5001 [Your Device ID]@proxy.corellium.com -i ~/.ssh/id_rsa/sshKey</pre>
+<pre>ssh -M -Ssock -N -f -L 5001:[Your Device Address]:5001 [Your Device ID]@proxy.corellium.com -i sshKey</pre>
 
 >[!Note]
 >You will have a unique device address and ID.
@@ -23,7 +23,7 @@ Your version of the command can be copied here:
 
 ![](images/copycommand.png)
 
-Paste that command into your VM terminal and run it. Be sure to add `-i ~/.ssh/id_rsa/sshKey` to the end of the command.
+Paste that command into your VM terminal and run it. Be sure to add `-i sshKey` to the end of the command.
 
 You will see the following:
 
@@ -49,11 +49,11 @@ Copy the line in the output that ends in `base.apk` as shown below:
 
 ![](images/copybaseapk.png)
 
-Next, run the final command:
+Next, run the final command. Make sure you give it a different output name this time!
 
 <pre>adb pull [PATH_TO_APP] [OUTFILE_NAME]</pre>
 
-![](images/adbpullpath.png)
+![](images/renameapk.png
 
 ## Running MobSF
 
@@ -75,10 +75,10 @@ Once loaded, go ahead and click "Upload and Analyze", and upload an APK file.
 
 ![](images/openapk.png)
 
-Processing the APK file will take a while, so let that keep running in the background as we will use it for future labs.
+Processing the APK file will take a while, so let's continue on. Let it keep running in the background as we will use it for future labs.
 
 ## Analyzing Other Apps
-You can also test out any app youd like from the Play Store. To do this you will need to install `OpenGApps`. This will give you access to the Google Play Store. This can be done from the "Apps" tab in Corellium.
+You can also test out any app you'd like from the Play Store. To do this you will need to install `OpenGApps`. This will give you access to the Google Play Store. This can be done from the "Apps" tab in Corellium.
 
 ![](images/installopengapps.png)
 
