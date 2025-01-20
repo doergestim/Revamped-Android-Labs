@@ -25,9 +25,9 @@ Please select an apk file in your home directory.
 
 ![](images/openapk.png)
 
-It may take a while for the file to finish Analyzing.
+It may take a while for the file to finish analyzing.
 
-Once the scan finishes, you should see the Static Report of the scan:
+Once the scan finishes, you should see the `Static Report` of the scan:
 
 ![](images/scanfinished.png)
 
@@ -80,8 +80,7 @@ MobSF extracts potentially sensitive values from this file and displays them in 
 
 You should verify that the information displayed in this section is actually sensitive before reporting it.
 
-<!--![](images/secrets.png)-->
-<img width="485" alt="Screenshot 2023-12-30 at 12 05 39 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/057e6fa8-ae56-4e12-9b2d-662ecb0a7f12">
+![](images/hardcodedsecrets.png)
 
 ## API
 
@@ -101,17 +100,17 @@ Use the navigation menu to click on `Browsable Activities`
 
 MobSF extracts a list of activities that can be triggered by a web browser to display data referenced by a link. These are worth paying attention to, since they can sometimes be leveraged by an attacker to perform web based or internet based attacks.
 
-<!--![](images/browsableactivities.png)-->
-
-<img width="1429" alt="Screenshot 2023-12-30 at 12 07 48 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/3e9bc03d-5a9d-4011-8370-c3bbaa14e926">
+![](images/browsableactivities.png)
 
 ## Certificate Analysis
 
-<!--![](images/certs.png)-->
+Use the navigation menu to click on `Signer Certificate`
 
-<img width="1424" alt="Screenshot 2023-12-30 at 12 09 00 PM" src="https://github.com/deruke/AndroidLabs/assets/22796374/a915b191-061f-4a17-87ba-40236a244dab">
+![](images/gotosignercertificate.png)
 
 The certificate analysis section will report any known vulnerabilities in the signing schemes of the application. Make sure to validate these before reporting them. When seen fit, report the Android versions affected, and maybe even the overall market share of the those affected versions.
+
+![](images/signercertificate.png)
 
 ***                                                                 
 
