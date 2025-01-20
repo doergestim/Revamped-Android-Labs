@@ -115,7 +115,8 @@ Use `pm` again, with the package name, to find the full path to the APK.
 
 ![](images/2023-01-13-16-00-03.png)
 
->[!Note] The path to the package will be different than what you see here. Each time an APK is installed, the directory path is randomly generated. As a demonstration of this, see the following screenshot where the app has been uninstalled and re-installed. 
+>[!Note] 
+>The path to the package will be different than what you see here. Each time an APK is installed, the directory path is randomly generated. As a demonstration of this, see the following screenshot where the app has been uninstalled and re-installed. 
 
 Notice how the file paths change.
 
@@ -129,7 +130,8 @@ That long, messy string is the full file path that we will use to copy the APK f
 adb pull /data/app/[Your unique directory string]/base.apk
 </pre>
 
->[!TIP] To make this easier, you can highlight, right click and copy the directory path from the command that we ran earlier!
+>[!TIP] 
+>To make this easier, you can highlight, right click and copy the directory path from the command that we ran earlier!
 
 ![](images/highlightandcopy.png)
 
@@ -161,7 +163,8 @@ You can use `ctrl + c` in order to get back to the prompt.
 
 If you think that the app might be spawning new processes or making inter-process communication (IPC) calls, it might be worthwhile to filter by the process ID (PID) associated with the app that you're testing. To do this, you can use the `ps` command to find the PID associated with the app you're testing and use that as a filter for logcat.
 
->[!Note] Remember, your PID will very likely be different than what is shown below.
+>[!Note] 
+>Remember, your PID will very likely be different than what is shown below.
 
 <pre>
 adb shell ps | head -n 1
