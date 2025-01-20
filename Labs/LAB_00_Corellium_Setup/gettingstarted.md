@@ -35,7 +35,7 @@ Leave the checkbox unchecked and select **CREATE DEVICE**
 
 ![](images/creatingdevice.png)
 
-Corellium will then proceed to create the virtual deivce. 
+Corellium will then proceed to create the virtual device. 
 
 ![](images/progressbar.png)
 
@@ -80,7 +80,7 @@ In this section we will cover two options for establishing remote network capabi
 
     - For the file name, enter “sshKey”, then hit enter.
     - Hit enter two more times to create the key with no passphrase.
-    - The keypair should now be in your CWD (current working directory – to confirm, type the command `ls` and you should see two files:
+    - The keypair should now be in your CWD (current working directory) To confirm, type the command `ls` and you should see two files:
         - sshKey – this is your private key and should remain on your MobileApp VM.
         - sshKey.pub – this is your public certificate, the contents of which will need to be added to your Corellium instance.
 
@@ -139,7 +139,7 @@ Now, click on "Default Project" to expand:
 
 `adb devices` - List of devices attached
 
-`adb shell` - Shell acess to the Android device
+`adb shell` - Shell access to the Android device
 
 ![](images/adb_commands.png)
 
