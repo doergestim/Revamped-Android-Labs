@@ -8,7 +8,7 @@
 >
 ><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
-This lab will familiarize you with a mobile app testing tool that is indispensible for Android testing: the Android Debug Bridge (adb). 
+This lab will familiarize you with a mobile app testing tool that is indispensable for Android testing: the Android Debug Bridge (adb). 
 
 In this lab, you will utilize some of the most common features of adb such as gaining shell access to an Android device, moving files, installing APKs, and monitoring the system logger.
 
@@ -139,7 +139,7 @@ Now paste the path after `adb pull`
 
 ![](images/2023-01-13-16-23-06.png)
 
-There will likely be occasions where you need to copy a file from your testing system to the Android device. For this situation, you can use adb's `push` command. When copying to a device, be mindful of where you are copying to. Due to Android's file system permissioning, you might accidentally try to copy to a read-only location. 
+There will likely be occasions where you need to copy a file from your testing system to the Android device. For this situation, you can use adb's `push` command. When copying to a device, be mindful of where you are copying to. Due to Android's file system permissions, you might accidentally try to copy to a read-only location. 
 
 A common location to copy files to is the `/sdcard/Download/` directory which does not require root access. 
 
