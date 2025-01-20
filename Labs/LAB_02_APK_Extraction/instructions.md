@@ -53,7 +53,7 @@ Next, run the final command. Make sure you give it a different output name this 
 
 <pre>adb pull [PATH_TO_APP] [OUTFILE_NAME]</pre>
 
-![](images/renameapk.png
+![](images/renameapk.png)
 
 ## Running MobSF
 
