@@ -20,7 +20,7 @@ Before getting started, let's turn on our Corellium Android device:
 
 Next, open a terminal window within the MobileApp VM. Run the following command to connect to the Android device:
 
-<pre>ssh -M -Ssock -N -f -L 5001:[Your Device Address]:5001 [Your Device ID]@proxy.corellium.com -i ~/.ssh/id_rsa/sshKey</pre>
+<pre>ssh -M -Ssock -N -f -L 5001:[Your Device Address]:5001 [Your Device ID]@proxy.corellium.com -i sshKey</pre>
 
 >[!Note]
 >You will have a unique device address and ID.
@@ -29,7 +29,7 @@ Your unique version of the command can be copied here:
 
 ![](images/copycommand.png)
 
-Paste that command into your VM terminal and run it. Be sure to add `-i ~/.ssh/id_rsa/sshKey` to the end of the command.
+Paste that command into your VM terminal and run it. Be sure to add `-i sshKey` to the end of the command.
 
 You will see the following:
 
@@ -115,27 +115,29 @@ Use `pm` again, with the package name, to find the full path to the APK.
 
 ![](images/2023-01-13-16-00-03.png)
 
-Note: The path to the package will be different than what you see here. Each time an APK is installed, the directory path is randomly generated. As a demonstration of this, see the following screenshot where the app has been uninstalled and re-installed. 
+>[!Note] The path to the package will be different than what you see here. Each time an APK is installed, the directory path is randomly generated. As a demonstration of this, see the following screenshot where the app has been uninstalled and re-installed. 
 
 Notice how the file paths change.
 
 ![](images/directorystring.png)
 
-The official explanation for the name / reason why the name is dynamic is becasue they hate you.
+The official explanation for why the name dynamically changes is because they hate you...
 
-That long, messy string is the full file path that we will use to copy the APK file from the device, with adb's `pull` command. Let's run the following:
+That long, messy string is the full file path that we will use to copy the APK file from the device. With adb's `pull` command, let's run the following:
 
 <pre>
-adb pull /data/app/~~jyfeRcoBLGcvCLSHewCQ5A==/org.fdroid.fdroid-evU7cPAiO2Ty2n9KRdml-w==/base.apk
+adb pull /data/app/[Your unique directory string]/base.apk
 </pre>
 
-![](images/2023-01-13-16-23-06.png)
-
-Note: to make this easier, you can highlight, right click and copy the directory path for this command!
+>[!TIP] To make this easier, you can highlight, right click and copy the directory path from the command that we ran earlier!
 
 ![](images/highlightandcopy.png)
 
-There will likely be ocassions where you need to copy a file from your testing system to the Andrdoid device. For this situation, you can use adb's `push` command. When copying to a device, be mindful of where you are copying to. Due to Android's file system permissioning, you might accidentally try to copy to a read-only location. 
+Now paste the path after `adb pull` 
+
+![](images/2023-01-13-16-23-06.png)
+
+There will likely be occasions where you need to copy a file from your testing system to the Android device. For this situation, you can use adb's `push` command. When copying to a device, be mindful of where you are copying to. Due to Android's file system permissioning, you might accidentally try to copy to a read-only location. 
 
 A common location to copy files to is the `/sdcard/Download/` directory which does not require root access. 
 
@@ -143,11 +145,13 @@ In the figure below, I created an example text document containing the classic p
 
 ![](images/pushexampletextfile.png)
 
-A common testing technique for mobile testing is to determine if sensitive information is being sent to the system logger. The developer may have accidentally left a misplaced debug statement or perhaps the threat of leaking sensitive information in the log was not considered during development. adb's `logcat` command can be used to stream the system logger.
+A common testing technique for mobile testing is to determine if sensitive information is being sent to the system logger. The developer may have accidentally left a misplaced debug statement, or perhaps they didn't consider the  threat of leaking sensitive information in the log during development. We can use adb's `logcat` command to stream the system logger.
 
-When adb's `logcat` is ran without any arguments, it will print literally everything, which can make conducting meaningful analysis nearly impossible. When testing a mobile app, you will likely want to filter logcat's output. There are a few ways you can filter logcat's output.
+When adb's `logcat` is ran without any arguments, it will print literally everything, which can make conducting meaningful analysis nearly impossible. When testing a mobile app, you will likely want to filter logcat's output. There are a few ways you can do this.
 
-One way is to use some of logcat's built in filter mechanisms which will filter depending on the log type (e.g. error, informational, debug, all ,etc.). Another way to filter logcat's output is by the package name as this will likely correspond to the process name. This is the method we are going to use. Let's run the following command:
+One way is to use some of logcat's built in filter mechanisms, which will filter depending on the log type (e.g. error, informational, debug, all ,etc.). Another way to filter logcat's output is by the package name as this will likely correspond to the process name. This is the method we are going to use. 
+
+Let's run the following command:
 
 <pre>adb logcat | grep fdroid</pre>
 
@@ -155,9 +159,9 @@ One way is to use some of logcat's built in filter mechanisms which will filter 
 
 You can use `ctrl + c` in order to get back to the prompt.
 
-If you think that the app might be spawning new processes or making inter-process communication (IPC) calls, it might be worthwhile to filter by the process ID (PID) associated with the app that you're testing. To do do, you can use the `ps` command to find the PID assocaited with the app you're testing and use that as a filter for logcat.
+If you think that the app might be spawning new processes or making inter-process communication (IPC) calls, it might be worthwhile to filter by the process ID (PID) associated with the app that you're testing. To do this, you can use the `ps` command to find the PID associated with the app you're testing and use that as a filter for logcat.
 
-Reminder: Your PID will very likely be different than what is shown below.
+>[!Note] Remember, your PID will very likely be different than what is shown below.
 
 <pre>
 adb shell ps | head -n 1
