@@ -15,17 +15,15 @@ Login to your Corellium account and select the **DEVICES** tab and click **CREAT
 
 ![](images/createdevice.png)
 
-
 Next, select "Default Project."
 
 ![](images/defaultproject.png)
 
-Next, select **ANDROID -> Generic Android** and select it.
+Next, select **ANDROID** and then **Generic Android**.
 
 ![](images/selectandroidoption.png)
 
 ![](images/selectgenericandroid.png)
-
 
 Select the firmware package, **12.0.0 (Build r26 userdebug)**, from the dropdown menu and click **SELECT**.
 
@@ -45,7 +43,7 @@ Once the build is complete, you should have a virtual Android device with menu o
 
 ![](images/completedsetup.png)
 
->[!Note]
+>[!IMPORTANT]
 >If it does not say "Rooted" next to the device name, it is because you did not select userdebug firmware. Please click the trash icon in the upper right, delete the device and start over from the beginning.
 
 ***
@@ -64,7 +62,7 @@ The following list contains a high-level description of each menu item.
  * **Network** – The Network Monitor captures, presents, and monitors HTTPS traffic, transparently defeating certificate pinning.  
  * **CoreTrace** - Ability to trace system calls for dynamic analysis and reverse engineering which offers a quick way to understand a program’s behavior. 
  * **Settings** - Configuration settings for your virtual device, such as: number of CPU cores, allocated RAM, as well as custom boot and kernel options.  
- * **Frida** - Corellium's bulit-in Frida server to support process hooking and code injection for bypassing controls and/or reverse engineering purposes.
+ * **Frida** - Corellium's built-in Frida server to support process hooking and code injection for bypassing controls and/or reverse engineering purposes.
  * **Console** – Use the Console option to see system and kernel logs and quickly run commands without needing to connect over ADB or SSH.
  * **Sensors** - Configure your virtual device's peripherals and sensors, such as: Battery status, Camera/Microphone, GPS coordinates, and Motion/Position/Orientation.
  * **Snapshots** - Save, clone, or restore your device's virtual state. 
