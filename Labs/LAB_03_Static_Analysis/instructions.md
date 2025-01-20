@@ -12,16 +12,18 @@ In this lab we will be using MobSF to analyze an APK. You can also use the app u
 
 Let's load up an app and look at it.
 
+>[!Note]
+>If you continued on from Lab 2: APK Extraction, you should already have completed the next few instructions. If this is the case, skip ahead to "Once the scan finishes..."
+
 In your VM web browser open a tab to http://0.0.0.0:8000
 
 Next, let's Upload and Analyze a file. 
-Download it here: https://github.com/strandjs/IntroLabs/blob/master/IntroClassFiles/Tools/final.apk
 
 ![](images/uploadandanalyze.png)
 
-Please select 'final.apk' in your home directory.
+Please select an apk file in your home directory.
 
-![](images/selectfinalapk.png)
+![](images/openapk.png)
 
 It may take a while for the file to finish Analyzing.
 
