@@ -118,7 +118,14 @@ Now hit **Save**. You should see something similar to the following:
 
 ![](images/savenextcert.png)
 
-4. Go back to your Corellium instance and click **Files** in the navigation menu. Then enter `/mnt/sdcard/Download` into the search bar and upload the Burp CA file exported in the previous step.
+Finally, hit **Next** and then **Close**.
+
+>[!IMPORTANT]
+> If you are not running your Corellium device *INSIDE* the MobileApp VM, you will need to move the exported certificate file on to your local device **BEFORE CONTINUING**
+>
+> To do this, navigate to where the certificate is saved, and copy and paste it onto your local system in order to upload it in the next step.
+
+4. Go back to your Corellium instance and click **Files** in the navigation menu. Navigate to the `/mnt/sdcard/Download` directory by typing in the search bar. Then, click upload and select the `BurpCA.cer` file that you just exported.
 
 ![Upload Certificate to Device](images/burp-CA-cert-upload.jpg)
 
