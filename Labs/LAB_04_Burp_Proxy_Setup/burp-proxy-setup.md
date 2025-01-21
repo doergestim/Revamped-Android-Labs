@@ -10,7 +10,7 @@
 
 In this lab we will set up a web proxy using *Burp Suite's Community Edition* and route traffic from our virtual mobile device in Corellium to our MobileApp VM where Burp resides. Following this setup, we will have the capability to intercept web requests made by a given mobile application, as well as inspecting and/or manipulating network traffic for the purposes of mobile application testing. 
 
-In order to ensure network traffic is routed from the virtual mobile device to our MobileApp VM, we first need to establish a VPN connection between the two hosts. More details on how to setup a VPN connection can be found [here](https://github.com/deruke/AndroidLabs/blob/main/Labs/Corellium_Setup/gettingstarted.md#VPN).
+In order to ensure network traffic is routed from the virtual mobile device to our MobileApp VM, we first need to establish a VPN connection between the two hosts. More details on how to setup a VPN connection can be found [here](/Labs/LAB_00_Corellium_Setup/gettingstarted.md).
 
 ## Open and Configure Burp
 1. With a VPN connection established, return to your MobileApp VM and launch Burp Suite Community Edition by clicking on the Burp icon in the Favorites Toolbar.
@@ -53,43 +53,35 @@ You now have Burp's proxy set up and listening for incoming connections. In the 
 
 ## Configuring the Virtual Mobile Device's Proxy Settings
 
-1.  Navigate back to the Corellium web UI and power on your virtual device.
+1. Navigate back to your Corellium device. We need to navigate to **Settings -> Network & internet** on our virtual device. To do this, start by clicking on the device screen. Then click and drag down from the bottom of the device's screen:
 
-![](images/poweron.png)
+![](images/clickanddragup.png)
 
-2. We need to navigate to **Settings -> Network & internet** on our virtual device. To do this, start by clicking on the device screen. Then click and drag down from the top of the device's screen:
-
-![](images/clickanddragdown.png)
-
-Then click in the middle of the screen, and click and drag down again:
-
-![](images/clickanddragagain.png)
-
-Now hit the settings icon in the bottom left corner:
+Now hit the settings icon:
 
 ![](images/clicksettings.png)
 
-And finally, click **Network & internet**
+Next, click **Network & internet**:
 
 ![](images/networksettings.png)
 
-3. Select **Internet**
+2. Select **Internet**
 
 ![](images/selectinternetsettings.png)
 
-4. Click on the *gear* icon of the *T-Mobile* connection.
+3. Click on the *gear* icon of the *T-Mobile* connection.
 
 ![](images/tmobilesettings.png)
 
-5. Under the settings for the *T-Mobile* interface, scroll down and select **Access Point Names**
+4. Under the settings for the *T-Mobile* interface, scroll down and select **Access Point Names**
 
 ![](images/selectaccesspointnames.png)
 
-6. Select the **T-Mobile US** APN.
+5. Select the **T-Mobile US** APN.
 
 ![](images/selecttmobileus.png)
 
-7. Click on the **Proxy** and **Port** fields and enter the value matching Burp's proxy settings. In our instance, we will set **Proxy** to `10.11.3.2` and the **Port** to `8888`. Then select the *Kebab* icon in the top-right corner and click **Save**.
+6. Click on the **Proxy** and **Port** fields and enter the value matching Burp's proxy settings. In our instance, we will set **Proxy** to `10.11.3.2` and the **Port** to `8888`. Then select the *Kebab* icon in the top-right corner and click **Save**.
 
 ![](images/setproxyandport.png)
 
@@ -98,11 +90,11 @@ And finally, click **Network & internet**
 >[!IMPORTANT]
 >If you don't save the proxy settings you will need to repeat the previous steps.
 
-9. Navigate back to **Settings -> Network & internet -> Internet** and select the icon at the top-right corner to reset the network interface. This will reset the virtual device's network interface which enables the proxy settings to be recognized by the device.
+7. Navigate back to **Settings -> Network & internet -> Internet** and select the icon at the top-right corner to reset the network interface. This will reset the virtual device's network interface which enables the proxy settings to be recognized by the device.
 
 ![](images/resetinternet.png)
 
-## Configure the Virtual Mobile Device's Certificate Trust for the Burp Proxy Certifcate Authority (CA) - User-Trust
+## Configure the Virtual Mobile Device's Certificate Trust for the Burp Proxy Certificate Authority (CA) - User-Trust
 
 The following steps will walk you through the installation of Burp's CA certificate to the User-Trust Store on your Corellium virtual mobile device.
 
@@ -169,7 +161,7 @@ Install a certificate -> CA Certificate:
 
 ![Select Certificate from Downloads](images/cert-installed-1.jpg)
 
-11. To verify that the certifcate was installed to the User-Trust store, navigate to **Settings -> Security -> Encryption & credentials -> Trusted credentials -> User**
+11. To verify that the certificate was installed to the User-Trust store, navigate to **Settings -> Security -> Encryption & credentials -> Trusted credentials -> User**
 
 ![Certificate Trust](images/cert-installed-2.jpg)
 
@@ -199,7 +191,7 @@ Follow the below items to ensure all required steps have been taken:
 
 4. Check the proxy settings on the virtual mobile device to ensure they match that of the **tap0** interface as well as Burp's proxy settings.
 
-5. If everythihg checks out and still no luck:
+5. If everything checks out and still no luck:
     - Reboot the virtual device
     - Cycle the VPN connection (off/on again)
     - If the **tap0** interface receives a different IP than what was previously set in Burp: update the settings in Burp as well as the proxy settings on the device.
