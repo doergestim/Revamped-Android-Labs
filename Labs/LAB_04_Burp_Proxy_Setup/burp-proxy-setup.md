@@ -85,7 +85,6 @@ Next, click **Network & internet**:
 
 ![](images/setproxyandport.png)
 
-![](images/hitsave.png)
 
 >[!IMPORTANT]
 >If you don't save the proxy settings you will need to repeat the previous steps.
