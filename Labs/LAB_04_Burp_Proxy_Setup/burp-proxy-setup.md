@@ -127,67 +127,59 @@ Finally, hit **Next** and then **Close**.
 
 4. Go back to your Corellium instance and click **Files** in the navigation menu. Navigate to the `/mnt/sdcard/Download` directory by typing in the search bar. Then, click upload and select the `BurpCA.cer` file that you just exported.
 
-![Upload Certificate to Device](images/burp-CA-cert-upload.jpg)
+![](images/uploadfile.png)
 
-![Upload Certificate to Device](images/burp-CA-cert-upload-1.jpg)
+5. Return to the virtual mobile device's home screen (in Corellium) and select the **Settings** icon using the same "Swipe Up" technique from earlier.
 
-5. Return to the virtual mobile device's home screen (in Corellium) and select the **Settings** icon.
-
-Settings Icon:
-
-![Settings](images/settings-icon.jpg)
+![Settings](images/clicksettings.png)
 
 6. Scroll down and select **Security** then find **Encryption & credentials** and select it.
 
-![Security - Encryption and Credentials](images/security-settings-enc-creds.jpg)
+![](images/selectsecurity.png)
+
+![](images/hitencryptionandcredentials.png)
 
 7. Under **Encryption & credentials** click on **Install a certificate**, then click **CA certificate**
 
-Install a certificate:
+![](images/clickinstallcertificate.png)
 
-![Security - Encryption and Credentials](images/security-settings-cert-install.jpg)
-
-Install a certificate -> CA Certificate:
-
-![Install a CA certificate](images/cert-installed.jpg)
+![](images/cacertificate.png)
 
 8. A prompt will warn you of the dangers involved with installing a CA certificate...click **INSTALL ANYWAY** to proceed.
 
-![Install a CA certificate](images/security-settings-cert-install-1.jpg)
+![](images/installanyway.png)
 
 9. Next, click the *Hamburger* icon and select **Downloads**, then click on the Burp certificate you uploaded in step 4.
 
-![Select Certificate from Downloads](images/security-settings-cert-install-2.jpg)
+![](images/hamburgericon.png)
 
-![Select Certificate from Downloads](images/security-settings-cert-install-3.jpg)
-
-![Select Certificate from Downloads](images/security-settings-cert-install-4.jpg)
+![](images/selectthecertificate.png)
 
 10. If successful, a temporary pop-up wil appear indicating *"CA certificate installed"*.
 
-![Select Certificate from Downloads](images/cert-installed-1.jpg)
+![](images/successfulinstallmessage.png)
 
 11. To verify that the certificate was installed to the User-Trust store, navigate to **Settings -> Security -> Encryption & credentials -> Trusted credentials -> User**
 
-![Certificate Trust](images/cert-installed-2.jpg)
+![](images/trustedcredentials.png)
 
-![Certificate Trust](images/cert-installed-3.jpg)
+![](images/showtrusteduser.png)
 
-12. Launch the Web View app from the virtual device in Corellium and enter a common Internet resource, such as *https://www.google.com*.
+12. Launch the Web View app from the virtual device in Corellium and enter a common Internet resource, such as *https://www.blackhillsinfosec.com*.
 
-![Web View](images/webview-icon.jpg)
+![](images/openwebview.png)
 
-![Google via Web View App](images/webview-google.jpg)
+![](images/navigatetoasite.png)
 
 13. Finally, navigate back to your MobileApp VM and from within Burp, navigate to **Proxy -> HTTP history**. 
 
 You should see your web traffic processed by Burp's proxy.
 
-![Burp Intercepted Web Traffic](images/webview-google-burp.jpg)
+![](images/httphistoryburp.png)
 
 ### Not seeing traffic in Burp?
 
-Follow the below items to ensure all required steps have been taken:
+Use the following steps to troubleshoot if necessary:
 
 1. Ensure the VPN connection between Corellium and the MobileApp VM is established.
 
