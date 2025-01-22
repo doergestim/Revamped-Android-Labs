@@ -18,7 +18,7 @@ In this lab we will import and install Burp's CA certificate to the System-Trust
 If you are using a different mobile device solution for testing, Android devices 7.0+ (API >= 24) will require the Burp CA cert to be installed to the System-Trust store. Additionally, 3rd-party apps installed on a Corellium virtual mobile device may also require the Burp CA to be installed to the System-Trust store.
 
 >[!Note]
->In order to ensure network traffic is routed from the virtual mobile device to our MobileApp VM, a VPN connection between the two hosts is required. If you don't have a VPN connection established, refer to the [lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/Corellium_Setup/gettingstarted.md#VPN) on how to setup a VPN connection before proceeding.
+>In order to ensure network traffic is routed from the virtual mobile device to our MobileApp VM, a VPN connection between the two hosts is required. If you don't have a VPN connection established, refer to the [lab](/Labs/LAB_00_Corellium_Setup/gettingstarted.md/#vpn) on how to setup a VPN connection before proceeding.
 
 ## Export Burp's CA Certificate and Prep for Install
 
