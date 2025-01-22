@@ -16,7 +16,7 @@ Let's install that app now.
 
 First, please download the following file.
 
-```https://github.com/strandjs/IntroLabs/blob/master/IntroClassFiles/Tools/final.apk```
+https://github.com/strandjs/IntroLabs/blob/master/IntroClassFiles/Tools/final.apk
 
 Next, we need to ensure the VPN is up and running. 
 
@@ -30,6 +30,11 @@ Next, we need to ensure the VPN is up and running.
 Now let's install the application on our phone.
 
 Start by connecting via adb.
+
+>[!Important]
+>The IP that you need to use to connect to the device can be found in the VPN section of the `Connect` tab on your Corellium device.
+>
+>![](images/vpnip.png)
 
 <pre>adb connect 10.11.1.1:5001</pre>
 
@@ -74,7 +79,7 @@ Typically, we would need to upload and start the Frida server on the device we a
 * `adb shell "/data/local/tmp/frida-server &"`
 **End of reference commands.**-->
 
-We will be using [This script](https://codeshare.frida.re/@dzonerzy/fridantiroot/) from Frida Codeshare to bypass root detection on our target.
+We will be using [this script](https://codeshare.frida.re/@dzonerzy/fridantiroot/) from Frida Codeshare to bypass root detection on our target.
 
 But first we need to attach an existing process to Frida on the phone.  
 
@@ -94,7 +99,7 @@ Now run the following command:
 
  <pre>frida --codeshare dzonerzy/fridantiroot -U -f com.bhis.thehackerbank</pre>
 
- the `-U` option tells frida to connect to the usb device (in our case the emulator "appears" as a usb device).
+ the `-U` option tells Frida to connect to the usb device (in our case the emulator "appears" as a usb device).
 
  The `-f` option specifies the target application ID that we want to load. The application should **not** be running already. the `-f` flag will spawn the process.
 
