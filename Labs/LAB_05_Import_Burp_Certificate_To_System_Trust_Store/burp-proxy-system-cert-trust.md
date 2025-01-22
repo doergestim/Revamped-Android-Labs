@@ -63,6 +63,9 @@ If you are using a different mobile device solution for testing, Android devices
 
 ## Importing the CA to the mobile device's System-Trust Store - via adb
 
+>[!Note]
+>The screen captures below are an example of the adb tool used to connect to the virtual mobile device with a VPN established between Corellium and the MobileApp VM. To establish a connection over SSH instead, please see the establishing an [SSH Connection](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md#SSH) section in the [Getting Started Lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md).
+
 1. Connect to your Corellium device via `abd`.
 
 >[!Important]
@@ -76,9 +79,6 @@ An important thing to note, if you run this command and see more than one device
 
 >[!Note]
 >Reference [LAB 1: adb Basics](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_1_adb_basics/adb_cheatsheet.md) for instructions on how to connect and how to use the Android Debug Bridge (adb). 
-
->[!Note]
->The screen capture below is an example of the adb tool used to connect to the virtual mobile device with a VPN established between Corellium and the MobileApp VM. To establish a connection over SSH instead, please see the establishing an [SSH Connection](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md#SSH) section in the [Getting Started Lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md).
 
 2. Copy the certificate to the device. We can use `adb` to copy the certificate over, but since it has to be copied to the `/system` filesystem, we have to remount it as writable. To start, we need to become root. Let's run the following command:
 
