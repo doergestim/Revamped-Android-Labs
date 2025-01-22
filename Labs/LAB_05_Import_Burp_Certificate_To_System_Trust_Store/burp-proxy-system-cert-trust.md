@@ -67,6 +67,7 @@ If you are using a different mobile device solution for testing, Android devices
 
 >[!Important]
 >The IP that you need to use to connect to the device can be found in the VPN section of the `Connect` tab on your Corellium device.
+>
 >![](images/vpnip.png)
 
 ![adb connect](images/adb-connect.jpg)
@@ -89,24 +90,25 @@ As root, we will remount and push the certificate to the local file system of th
 
 <pre>adb push [cert].0 /sdcard/</pre>
 
+>[!Note]
+>Make sure you are in the same directory as the `[cert].0` file!
+
 ![adb root](images/adb-as-root.jpg)
 
 3. We need to drop into a shell and move the file to `/system/etc/security/cacerts` and run the `chmod` command with permissions set to **644**:
 
-Start by running the following:
-<pre>adb shell</pre>
 
-Now move the file to the correct location:
+Start by moving the file to the correct location:
 
-<pre>mv /sdcard/[cert].0 /system/etc/security/cacerts/</pre>
+<pre>adb shell mv /sdcard/[cert].0 /system/etc/security/cacerts/</pre>
 
 And finally, change the permissions:
 
-<pre>chmod 644 /system/etc/security/cacerts/9a5ba575.0</pre>
+<pre>adb shell chmod 644 /system/etc/security/cacerts/[cert].0</pre>
 
 4. Run the `ls` command to verify the correct permissions are set.
 
-<pre>ls -lah /system/etc/security/cacerts/[cert].0</pre>
+<pre>adb shell ls -lah /system/etc/security/cacerts/[cert].0</pre>
 
 ![adb add cert and set permissions](images/adb-push-cert-to-system-1.jpg)
 
@@ -116,7 +118,7 @@ And finally, change the permissions:
 
 Return to your virtual device in Corellium and navigate to **Settings -> Security -> Encryption & Credentials -> Trusted Credentials -> System**. Then scroll down until you see *PortSwigger - PortSwiggerCA*.
 
-![Burp CA Certificate Installed in System Store](images/burp-cert-system-store.jpg)
+![](images/verifycert.png)
 
 ***                                                                 
 
