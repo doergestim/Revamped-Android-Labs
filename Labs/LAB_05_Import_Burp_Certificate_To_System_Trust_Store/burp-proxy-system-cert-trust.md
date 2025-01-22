@@ -47,30 +47,34 @@ If you are using a different mobile device solution for testing, Android devices
 
 <pre>openssl x509 -inform DER -in BurpCA.cer -out BurpCA.pem</pre>
 
-![Export Burp CA Certificate - Save File](images/burp-convert-to-PEM.jpg)
+![](images/openssltopem.png)
 
 5. Use the `openssl` command once again to identify the `subject_hash_old` value.
 
 <pre>openssl x509 -inform PEM -subject_hash_old -in BurpCA.pem | head -1</pre>
 
-![Burp CA - subject_hash_old](images/burp-CA-subject-hash.jpg)
+![](images/subjecthash.png)
 
 6. Rename the pem-formatted certificate to `<hash>.0`
 
 <pre>mv BurpCA.pem 9a5ba575.0</pre>
 
-![Burp CA - Rename](images/burp-CA-subject-hash-rename.jpg)
+![](images/movingpem.png )
 
 ## Importing the CA to the mobile device's System-Trust Store - via adb
 
-1. Connect to your virtual mobile device via `abd`.
+1. Connect to your Corellium device via `abd`.
+
+>[!Important]
+>The IP that you need to use to connect to the device can be found in the VPN section of the `Connect` tab on your Corellium device.
+>![](images/vpnip.png)
 
 ![adb connect](images/adb-connect.jpg)
 
 An important thing to note, if you run this command and see more than one device (such as localhost:5001), you will need to run `adb disconnect [device name]` so you can continue on to the next steps.
 
 >[!Note]
->Reference [LAB 1](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_1_adb_basics/adb_cheatsheet.md) for instructions on how to connect and how to use the Android Debug Bridge (adb). 
+>Reference [LAB 1: adb Basics](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_1_adb_basics/adb_cheatsheet.md) for instructions on how to connect and how to use the Android Debug Bridge (adb). 
 
 >[!Note]
 >The screen capture below is an example of the adb tool used to connect to the virtual mobile device with a VPN established between Corellium and the MobileApp VM. To establish a connection over SSH instead, please see the establishing an [SSH Connection](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md#SSH) section in the [Getting Started Lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md).
