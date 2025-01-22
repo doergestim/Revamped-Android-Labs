@@ -64,7 +64,7 @@ If you are using a different mobile device solution for testing, Android devices
 ## Importing the CA to the mobile device's System-Trust Store - via adb
 
 >[!Note]
->The screen captures below are an example of the adb tool used to connect to the virtual mobile device with a VPN established between Corellium and the MobileApp VM. To establish a connection over SSH instead, please see the establishing an [SSH Connection](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md#SSH) section in the [Getting Started Lab](https://github.com/deruke/AndroidLabs/blob/main/Labs/LAB_0_Corellium_Setup/gettingstarted.md).
+>The screen captures below are an example of the adb tool used to connect to the virtual mobile device with a VPN established between Corellium and the MobileApp VM. To establish a connection over SSH instead, please see the establishing an [SSH Connection](/Labs/LAB_00_Corellium_Setup/gettingstarted.md/#ssh) section in the [Getting Started Lab](/Labs/LAB_00_Corellium_Setup/gettingstarted.md)
 
 1. Connect to your Corellium device via `abd`.
 
@@ -102,7 +102,7 @@ Start by moving the file to the correct location:
 
 <pre>adb shell mv /sdcard/[cert].0 /system/etc/security/cacerts/</pre>
 
-And finally, change the permissions:
+Next, change the permissions:
 
 <pre>adb shell chmod 644 /system/etc/security/cacerts/[cert].0</pre>
 
