@@ -1,4 +1,4 @@
-Instructions to get started:
+#Instructions to get started:
 
 1. Make an account and log in at https://app.metactf.com/cloud
 2. In the Access code box, enter the code: android-65533c2d
@@ -7,8 +7,9 @@ Instructions to get started:
 
 3. When you see the VM pop up, hit `Start` and it will boot.
 
+<hr>
 
-## Launching the Device
+# Launching the Device
 Start by opening a terminal:
 ![](/New%20Labs/attachments/terminalinubuntu.png)
 
@@ -24,3 +25,7 @@ Then, you will see the following window.<br>
 Click the `Play` icon next to the `Pixel 9` device to power it on.
 
 ![](/New%20Labs/attachments/turnondevice.png)
+
+Behold! Your very own emulated Virtual Android!
+
+![](/New%20Labs/attachments/devicewindow.png)
