@@ -1,4 +1,4 @@
-#Instructions to get started:
+# Instructions to get started:
 
 1. Make an account and log in at https://app.metactf.com/cloud
 2. In the Access code box, enter the code: android-65533c2d
