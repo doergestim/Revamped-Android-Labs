@@ -93,6 +93,10 @@ Wait till it loads the processes then select `TheHackerBank` and then `Attach`:
 
 Once the process is attached, open up a terminal in the VM.
 
+>[!WARNING]
+>We need to update the version of Frida on the VM. Do so by running the following:<br>
+><pre>pip install --upgrade frida frida-tools</pre>
+
 <!--You can either download the script, and run it with the `-l` option, or, run it directly from the website with `--codeshare dzonerzy/fridantiroot-->
 
 Now run the following command:

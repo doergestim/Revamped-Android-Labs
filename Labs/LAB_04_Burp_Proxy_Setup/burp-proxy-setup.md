@@ -10,7 +10,9 @@
 
 In this lab we will set up a web proxy using *Burp Suite's Community Edition* and route traffic from our virtual mobile device in Corellium to our MobileApp VM where Burp resides. Following this setup, we will have the capability to intercept web requests made by a given mobile application, as well as inspecting and/or manipulating network traffic for the purposes of mobile application testing. 
 
-In order to ensure network traffic is routed from the virtual mobile device to our MobileApp VM, we first need to establish a VPN connection between the two hosts. More details on how to setup a VPN connection can be found [here](/Labs/LAB_00_Corellium_Setup/gettingstarted.md/#vpn).
+>[!IMPORTANT]
+>In order to ensure network traffic is routed from the virtual mobile device to our MobileApp VM, we first need to establish a VPN connection between the two hosts.<br>
+>More details on how to setup a VPN connection can be found [here](/Labs/LAB_00_Corellium_Setup/gettingstarted.md/#vpn).
 
 ## Open and Configure Burp
 1. With a VPN connection established, return to your MobileApp VM and launch Burp Suite Community Edition by clicking on the Burp icon in the Favorites Toolbar.
