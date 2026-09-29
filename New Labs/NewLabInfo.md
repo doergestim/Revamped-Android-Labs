@@ -1,7 +1,7 @@
 # Instructions to get started:
 
 1. Make an account and log in at https://app.metactf.com/cloud
-2. In the Access code box, enter the code: android-65533c2d
+2. In the Access code box, enter the code: `android-65533c2d`
 
 ![alt text](/New%20Labs/attachments/image-1.png)
 
@@ -11,6 +11,7 @@
 
 # Launching the Device
 Start by opening a terminal:
+
 ![](/New%20Labs/attachments/terminalinubuntu.png)
 
 Then run the following to launch Android Studio:
