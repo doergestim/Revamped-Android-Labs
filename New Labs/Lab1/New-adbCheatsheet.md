@@ -1,8 +1,5 @@
 # Become an `adb` Ninja #
 
-If your device isn't booted yet, launch it with the following, look at [Lab Setup](/New%Labs/NewLab_Setup.md/#Launching%the%Device)
-
-
 To verify access to your Android device, use adb's devices command.
 
 <pre>adb devices</pre>
