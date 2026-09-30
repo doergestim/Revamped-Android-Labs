@@ -126,7 +126,10 @@ You can use `ctrl + c` in order to get back to the prompt.
 If you think that the app might be spawning new processes or making inter-process communication (IPC) calls, it might be worthwhile to filter by the process ID (PID) associated with the app that you're testing. To do this, you can use the `ps` command to find the PID associated with the app you're testing and use that as a filter for logcat.
 
 Next, we need to launch Fdroid. Do so by running the following:
-<pre>adb shell monkey -p org.fdroid.fdroid 1</pre>
+
+```bash
+adb shell monkey -p org.fdroid.fdroid 1
+```
 
 >[!Note] 
 >Remember, your PID will be different than what is shown below.
