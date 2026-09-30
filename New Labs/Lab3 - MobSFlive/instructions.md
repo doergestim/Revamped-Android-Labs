@@ -228,9 +228,21 @@ Bonus: MobSF reports that the `PostLogin` activity is exported. Open `View Andro
 Optional, on your emulator: test it. InsecureBankv2 targets Android 5.1 (API 22). Android 14 refuses to install apps that target below API 23, and Android 15 (the Pixel 9 emulator) refuses anything below API 24, so a plain `adb install` fails with `INSTALL_FAILED_DEPRECATED_SDK_VERSION`. Pass `--bypass-low-target-sdk-block` to install it anyway:
 
 ```bash
+mv InsecureBankv2.apk ~/Android/Sdk/emulator/
+cd ~/Android/Sdk/emulator/
+./emulator -list-avds
+./emulator -avd Pixel_9
+```
+
+Then open a new terminal once the emulator has spun up:
+
+```bash
 adb install --bypass-low-target-sdk-block InsecureBankv2.apk
 adb shell am start -n com.android.insecurebankv2/.PostLogin
 ```
+
+<img width="381" height="836" alt="Screenshot From 2026-10-01 00-55-39" src="https://github.com/user-attachments/assets/3ac801af-8e55-4616-89ce-e1321447063b" />
+
 
 >[!NOTE]
 >Because the app targets such an old API level, the first launch shows Android's `Choose what to allow InsecureBankv2 to access` screen instead of the app. Tap `CONTINUE`, then run the `am start` command again (Android blocks the pending launch after that screen). Android may also show a `This app was built for an older version of Android` dialog on top of the app; tap `OK`.
