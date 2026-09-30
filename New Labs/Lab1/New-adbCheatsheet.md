@@ -7,7 +7,7 @@ Let's open a new terminal and run the following:
 
 <pre>adb devices</pre>
 
-![](/Labs/LAB_01_adb_basics/images/2023-01-13-15-11-42.png)
+![](/New%20Labs/attachments/Lab1/adbDevices.png)
 
 With adb connection, you can gain an interactive shell on the device by running the following commands: 
 
@@ -17,19 +17,19 @@ su
 id
 </pre>
 
-![](/Labs/LAB_01_adb_basics/images/2023-01-13-15-21-51.png)
+![](/New%20Labs/attachments/Lab1/adbShell.png)
 
 This is useful if you're just starting to explore the app and you're not quite sure what you're looking for yet.
 
 Go ahead and enter `exit` twice to leave the shell.
 
-![](/Labs/LAB_01_adb_basics/images/exit.png)
+![](/New%20Labs/attachments/Lab1/exitShell.png)
 
 If you already know exactly what you're looking for, you can also use adb's shell command to run commands interactively, even to pipe output to your local testing system. For example, maybe you're researching the security of Android's KeyChain. The following command will run on the Android device and pipe the output to your local VM. 
 
 <pre>adb shell pm list packages | grep key</pre>
 
-![](/Labs/LAB_01_adb_basics/images/2023-01-13-15-28-03.png)
+![](/New%20Labs/attachments/Lab1/grepKey.png)
 
 When penetration testing mobile apps, it is possible that you will receive the APK files outside of the Google Play store, as a stand-alone APK file. In which case, you will likely use adb to install the app. This is easily accomplished with adb's install command. After installing the app, you can use adb shell to find the package name after the APK is installed.
 
@@ -45,7 +45,7 @@ First, let's download it.
 wget https://f-droid.org/F-Droid.apk
 </pre>
 
-![](/Labs/LAB_01_adb_basics/images/thirdparty-appswget.png)
+![](/New%20Labs/attachments/Lab1/wGet.png)
 
 Next, let's install it.
 
@@ -53,7 +53,7 @@ Next, let's install it.
 adb install F-Droid.apk
 </pre>
 
-![](/Labs/LAB_01_adb_basics/images/adbinstall.png)
+![](/New%20Labs/attachments/Lab1/installFdroid.png)
 
 If the app you are testing is from the Google Play store, then you will want to extract the APK from the device after installing the app. This will allow you to conduct static analysis of the app. To do so, you need to find out the name of the package and the full file path where the APK file is saved to.
 
@@ -61,7 +61,7 @@ To find the package name, use Android's package manager utility, `pm`, to list a
 
 <pre>adb shell pm list packages | grep fdroid</pre>
 
-![](/Labs/LAB_01_adb_basics/images/2023-01-13-15-56-38.png)
+![](/New%20Labs/attachments/Lab1/listPackages.png)
 
 Use `pm` again, with the package name, to find the full path to the APK.
 
