@@ -9,9 +9,11 @@ If your device isn't booted yet, launch it with the following, look at [Lab Setu
 
 ## Downloading the APK
 
-Now that we are connected, the first thing you will need is the application ID of the app we are testing. We will be analyzing F-Droid. On the Corellium interface click on the “Apps” tab and start typing the name of the application. The application ID is found directly under the application name as shown below. 
+To find the package name, use Android's package manager utility, `pm`, to list all of the package names and pipe the output to `grep` in order to search for the package that you are testing.
 
-![](/Labs/LAB_02_APK_Extraction/images/gettingapplicationid.png)
+<pre>adb shell pm list packages | grep fdroid</pre>
+
+![](/New%20Labs/attachments/Lab1/listPackages.png)
 
 To download the APK from the device you will need the applications full path. To get it,  run the following command:
 
