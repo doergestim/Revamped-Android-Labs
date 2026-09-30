@@ -101,9 +101,7 @@ There will likely be occasions where you need to copy a file from your testing s
 
 A common location to copy files to is the `/sdcard/Download/` directory which does not require root access. 
 
-In the figure below, I created an example text document containing the classic phrase "Hello World!". Note how I attempted to copy it to the `/tmp` directory and received an error in response. While the error states that it is a "Read-only file system", the `/tmp` directory actually does not exist on Android by default.
-
-![](/Labs/LAB_01_adb_basics/images/pushexampletextfile.png)
+![](/New%20Labs/attachments/Lab1/pushSdcard.png)
 
 A common testing technique for mobile testing is to determine if sensitive information is being sent to the system logger. The developer may have accidentally left a misplaced debug statement, or perhaps they didn't consider the  threat of leaking sensitive information in the log during development. We can use adb's `logcat` command to stream the system logger.
 
