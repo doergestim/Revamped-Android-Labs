@@ -15,11 +15,11 @@ Let's open a new terminal and run the following:
 
 With adb connection, you can gain an interactive shell on the device by running the following commands: 
 
-<pre>
+```bash
 adb shell
 su
 id
-</pre>
+```
 
 ![](/New%20Labs/attachments/Lab1/adbShell.png)
 
@@ -45,17 +45,17 @@ Let's play with a third-party app called F-Droid.  Often times you will be given
 
 First, let's download it.
 
-<pre>
+```bash
 wget https://f-droid.org/F-Droid.apk
-</pre>
+```
 
 ![](/New%20Labs/attachments/Lab1/wGet.png)
 
 Next, let's install it.
 
-<pre>
+```bash
 adb install F-Droid.apk
-</pre>
+```
 
 ![](/New%20Labs/attachments/Lab1/installFdroid.png)
 
@@ -63,13 +63,17 @@ If the app you are testing is from the Google Play store, then you will want to 
 
 To find the package name, use Android's package manager utility, `pm`, to list all of the package names and pipe the output to `grep` in order to search for the package that you are testing.
 
-<pre>adb shell pm list packages | grep fdroid</pre>
+```bash
+adb shell pm list packages | grep fdroid
+```
 
 ![](/New%20Labs/attachments/Lab1/listPackages.png)
 
 Use `pm` again, with the package name, to find the full path to the APK.
 
-<pre>adb shell pm path org.fdroid.fdroid</pre>
+```bash
+adb shell pm path org.fdroid.fdroid
+```
 
 ![](/New%20Labs/attachments/Lab1/findPath.png)
 
@@ -84,9 +88,9 @@ The official explanation for why the name dynamically changes is because they ha
 
 That long, messy string is the full file path that we will use to copy the APK file from the device. With adb's `pull` command, let's run the following:
 
-<pre>
+```bash
 adb pull /data/app/[Your unique directory string]/base.apk
-</pre>
+```
 
 >[!TIP] 
 >To make this easier, you can highlight, right click and copy the directory path from the command that we ran earlier!
@@ -111,7 +115,9 @@ One way is to use some of logcat's built in filter mechanisms, which will filter
 
 Let's run the following command:
 
-<pre>adb logcat | grep fdroid</pre>
+```bash
+adb logcat | grep fdroid
+```
 
 ![](/New%20Labs/attachments/Lab1/grepFdroid.png)
 
@@ -125,11 +131,11 @@ Next, we need to launch Fdroid. Do so by running the following:
 >[!Note] 
 >Remember, your PID will be different than what is shown below.
 
-<pre>
+```bash
 adb shell ps | head -n 1
 adb shell ps | grep fdroid
 adb logcat | grep [Pid]
-</pre>
+```
 
 ![](/New%20Labs/attachments/Lab1/grepPid.png)
 
