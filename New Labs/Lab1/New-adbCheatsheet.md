@@ -4,7 +4,7 @@ To verify access to your Android device, use adb's devices command.
 
 <pre>adb devices</pre>
 
-![](images/2023-01-13-15-11-42.png)
+![](/Labs/LAB_01_adb_basics/images/2023-01-13-15-11-42.png)
 
 With adb connection, you can gain an interactive shell on the device by running the following commands: 
 
@@ -14,19 +14,19 @@ su
 id
 </pre>
 
-![](images/2023-01-13-15-21-51.png)
+![](/Labs/LAB_01_adb_basics/images/2023-01-13-15-21-51.png)
 
 This is useful if you're just starting to explore the app and you're not quite sure what you're looking for yet.
 
 Go ahead and enter `exit` twice to leave the shell.
 
-![](images/exit.png)
+![](/Labs/LAB_01_adb_basics/images/exit.png)
 
 If you already know exactly what you're looking for, you can also use adb's shell command to run commands interactively, even to pipe output to your local testing system. For example, maybe you're researching the security of Android's KeyChain. The following command will run on the Android device and pipe the output to your local VM. 
 
 <pre>adb shell pm list packages | grep key</pre>
 
-![](images/2023-01-13-15-28-03.png)
+![](/Labs/LAB_01_adb_basics/images/2023-01-13-15-28-03.png)
 
 When penetration testing mobile apps, it is possible that you will receive the APK files outside of the Google Play store, as a stand-alone APK file. In which case, you will likely use adb to install the app. This is easily accomplished with adb's install command. After installing the app, you can use adb shell to find the package name after the APK is installed.
 
@@ -42,7 +42,7 @@ First, let's download it.
 wget https://f-droid.org/F-Droid.apk
 </pre>
 
-![](images/thirdparty-appswget.png)
+![](/Labs/LAB_01_adb_basics/images/thirdparty-appswget.png)
 
 Next, let's install it.
 
@@ -50,7 +50,7 @@ Next, let's install it.
 adb install F-Droid.apk
 </pre>
 
-![](images/adbinstall.png)
+![](/Labs/LAB_01_adb_basics/images/adbinstall.png)
 
 If the app you are testing is from the Google Play store, then you will want to extract the APK from the device after installing the app. This will allow you to conduct static analysis of the app. To do so, you need to find out the name of the package and the full file path where the APK file is saved to.
 
@@ -58,20 +58,20 @@ To find the package name, use Android's package manager utility, `pm`, to list a
 
 <pre>adb shell pm list packages | grep fdroid</pre>
 
-![](images/2023-01-13-15-56-38.png)
+![](/Labs/LAB_01_adb_basics/images/2023-01-13-15-56-38.png)
 
 Use `pm` again, with the package name, to find the full path to the APK.
 
 <pre>adb shell pm path org.fdroid.fdroid</pre>
 
-![](images/2023-01-13-16-00-03.png)
+![](/Labs/LAB_01_adb_basics/images/2023-01-13-16-00-03.png)
 
 >[!Note] 
 >The path to the package will be different than what you see here. Each time an APK is installed, the directory path is randomly generated. As a demonstration of this, see the following screenshot where the app has been uninstalled and re-installed. 
 
 Notice how the file paths change.
 
-![](images/directorystring.png)
+![](/Labs/LAB_01_adb_basics/images/directorystring.png)
 
 The official explanation for why the name dynamically changes is because they hate you...
 
@@ -84,11 +84,11 @@ adb pull /data/app/[Your unique directory string]/base.apk
 >[!TIP] 
 >To make this easier, you can highlight, right click and copy the directory path from the command that we ran earlier!
 
-![](images/highlightandcopy.png)
+![](/Labs/LAB_01_adb_basics/images/highlightandcopy.png)
 
 Now paste the path after `adb pull` 
 
-![](images/2023-01-13-16-23-06.png)
+![](/Labs/LAB_01_adb_basics/images/2023-01-13-16-23-06.png)
 
 There will likely be occasions where you need to copy a file from your testing system to the Android device. For this situation, you can use adb's `push` command. When copying to a device, be mindful of where you are copying to. Due to Android's file system permissions, you might accidentally try to copy to a read-only location. 
 
@@ -96,7 +96,7 @@ A common location to copy files to is the `/sdcard/Download/` directory which do
 
 In the figure below, I created an example text document containing the classic phrase "Hello World!". Note how I attempted to copy it to the `/tmp` directory and received an error in response. While the error states that it is a "Read-only file system", the `/tmp` directory actually does not exist on Android by default.
 
-![](images/pushexampletextfile.png)
+![](/Labs/LAB_01_adb_basics/images/pushexampletextfile.png)
 
 A common testing technique for mobile testing is to determine if sensitive information is being sent to the system logger. The developer may have accidentally left a misplaced debug statement, or perhaps they didn't consider the  threat of leaking sensitive information in the log during development. We can use adb's `logcat` command to stream the system logger.
 
@@ -108,7 +108,7 @@ Let's run the following command:
 
 <pre>adb logcat | grep fdroid</pre>
 
-![](images/logcatgrep.png)
+![](/Labs/LAB_01_adb_basics/images/logcatgrep.png)
 
 You can use `ctrl + c` in order to get back to the prompt.
 
@@ -120,7 +120,7 @@ If you think that the app might be spawning new processes or making inter-proces
 >[!Note]
 >In order to run the following commands successfully, the Fdroid application must be running on the Corellium device. To do this, go to the **APPS** menu and then search for "Fdroid" and select **Launch**
 
-![](images/launchfdroid.png)
+![](/Labs/LAB_01_adb_basics/images/launchfdroid.png)
 
 <pre>
 adb shell ps | head -n 1
@@ -128,7 +128,7 @@ adb shell ps | grep fdroid
 adb logcat | grep [Pid]
 </pre>
 
-![](images/2023-01-13-17-01-13.png)
+![](/Labs/LAB_01_adb_basics/images/2023-01-13-17-01-13.png)
 
 ***                                                                 
 
