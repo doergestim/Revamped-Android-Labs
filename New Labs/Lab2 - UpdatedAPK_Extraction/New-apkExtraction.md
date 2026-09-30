@@ -1,39 +1,11 @@
 # Extracting an APK for static analysis
 
->[!WARNING]
->
-> I CANNOT STRESS THIS ENOUGH!!!!!!
->
->REMEMBER TO <b style="color:#FF0000;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
->
-><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
 
-Before getting started, let's turn on our Corellium Android device:
+#### This lab is the UPDATED VERSION
+<hr>
 
-![](images/poweron.png)
+If your device isn't booted yet, launch it with the following, look at [Lab Setup](/New%20Labs/NewLab_Setup.md/#Launching%the%Device)
 
-Next, open a terminal window within the MobileApp VM. Run the following command to connect to the Android device:
-
-<pre>ssh -M -Ssock -N -f -L 5001:[Your Device Address]:5001 [Your Device ID]@proxy.corellium.com -i sshKey</pre>
-
->[!Note]
->You will have a unique device address and ID.
-
-Your version of the command can be copied here:
-
-![](images/copycommand.png)
-
-Paste that command into your VM terminal and run it. Be sure to add `-i sshKey` to the end of the command.
-
-You will see the following:
-
-![](images/connectedtodevice.png)
-
-Now run the following to connect to the local host:
-
-<pre>adb connect localhost:5001</pre>
-
-![](images/2023-01-13-15-09-23.png)
 
 ## Downloading the APK
 
