@@ -22,17 +22,17 @@ chmod +x burp.sh
 >[!Note]
 >You might see a window asking you to select a version. Select `Continue with Community Edition`. 
 
-2. Once open, select **Temporary project**, then click **Next**
+1. Once open, select **Temporary project**, then click **Next**
 
- ![](/Labs/LAB_04_Burp_Proxy_Setup/images/burp-temp-project.jpg)
+ ![](/New%20Labs/attachments/Lab4/burpTempNext.png)
  
  Then make sure **Use Burp Defaults** is selected, and hit **Start Burp**
 
- ![](/Labs/LAB_04_Burp_Proxy_Setup/images/defaultstartburp.png)
+ ![](/New%20Labs/attachments/Lab4/burpUseDefaultsStart.png)
 
-3. Once the project has started, use Burp's menu to navigate to **Proxy -> Options**
+2. Once the project has started, use Burp's menu to navigate to **Proxy -> Proxy Settings**
 
-![](/Labs/LAB_04_Burp_Proxy_Setup/images/proxythenoptions.png)
+![](/New%20Labs/attachments/Lab4/proxyOptions.png)
 
 4. Uncheck the "Running" checkbox for interface 127.0.0.1:8080
 
