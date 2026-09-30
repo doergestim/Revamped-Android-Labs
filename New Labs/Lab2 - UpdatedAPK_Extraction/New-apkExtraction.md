@@ -11,7 +11,7 @@ If your device isn't booted yet, launch it with the following, look at [Lab Setu
 
 Now that we are connected, the first thing you will need is the application ID of the app we are testing. We will be analyzing F-Droid. On the Corellium interface click on the “Apps” tab and start typing the name of the application. The application ID is found directly under the application name as shown below. 
 
-![](images/gettingapplicationid.png)
+![](/Labs/LAB_02_APK_Extraction/images/gettingapplicationid.png)
 
 To download the APK from the device you will need the applications full path. To get it,  run the following command:
 
@@ -19,13 +19,13 @@ To download the APK from the device you will need the applications full path. To
 
 Copy the line in the output that ends in `base.apk` as shown below:
 
-![](images/copybaseapk.png)
+![](/Labs/LAB_02_APK_Extraction/images/copybaseapk.png)
 
 Next, run the final command. Make sure you give it a different output name this time!
 
 <pre>adb pull [PATH_TO_APP] [OUTFILE_NAME]</pre>
 
-![](images/renameapk.png)
+![](/Labs/LAB_02_APK_Extraction/images/renameapk.png)
 
 ## Running MobSF
 
@@ -35,24 +35,24 @@ Next, run the final command. Make sure you give it a different output name this 
 
 Enter the VM password if/when prompted.
 
-![](images/mobsflaunch.png)
+![](/Labs/LAB_02_APK_Extraction/images/mobsflaunch.png)
 
 Now navigate to http://0.0.0.0:8000 in your VM web browser.
 
-![](images/webbrowsernavigate.png)
+![](/Labs/LAB_02_APK_Extraction/images/webbrowsernavigate.png)
 
 Once loaded, go ahead and click "Upload and Analyze", and upload an APK file. 
 
-![](images/uploadandanalyze.png)
+![](/Labs/LAB_02_APK_Extraction/images/uploadandanalyze.png)
 
-![](images/openapk.png)
+![](/Labs/LAB_02_APK_Extraction/images/openapk.png)
 
 Processing the APK file will take a while, so let's continue on. Let it keep running in the background as we will use it for future labs.
 
 ## Analyzing Other Apps
 You can also test out any app you'd like from the Play Store. To do this you will need to install `OpenGApps`. This will give you access to the Google Play Store. This can be done from the "Apps" tab in Corellium.
 
-![](images/installopengapps.png)
+![](/Labs/LAB_02_APK_Extraction/images/installopengapps.png)
 
 >[!Note]
 >You will need to log-in with a Google account before you can download any apps
