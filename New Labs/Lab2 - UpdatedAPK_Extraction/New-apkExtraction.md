@@ -13,13 +13,17 @@ We need to start by getting the package name for the application.<br>
 
 To find the package name, use Android's package manager utility, `pm`, to list all of the package names and pipe the output to `grep` in order to search for the package that you are testing.
 
-<pre>adb shell pm list packages | grep fdroid</pre>
+```bash
+adb shell pm list packages | grep fdroid
+```
 
 ![](/New%20Labs/attachments/Lab1/listPackages.png)
 
 To download the APK from the device you will need the applications full path. To get it,  run the following command:
 
-<pre>adb shell pm path org.fdroid.fdroid</pre>
+```bash
+adb shell pm path org.fdroid.fdroid
+```
 
 Copy the line in the output that ends in `base.apk` as shown below:
 
@@ -27,7 +31,9 @@ Copy the line in the output that ends in `base.apk` as shown below:
 
 Next, run the final command. Make sure you give it a different output name this time!
 
-<pre>adb pull [PATH_TO_APP] [OUTFILE_NAME]</pre>
+```bash
+adb pull [PATH_TO_APP] [OUTFILE_NAME]
+```
 
 ![](/New%20Labs/attachments/Lab2/renameApk.png)
 
@@ -35,7 +41,9 @@ Next, run the final command. Make sure you give it a different output name this 
 
 [MobSF](https://mobsf.github.io/docs/#/) is already installed on your VM. To run the docker container, run this command:
 
-<pre>sudo docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest</pre>
+```bash
+sudo docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
+```
 
 Enter the VM password if/when prompted.
 
