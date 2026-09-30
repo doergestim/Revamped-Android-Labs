@@ -67,14 +67,14 @@ Use `pm` again, with the package name, to find the full path to the APK.
 
 <pre>adb shell pm path org.fdroid.fdroid</pre>
 
-![](/Labs/LAB_01_adb_basics/images/2023-01-13-16-00-03.png)
+![](/New%20Labs/attachments/Lab1/findPath.png)
 
 >[!Note] 
 >The path to the package will be different than what you see here. Each time an APK is installed, the directory path is randomly generated. As a demonstration of this, see the following screenshot where the app has been uninstalled and re-installed. 
 
 Notice how the file paths change.
 
-![](/Labs/LAB_01_adb_basics/images/directorystring.png)
+![](/New%20Labs/attachments/Lab1/filePathChanges.png)
 
 The official explanation for why the name dynamically changes is because they hate you...
 
@@ -87,11 +87,11 @@ adb pull /data/app/[Your unique directory string]/base.apk
 >[!TIP] 
 >To make this easier, you can highlight, right click and copy the directory path from the command that we ran earlier!
 
-![](/Labs/LAB_01_adb_basics/images/highlightandcopy.png)
+![](/New%20Labs/attachments/Lab1/copyString.png)
 
 Now paste the path after `adb pull` 
 
-![](/Labs/LAB_01_adb_basics/images/2023-01-13-16-23-06.png)
+![](/New%20Labs/attachments/Lab1/adbPullPath.png)
 
 There will likely be occasions where you need to copy a file from your testing system to the Android device. For this situation, you can use adb's `push` command. When copying to a device, be mindful of where you are copying to. Due to Android's file system permissions, you might accidentally try to copy to a read-only location. 
 
