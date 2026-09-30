@@ -73,7 +73,7 @@ Then you can simply install apps from the Play Store as you normally would.
 
 ***                                                                 
 
-<b><i>Continuing the course? </br>[Next Lab](/Labs/LAB_03_Static_Analysis/instructions.md)</i></b>
+<b><i>Continuing the course? </br>[Next Lab](/New%20Labs/Lab3%20-%20MobSFlive/instructions.md)</i></b>
 
 <b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_01_adb_basics/adb_cheatsheet.md)</i></b>
 
