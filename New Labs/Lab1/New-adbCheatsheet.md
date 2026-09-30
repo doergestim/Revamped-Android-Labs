@@ -1,7 +1,6 @@
 # Become an `adb` Ninja #
 
-If your device isn't booted yet, launch it with the following:
-<pre>cd ~/Android/Sdk/emulator/ ./emulator -avd Pixel_9</pre>
+If your device isn't booted yet, launch it with the following, look at 
 
 
 To verify access to your Android device, use adb's devices command.
