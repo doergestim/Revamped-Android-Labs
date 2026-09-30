@@ -9,6 +9,8 @@ If your device isn't booted yet, launch it with the following, look at [Lab Setu
 
 ## Downloading the APK
 
+We need to start by getting the package name for the application.<br>
+
 To find the package name, use Android's package manager utility, `pm`, to list all of the package names and pipe the output to `grep` in order to search for the package that you are testing.
 
 <pre>adb shell pm list packages | grep fdroid</pre>
@@ -21,13 +23,13 @@ To download the APK from the device you will need the applications full path. To
 
 Copy the line in the output that ends in `base.apk` as shown below:
 
-![](/Labs/LAB_02_APK_Extraction/images/copybaseapk.png)
+![](/New%20Labs/attachments/Lab2/copyBaseApk.png)
 
 Next, run the final command. Make sure you give it a different output name this time!
 
 <pre>adb pull [PATH_TO_APP] [OUTFILE_NAME]</pre>
 
-![](/Labs/LAB_02_APK_Extraction/images/renameapk.png)
+![](/New%20Labs/attachments/Lab2/renameApk.png)
 
 ## Running MobSF
 
