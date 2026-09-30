@@ -2,7 +2,8 @@
 
 If your device isn't booted yet, launch it with the following, look at [Lab Setup](/New%20Labs/NewLab_Setup.md/#Launching%the%Device)
 
-To verify access to your Android device, use adb's devices command.
+To verify access to your Android device, use adb's devices command.<br>
+Let's open a new terminal and run the following:
 
 <pre>adb devices</pre>
 
