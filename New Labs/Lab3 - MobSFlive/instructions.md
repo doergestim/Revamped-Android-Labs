@@ -14,7 +14,7 @@ Your goal is to analyze the results and note down anything that stands out for l
 
 We will use the **OWASP MASTG Hacking Playground** app as the worked example. It is intentionally vulnerable and open-source, so it is safe to upload.
 
-### Option A: Download it (required) ###
+### Download it
 
 Download it by clicking this link in your browser:
 
@@ -28,58 +28,11 @@ wget https://github.com/OWASP/MASTG-Hacking-Playground/releases/download/1.1/MST
 
 Now get the file's SHA256 hash and write it down. You will compare it with the hash MobSF reports in Step 2.
 
-| OS | Command |
-| --- | --- |
-| Linux | `sha256sum MSTG-Android-Java.apk` |
-| macOS | `shasum -a 256 MSTG-Android-Java.apk` |
-| Windows (PowerShell) | `Get-FileHash MSTG-Android-Java.apk` |
-
-### Option B: Pull it from your emulator (optional) ###
-
-On a real test you pull the APK from a device. To practice that safely, install the MASTG app on your emulator and pull it back off, exactly as you would with a target app.
-
-Start the emulator as in the setup lab: run `android-studio`, click `More Actions` -> `Virtual Device Manager`, and click the `Play` icon next to `Pixel 9`.
-
-Or skip Android Studio and start it straight from a terminal:
-
 ```bash
-cd ~/Android/Sdk/emulator/
-./emulator -list-avds
-./emulator -avd Pixel_9
+sha256sum MSTG-Android-Java.apk
 ```
 
-`-list-avds` prints the names of your virtual devices; `Pixel_9` is the one we use. The emulator keeps running in that terminal, so leave it open.
 
-When it has booted, open a **new** terminal and check that adb sees it:
-
-```bash
-adb devices
-```
-
-You should see a line like `emulator-5554   device`.
-
->[!NOTE]
->If you get `adb: command not found`, use the full path: `~/Android/Sdk/platform-tools/adb`.
-
-Install the app, find its package name and APK path, and pull it:
-
-```bash
-adb install MSTG-Android-Java.apk
-adb shell pm list packages | grep -i owasp
-adb shell pm path sg.vp.owasp_mobile.omtg_android
-```
-
-`pm path` prints one or more lines like `package:/data/app/.../base.apk`. Pull the file (drop the `package:` prefix) and hash it:
-
-```bash
-adb pull /data/app/[...]/base.apk ~/pulled.apk
-sha256sum ~/pulled.apk
-```
-
-Compare the hash with the one from Option A. If they match, you pulled exactly the file you installed.
-
->[!NOTE]
->If `pm path` returns several files (`base.apk` plus `split_config.*.apk`), the app was installed as split APKs. The code and the `AndroidManifest.xml` live in `base.apk`, so that is the one to analyze. The splits usually only hold language, screen density, or CPU architecture resources.
 
 ## Step 2: Upload and Scan ##
 
