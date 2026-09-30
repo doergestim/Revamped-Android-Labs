@@ -1,21 +1,23 @@
 # Setup Burp Suite for Proxy and Interception Testing 
 
->[!WARNING]
->
-> I CANNOT STRESS THIS ENOUGH!!!!!!
->
->REMEMBER TO <b style="color:#FF0000;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
->
-><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
+#### This lab is the UPDATED VERSION
+<hr>
 
-In this lab we will set up a web proxy using *Burp Suite's Community Edition* and route traffic from our virtual mobile device in Corellium to our MobileApp VM where Burp resides. Following this setup, we will have the capability to intercept web requests made by a given mobile application, as well as inspecting and/or manipulating network traffic for the purposes of mobile application testing. 
-
->[!IMPORTANT]
->In order to ensure network traffic is routed from the virtual mobile device to our MobileApp VM, we first need to establish a VPN connection between the two hosts.<br>
->More details on how to setup a VPN connection can be found [here](/Labs/LAB_00_Corellium_Setup/gettingstarted.md/#vpn).
+If your device isn't booted yet, launch it with the following, look at [Lab Setup](/New%20Labs/NewLab_Setup.md/#Launching%the%Device)
 
 ## Open and Configure Burp
-1. With a VPN connection established, return to your MobileApp VM and launch Burp Suite Community Edition by clicking on the Burp icon in the Favorites Toolbar.
+Before we begin, we need to install burp on our VM. Begin by opening a terminal:
+![terminal](/New%20Labs/attachments/terminalinubuntu.png)
+
+Then, run the following commands:
+
+```bash
+wget -O burp.sh "https://portswigger.net/burp/releases/download?product=community&type=Linux"
+file burp.sh          # should say "shell script" or similar, not "HTML document"
+chmod +x burp.sh
+./burp.sh -q
+~/BurpSuiteCommunity/BurpSuiteCommunity &
+```
 
 ![](/Labs/LAB_04_Burp_Proxy_Setup/images/launchburp.png)
 
