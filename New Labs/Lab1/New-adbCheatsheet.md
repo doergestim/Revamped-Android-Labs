@@ -1,4 +1,9 @@
-# Become an `adb` Ninja #
+# Becoming an `adb` Ninja
+
+<hr>
+
+#### This lab is the UPDATED VERSION
+<hr>
 
 If your device isn't booted yet, launch it with the following, look at [Lab Setup](/New%20Labs/NewLab_Setup.md/#Launching%the%Device)
 
