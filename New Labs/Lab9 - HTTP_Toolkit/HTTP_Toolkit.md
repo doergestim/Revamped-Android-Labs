@@ -1,5 +1,3 @@
-![image](/FilesForLabs/images/blueantisyphon.png)
-
 # HTTP Toolkit
 
 # Ubuntu VM
