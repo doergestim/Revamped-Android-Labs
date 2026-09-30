@@ -6,14 +6,6 @@ The core of this lab needs only a web browser. Two optional parts (Step 1 Option
 
 Your goal is to analyze the results and note down anything that stands out for later labs (Burp, Frida, dynamic testing). Fill in the findings table at the end of the lab as you go.
 
->[!CAUTION]
->**MobSF.live is a public, third-party service. Treat everything you upload as public.**
->
->The site says so itself: every upload asks you to confirm that "Anything uploaded here will be publicly available", and anyone can browse other people's reports under `RECENT SCANS` without logging in.
->
->Only upload open-source or intentionally vulnerable apps (like the ones in this lab). **Never** upload a client's app, an app under NDA, or anything from a real engagement to MobSF.live. For real work, run MobSF locally or in Docker, where the APK never leaves your machine:
->
-><pre>docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest</pre>
 
 >[!NOTE]
 >MobSF.live is a shared server. If an upload hangs or the site is busy, wait a few minutes and try again. MobSF.live only does **static** analysis; ignore the `Start Dynamic Analysis` option.
@@ -30,7 +22,7 @@ https://github.com/OWASP/MASTG-Hacking-Playground/releases/download/1.1/MSTG-And
 
 Or from a terminal:
 
-<pre>wget https://github.com/OWASP/MASTG-Hacking-Playground/releases/download/1.1/MSTG-Android-Java.apk</pre>
+`wget https://github.com/OWASP/MASTG-Hacking-Playground/releases/download/1.1/MSTG-Android-Java.apk`
 
 Now get the file's SHA256 hash and write it down. You will compare it with the hash MobSF reports in Step 2.
 
@@ -48,15 +40,15 @@ Start the emulator as in the setup lab: run `android-studio`, click `More Action
 
 Or skip Android Studio and start it straight from a terminal:
 
-<pre>cd ~/Android/Sdk/emulator/
+`cd ~/Android/Sdk/emulator/
 ./emulator -list-avds
-./emulator -avd Pixel_9</pre>
+./emulator -avd Pixel_9`
 
 `-list-avds` prints the names of your virtual devices; `Pixel_9` is the one we use. The emulator keeps running in that terminal, so leave it open.
 
 When it has booted, open a **new** terminal and check that adb sees it:
 
-<pre>adb devices</pre>
+`adb devices`
 
 You should see a line like `emulator-5554   device`.
 
@@ -65,14 +57,14 @@ You should see a line like `emulator-5554   device`.
 
 Install the app, find its package name and APK path, and pull it:
 
-<pre>adb install MSTG-Android-Java.apk
+`adb install MSTG-Android-Java.apk
 adb shell pm list packages | grep -i owasp
-adb shell pm path sg.vp.owasp_mobile.omtg_android</pre>
+adb shell pm path sg.vp.owasp_mobile.omtg_android`
 
 `pm path` prints one or more lines like `package:/data/app/.../base.apk`. Pull the file (drop the `package:` prefix) and hash it:
 
-<pre>adb pull /data/app/[...]/base.apk ~/pulled.apk
-sha256sum ~/pulled.apk</pre>
+`adb pull /data/app/[...]/base.apk ~/pulled.apk
+sha256sum ~/pulled.apk`
 
 Compare the hash with the one from Option A. If they match, you pulled exactly the file you installed.
 
@@ -80,9 +72,6 @@ Compare the hash with the one from Option A. If they match, you pulled exactly t
 >If `pm path` returns several files (`base.apk` plus `split_config.*.apk`), the app was installed as split APKs. The code and the `AndroidManifest.xml` live in `base.apk`, so that is the one to analyze. The splits usually only hold language, screen density, or CPU architecture resources.
 
 ## Step 2: Upload and Scan ##
-
->[!TIP]
->In the screenshots in this lab, red boxes and arrows mark what to look at.
 
 In your web browser, open https://mobsf.live
 
@@ -227,7 +216,7 @@ Open the menu and select `Browsable Activities`.
 
 These are activities a web browser can open through a link (deep links). They matter because an attacker can trigger them from a web page or a message. When an app has them, MobSF lists the activity with its schemes, hosts, and paths. Note them down; in the dynamic labs you will trigger each one with:
 
-<pre>adb shell am start -a android.intent.action.VIEW -d "scheme://host/path"</pre>
+`adb shell am start -a android.intent.action.VIEW -d "scheme://host/path"`
 
 The MASTG app has **no** browsable activities, so this section is empty. That is expected.
 
@@ -273,8 +262,8 @@ Bonus: MobSF reports that the `PostLogin` activity is exported. Open `View Andro
 
 Optional, on your emulator: test it. InsecureBankv2 targets Android 5.1 (API 22). Android 14 refuses to install apps that target below API 23, and Android 15 (the Pixel 9 emulator) refuses anything below API 24, so a plain `adb install` fails with `INSTALL_FAILED_DEPRECATED_SDK_VERSION`. Pass `--bypass-low-target-sdk-block` to install it anyway:
 
-<pre>adb install --bypass-low-target-sdk-block InsecureBankv2.apk
-adb shell am start -n com.android.insecurebankv2/.PostLogin</pre>
+`adb install --bypass-low-target-sdk-block InsecureBankv2.apk`
+`adb shell am start -n com.android.insecurebankv2/.PostLogin`
 
 >[!NOTE]
 >Because the app targets such an old API level, the first launch shows Android's `Choose what to allow InsecureBankv2 to access` screen instead of the app. Tap `CONTINUE`, then run the `am start` command again (Android blocks the pending launch after that screen). Android may also show a `This app was built for an older version of Android` dialog on top of the app; tap `OK`.
