@@ -115,7 +115,7 @@ Let's run the following command:
 
 <pre>adb logcat | grep fdroid</pre>
 
-![](/Labs/LAB_01_adb_basics/images/logcatgrep.png)
+![](/New%20Labs/attachments/Lab1/grepFdroid.png)
 
 You can use `ctrl + c` in order to get back to the prompt.
 
@@ -133,12 +133,6 @@ adb shell ps | grep fdroid
 adb logcat | grep [Pid]
 </pre>
 
-![](/Labs/LAB_01_adb_basics/images/2023-01-13-17-01-13.png)
+![](/New%20Labs/attachments/Lab1/grepPid.png)
 
-***                                                                 
-
-<b><i>Continuing the course? </br>[Next Lab](/Labs/LAB_02_APK_Extraction/instructions.md)</i></b>
-
-<b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_00_Corellium_Setup/gettingstarted.md)</i></b>
-
-<b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>
+***                                                                
