@@ -1,6 +1,5 @@
 # Becoming an `adb` Ninja
 
-<hr>
 
 #### This lab is the UPDATED VERSION
 <hr>
