@@ -1,54 +1,5 @@
 # Become an `adb` Ninja #
 
->[!WARNING]
->
-> I CANNOT STRESS THIS ENOUGH!!!!!!
->
->REMEMBER TO <b style="color:#FF0000;">POWER OFF YOUR CORELLIUM DEVICE</b> WHEN NOT WORKING ON LABS!!!!
->
-><b style="color:#FF0000;">CORELLIUM WILL CHARGE YOU!!!!!</b>
-
-This lab will familiarize you with a mobile app testing tool that is indispensable for Android testing: the Android Debug Bridge (adb). 
-
-In this lab, you will utilize some of the most common features of adb such as gaining shell access to an Android device, moving files, installing APKs, and monitoring the system logger.
-
-The first step will be connecting to your Android device in Correllium with adb. If you have a local Android device (i.e. plugged directly into your testing system), you generally don't need to perform this step. However, since our Android device is hosted in the cloud, we'll need to take advantage of adb's TCP connection feature to remotely access the device.
-
-Before getting started, let's turn on our Corellium Android device:
-
-![](images/poweron.png)
-
-Next, open a terminal window within the MobileApp VM. Run the following command to connect to the Android device:
-
-<pre>ssh -M -Ssock -N -f -L 5001:[Your Device Address]:5001 [Your Device ID]@proxy.corellium.com -i sshKey</pre>
-
->[!Note]
->You will have a unique device address and ID.
-
-Your unique version of the command can be copied here:
-
-![](images/copycommand.png)
-
-Paste that command into your VM terminal and run it. Be sure to add `-i sshKey` to the end of the command.
-
-You will see the following:
-
-![](images/connectedtodevice.png)
-
-Once connected, Run the following command in a terminal to ensure that your SSH tunnel is up:
-
-<pre>netstat -lntp | grep ssh</pre>
-
-![](images/ssh_tunnel.png)
-
-After verifying that your SSH tunnel is up, connect to your Android device with adb's connect command:
-
-<pre>adb connect localhost:5001</pre>
-
-Upon establishing the connection, you should see the message, "connected to localhost:5001"
-
-![](images/2023-01-13-15-09-23.png)
-
 To verify access to your Android device, use adb's devices command.
 
 <pre>adb devices</pre>
