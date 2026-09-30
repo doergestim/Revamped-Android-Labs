@@ -22,7 +22,9 @@ https://github.com/OWASP/MASTG-Hacking-Playground/releases/download/1.1/MSTG-And
 
 Or from a terminal:
 
-`wget https://github.com/OWASP/MASTG-Hacking-Playground/releases/download/1.1/MSTG-Android-Java.apk`
+```bash
+wget https://github.com/OWASP/MASTG-Hacking-Playground/releases/download/1.1/MSTG-Android-Java.apk
+```
 
 Now get the file's SHA256 hash and write it down. You will compare it with the hash MobSF reports in Step 2.
 
@@ -40,15 +42,19 @@ Start the emulator as in the setup lab: run `android-studio`, click `More Action
 
 Or skip Android Studio and start it straight from a terminal:
 
-`cd ~/Android/Sdk/emulator/
+```bash
+cd ~/Android/Sdk/emulator/
 ./emulator -list-avds
-./emulator -avd Pixel_9`
+./emulator -avd Pixel_9
+```
 
 `-list-avds` prints the names of your virtual devices; `Pixel_9` is the one we use. The emulator keeps running in that terminal, so leave it open.
 
 When it has booted, open a **new** terminal and check that adb sees it:
 
-`adb devices`
+```bash
+adb devices
+```
 
 You should see a line like `emulator-5554   device`.
 
@@ -57,14 +63,18 @@ You should see a line like `emulator-5554   device`.
 
 Install the app, find its package name and APK path, and pull it:
 
-`adb install MSTG-Android-Java.apk
+```bash
+adb install MSTG-Android-Java.apk
 adb shell pm list packages | grep -i owasp
-adb shell pm path sg.vp.owasp_mobile.omtg_android`
+adb shell pm path sg.vp.owasp_mobile.omtg_android
+```
 
 `pm path` prints one or more lines like `package:/data/app/.../base.apk`. Pull the file (drop the `package:` prefix) and hash it:
 
-`adb pull /data/app/[...]/base.apk ~/pulled.apk
-sha256sum ~/pulled.apk`
+```bash
+adb pull /data/app/[...]/base.apk ~/pulled.apk
+sha256sum ~/pulled.apk
+```
 
 Compare the hash with the one from Option A. If they match, you pulled exactly the file you installed.
 
@@ -216,7 +226,9 @@ Open the menu and select `Browsable Activities`.
 
 These are activities a web browser can open through a link (deep links). They matter because an attacker can trigger them from a web page or a message. When an app has them, MobSF lists the activity with its schemes, hosts, and paths. Note them down; in the dynamic labs you will trigger each one with:
 
-`adb shell am start -a android.intent.action.VIEW -d "scheme://host/path"`
+```bash
+adb shell am start -a android.intent.action.VIEW -d "scheme://host/path"
+```
 
 The MASTG app has **no** browsable activities, so this section is empty. That is expected.
 
@@ -262,8 +274,10 @@ Bonus: MobSF reports that the `PostLogin` activity is exported. Open `View Andro
 
 Optional, on your emulator: test it. InsecureBankv2 targets Android 5.1 (API 22). Android 14 refuses to install apps that target below API 23, and Android 15 (the Pixel 9 emulator) refuses anything below API 24, so a plain `adb install` fails with `INSTALL_FAILED_DEPRECATED_SDK_VERSION`. Pass `--bypass-low-target-sdk-block` to install it anyway:
 
-`adb install --bypass-low-target-sdk-block InsecureBankv2.apk`
-`adb shell am start -n com.android.insecurebankv2/.PostLogin`
+```bash
+adb install --bypass-low-target-sdk-block InsecureBankv2.apk
+adb shell am start -n com.android.insecurebankv2/.PostLogin
+```
 
 >[!NOTE]
 >Because the app targets such an old API level, the first launch shows Android's `Choose what to allow InsecureBankv2 to access` screen instead of the app. Tap `CONTINUE`, then run the `am start` command again (Android blocks the pending launch after that screen). Android may also show a `This app was built for an older version of Android` dialog on top of the app; tap `OK`.
@@ -296,9 +310,9 @@ Copy this table into your notes and fill it in for each app you scan (MASTG, Ins
 
 ***
 
-<b><i>Continuing the course? </br>[Next Lab](/Labs/LAB_04_Burp_Proxy_Setup/burp-proxy-setup.md)</i></b>
+<b><i>Continuing the course? </br>[Next Lab](/New%20Labs/Lab4%20-%20UpdatedBurp_ProxySetup/New-BurpProxySetup.md)</i></b>
 
-<b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_02_APK_Extraction/instructions.md)</i></b>
+<b><i>Want to go back? </br>[Previous Lab](/New%20Labs/Lab2%20-%20UpdatedAPK_Extraction/New-apkExtraction.md)</i></b>
 
 <b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>
 
