@@ -6,7 +6,7 @@
 If your device isn't booted yet, launch it with the following, look at [Lab Setup](/New%20Labs/NewLab_Setup.md/#Launching%the%Device)
 
 ## Open and Configure Burp
-Before we begin, we need to install burp on our VM. Begin by opening a terminal:
+Before we begin, we need to install burp on our VM. Begin by opening a terminal:<br>
 ![terminal](/New%20Labs/attachments/terminalinubuntu.png)
 
 Then, run the following commands:
@@ -19,39 +19,40 @@ chmod +x burp.sh
 ~/BurpSuiteCommunity/BurpSuiteCommunity &
 ```
 
-![](/Labs/LAB_04_Burp_Proxy_Setup/images/launchburp.png)
+>[!Note]
+>You might see a window asking you to select a version. Select `Continue with Community Edition`. 
 
 2. Once open, select **Temporary project**, then click **Next**
 
- ![](images/tempthennext.png)
+ ![](/Labs/LAB_04_Burp_Proxy_Setup/images/burp-temp-project.jpg)
  
  Then make sure **Use Burp Defaults** is selected, and hit **Start Burp**
 
- ![](images/defaultstartburp.png)
+ ![](/Labs/LAB_04_Burp_Proxy_Setup/images/defaultstartburp.png)
 
 3. Once the project has started, use Burp's menu to navigate to **Proxy -> Options**
 
-![](images/proxythenoptions.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/proxythenoptions.png)
 
 4. Uncheck the "Running" checkbox for interface 127.0.0.1:8080
 
-![](images/uncheckbox.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/uncheckbox.png)
 
 5. Next click **Add**, then **Bind to address -> Specific address**, and select the IP address assigned to the **tap0** interface. Also, enter the port number in the **Bind to port** field. 
 When finished click **OK**.   
 
- ![](images/step5.png)
+ ![](/Labs/LAB_04_Burp_Proxy_Setup/images/step5.png)
 
  >[!Note]
  >The address assigned to your **tap0** interface may be different. To ensure you select the correct IP for Burp to bind to, run the following command from a terminal session on your MobileApp VM.
  
  <pre>ip a show tap0</pre>
  
- ![tap0 interface](images/tap0-interface.jpg)
+ ![tap0 interface](/Labs/LAB_04_Burp_Proxy_Setup/images/tap0-interface.jpg)
 
  6. You should now have an active listener in Burp.
 
- ![](images/activelistener.png)
+ ![](/Labs/LAB_04_Burp_Proxy_Setup/images/activelistener.png)
 
 You now have Burp's proxy set up and listening for incoming connections. In the next section of this lab, we will walk through the configuration of the virtual mobile device in Corellium.
 
@@ -59,35 +60,35 @@ You now have Burp's proxy set up and listening for incoming connections. In the 
 
 1. Navigate back to your Corellium device. We need to navigate to **Settings -> Network & internet** on our virtual device. To do this, start by clicking on the device screen. Then click and drag down from the bottom of the device's screen:
 
-![](images/clickanddragup.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/clickanddragup.png)
 
 Now hit the settings icon:
 
-![](images/clicksettings.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/clicksettings.png)
 
 Next, click **Network & internet**:
 
-![](images/networksettings.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/networksettings.png)
 
 2. Select **Internet**
 
-![](images/selectinternetsettings.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/selectinternetsettings.png)
 
 3. Click on the *gear* icon of the *T-Mobile* connection.
 
-![](images/tmobilesettings.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/tmobilesettings.png)
 
 4. Under the settings for the *T-Mobile* interface, scroll down and select **Access Point Names**
 
-![](images/selectaccesspointnames.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/selectaccesspointnames.png)
 
 5. Select the **T-Mobile US** APN.
 
-![](images/selecttmobileus.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/selecttmobileus.png)
 
 6. Click on the **Proxy** and **Port** fields and enter the value matching Burp's proxy settings. In our instance, we will set **Proxy** to `10.11.3.2` and the **Port** to `8888`. Then select the *Kebab* icon in the top-right corner and click **Save**.
 
-![](images/setproxyandport.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/setproxyandport.png)
 
 
 >[!IMPORTANT]
@@ -95,7 +96,7 @@ Next, click **Network & internet**:
 
 7. Navigate back to **Settings -> Network & internet -> Internet** and select the icon at the top-right corner to reset the network interface. This will reset the virtual device's network interface which enables the proxy settings to be recognized by the device.
 
-![](images/resetinternet.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/resetinternet.png)
 
 ## Configure the Virtual Mobile Device's Certificate Trust for the Burp Proxy Certificate Authority (CA) - User-Trust
 
@@ -106,21 +107,21 @@ The following steps will walk you through the installation of Burp's CA certific
 
 1. Return to your instance of Burp running on the MobileApp VM and navigate to: **Proxy -> Options** then click on **Import / export CA certificate**.
 
-![](images/importcertificate.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/importcertificate.png)
 
 2. Select the **Certificate in DER format** and then click **Next**.
 
-![](images/certificateinder.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/certificateinder.png)
 
 3. Now, hit **Select File...** and navigate into the **Downloads** folder. Then we need to name the file. In our case, we named it `BurpCA.cer`.
 
-![](images/exportcert.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/exportcert.png)
 
-![](images/downloadsandnamefile.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/downloadsandnamefile.png)
 
 Now hit **Save**. You should see something similar to the following:
 
-![](images/savenextcert.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/savenextcert.png)
 
 Finally, hit **Next** and then **Close**.
 
@@ -131,55 +132,55 @@ Finally, hit **Next** and then **Close**.
 
 4. Go back to your Corellium instance and click **Files** in the navigation menu. Navigate to the `/mnt/sdcard/Download` directory by typing in the search bar. Then, click upload and select the `BurpCA.cer` file that you just exported.
 
-![](images/uploadfile.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/uploadfile.png)
 
 5. Return to the virtual mobile device's home screen (in Corellium) and select the **Settings** icon using the same "Swipe Up" technique from earlier.
 
-![Settings](images/clicksettings.png)
+![Settings](/Labs/LAB_04_Burp_Proxy_Setup/images/clicksettings.png)
 
 6. Scroll down and select **Security** then find **Encryption & credentials** and select it.
 
-![](images/selectsecurity.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/selectsecurity.png)
 
-![](images/hitencryptionandcredentials.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/hitencryptionandcredentials.png)
 
 7. Under **Encryption & credentials** click on **Install a certificate**, then click **CA certificate**
 
-![](images/clickinstallcertificate.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/clickinstallcertificate.png)
 
-![](images/cacertificate.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/cacertificate.png)
 
 8. A prompt will warn you of the dangers involved with installing a CA certificate...click **INSTALL ANYWAY** to proceed.
 
-![](images/installanyway.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/installanyway.png)
 
 9. Next, click the *Hamburger* icon and select **Downloads**, then click on the Burp certificate you uploaded in step 4.
 
-![](images/hamburgericon.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/hamburgericon.png)
 
-![](images/selectthecertificate.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/selectthecertificate.png)
 
 10. If successful, a temporary pop-up wil appear indicating *"CA certificate installed"*.
 
-![](images/successfulinstallmessage.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/successfulinstallmessage.png)
 
 11. To verify that the certificate was installed to the User-Trust store, navigate to **Settings -> Security -> Encryption & credentials -> Trusted credentials -> User**
 
-![](images/trustedcredentials.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/trustedcredentials.png)
 
-![](images/showtrusteduser.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/showtrusteduser.png)
 
 12. Launch the Web View app from the virtual device in Corellium and enter a common Internet resource, such as *https://www.blackhillsinfosec.com*.
 
-![](images/openwebview.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/openwebview.png)
 
-![](images/navigatetoasite.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/navigatetoasite.png)
 
 13. Finally, navigate back to your MobileApp VM and from within Burp, navigate to **Proxy -> HTTP history**. 
 
 You should see your web traffic processed by Burp's proxy.
 
-![](images/httphistoryburp.png)
+![](/Labs/LAB_04_Burp_Proxy_Setup/images/httphistoryburp.png)
 
 ### Not seeing traffic in Burp?
 
