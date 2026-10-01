@@ -50,6 +50,7 @@ cd ~/Android/Sdk/emulator/
 Leave that terminal running. In a **new** terminal, confirm adb sees the device and that you can get root:
 
 ```bash
+cd ~/Android/Sdk/emulator/
 adb devices
 adb root
 ```
@@ -67,15 +68,19 @@ adb shell getprop ro.product.cpu.abi
 
 On a typical Intel or AMD laptop this is `x86_64`. On an Apple-silicon Mac it is `arm64-v8a`.
 
-## Step 3: Install frida-server on the Emulator ##
+## Step 3: Install frida-server on the Emulator 
 
-Download the `frida-server` build that matches **both** your Frida version (Step 1) and your ABI (Step 2) from the Frida releases page: https://github.com/frida/frida/releases
+<img width="51" height="52" alt="Screenshot From 2026-10-01 11-12-01" src="https://github.com/user-attachments/assets/061ee35d-fadd-4be8-b9d6-c4d560fd7021" />
+
+
+Download the `frida-server` build that matches **both** your Frida version (Step 1) and your ABI (Step 2) from the Frida releases page: https://github.com/frida/frida/releases, make sure to click "Show More Assets", the server won't be at the very top
 
 The file is named `frida-server-<version>-android-<abi>.xz`. For version `17.19.0` on an `x86_64` emulator that is `frida-server-17.19.0-android-x86_64.xz`. Map the ABI to Frida's name: `x86_64` -> `x86_64`, `arm64-v8a` -> `arm64`.
 
 Decompress it, push it to the device, and run it:
 
 ```bash
+mv ~/Downloads/frida-server-*-android-*.xz ./
 unxz frida-server-*-android-*.xz
 adb root
 adb push frida-server-*-android-* /data/local/tmp/frida-server
@@ -84,9 +89,13 @@ adb shell "/data/local/tmp/frida-server &"
 ```
 
 >[!NOTE]
->That last command holds the shell open while the server runs. Either background it as shown, or open another terminal for the next steps. If it exits immediately, re-run `adb root` first: the server needs root.
+>That last command holds the shell open while the server runs. Open another terminal for the next steps. If it exits immediately, re-run `adb root` first: the server needs root.
 
 Back on your machine, confirm the client can talk to the server (`-U` means USB/local device):
+
+```bash
+cd ~/Android/Sdk/emulator/
+```
 
 ```bash
 frida-ps -U | head
