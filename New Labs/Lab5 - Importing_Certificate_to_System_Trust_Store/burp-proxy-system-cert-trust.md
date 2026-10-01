@@ -54,47 +54,70 @@ The hash is different for every Burp installation (for example `9a5ba575`), so y
 
 The idea: copy the existing system certificates into a writable temp directory, add Burp's, mount that over `/system/etc/security/cacerts` as a temporary filesystem, then bind-mount it into the places running apps actually read from, including the Conscrypt APEX and the Zygote process that every app is forked from.
 
-The lab ships a script that does all of this. It repeats Step 2 itself (same hash, same push), so you only pass it Burp's DER file. The command below assumes the lab folder is at `~/lab05`; adjust the path to where yours is:
+You do this from a root shell **on the device**. Open one:
 
 ```bash
-bash ~/lab05/testbed/system_cert_install.sh ~/BurpCA.der
+adb shell
 ```
 
-Expected output (your hash will differ):
+The prompt now ends in `#`, which means you are root on the emulator. Everything until `exit` below runs on the device, not on your machine.
+
+1. The device shell does not know the `HASH` you set on your machine in Step 2, so set it again here. Use **your** hash from Step 2's `echo` line:
 
 ```bash
-[*] Requesting root
-[*] API level: 35
-[*] Building <subject_hash_old>.0
-    filename: 9a5ba575.0
-/tmp/tmp.XXXXXXXXXX/9a5ba575.0: 1 file pushed, 0 skipped. ...   (only some adb versions print this line)
-    pushed to /data/local/tmp/9a5ba575.0
-[*] API >= 34: temporary APEX overlay (non-persistent)
-overlay-done
-[*] Done (overlay). Verify in Settings -> ... -> Trusted credentials -> System.
-    This is NOT persistent; re-run after any reboot.
+HASH=9a5ba575
 ```
 
->[!NOTE]
->Prefer to see what it does? The script runs, as root on the device, roughly:
->```bash
->mkdir -p -m 755 /data/local/tmp/ca-copy
->cp /apex/com.android.conscrypt/cacerts/* /data/local/tmp/ca-copy/
->mount -t tmpfs tmpfs /system/etc/security/cacerts
->cp /data/local/tmp/ca-copy/* /system/etc/security/cacerts/
->cp /data/local/tmp/HASH.0 /system/etc/security/cacerts/HASH.0
->chown root:root /system/etc/security/cacerts/*
->chmod 644 /system/etc/security/cacerts/*
->chcon u:object_r:system_security_cacerts_file:s0 /system/etc/security/cacerts/*
->mount --bind /system/etc/security/cacerts /apex/com.android.conscrypt/cacerts
->for z in $(pidof zygote) $(pidof zygote64); do
->  nsenter --mount=/proc/$z/ns/mnt -- \
->    mount --bind /system/etc/security/cacerts /apex/com.android.conscrypt/cacerts
->done
->```
->The bind into the Zygote namespace is what makes apps launched afterward trust the cert. This is an overlay in memory, not a change to the real image, so it disappears on reboot. On the x86_64 Pixel_9 image there is only `zygote64` (no 32-bit `zygote`), which is fine.
+2. Copy the current system certificates out of the read-only APEX into a writable folder:
 
-`overlay-done` means the script reached the end, but it hides `chcon` and `nsenter` errors. Check the result directly:
+```bash
+mkdir -p -m 755 /data/local/tmp/ca-copy
+cp /apex/com.android.conscrypt/cacerts/* /data/local/tmp/ca-copy/
+```
+
+3. Mount an empty in-memory filesystem (tmpfs) over the old system CA folder, then fill it with the stock certificates plus Burp's:
+
+```bash
+mount -t tmpfs tmpfs /system/etc/security/cacerts
+cp /data/local/tmp/ca-copy/* /system/etc/security/cacerts/
+cp /data/local/tmp/$HASH.0 /system/etc/security/cacerts/
+```
+
+4. Give every file the owner, permissions and SELinux label Android expects for system CAs:
+
+```bash
+chown root:root /system/etc/security/cacerts/*
+chmod 644 /system/etc/security/cacerts/*
+chcon u:object_r:system_security_cacerts_file:s0 /system/etc/security/cacerts/*
+```
+
+5. Bind-mount the new folder over the APEX trust store. This changes what this shell sees:
+
+```bash
+mount --bind /system/etc/security/cacerts /apex/com.android.conscrypt/cacerts
+```
+
+6. Do the same bind inside the Zygote process's mount namespace. Every app is forked from Zygote, so apps launched **after** this see Burp's CA:
+
+```bash
+for z in $(pidof zygote) $(pidof zygote64); do
+  nsenter --mount=/proc/$z/ns/mnt -- \
+    mount --bind /system/etc/security/cacerts /apex/com.android.conscrypt/cacerts
+done
+```
+
+None of these commands print anything when they work. If any line prints an error, stop and see Troubleshooting. On the x86_64 Pixel_9 image only `zygote64` exists (no 32-bit `zygote`), so the loop runs once.
+
+7. Quick check, then leave the device shell:
+
+```bash
+ls /apex/com.android.conscrypt/cacerts | wc -l
+exit
+```
+
+The count should be one more than before. On the Pixel_9 image that is `146` (145 stock certificates + Burp's).
+
+Back on your machine (where `HASH` is still set from Step 2), confirm the cert and the Zygote bind:
 
 ```bash
 adb shell ls -lZ /apex/com.android.conscrypt/cacerts/${HASH}.0
@@ -103,7 +126,8 @@ adb shell 'grep cacerts /proc/$(pidof zygote64)/mountinfo'
 
 The first should show `-rw-r--r-- 1 root root u:object_r:system_security_cacerts_file:s0` and the file. The second should list a `tmpfs` mount on `/apex/com.android.conscrypt/cacerts`. That line means the bind reached Zygote.
 
-Do **not** reboot after this step. A reboot wipes the overlay; if you reboot, re-run the script.
+This is an overlay in memory, not a change to the real image. Do **not** reboot after this step: a reboot wipes the overlay. If you do reboot, repeat Step 3 (the cert you pushed in Step 2 is still in `/data/local/tmp`).
+
 
 ## Step 4: Verify the Cert Is in the System Store
 
