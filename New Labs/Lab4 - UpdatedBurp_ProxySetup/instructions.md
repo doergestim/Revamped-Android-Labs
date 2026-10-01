@@ -16,6 +16,7 @@ cd ~/Android/Sdk/emulator/
 Open a terminal and run:
 
 ```bash
+cd ~/Android/Sdk/emulator/
 wget -O burp.sh "https://portswigger.net/burp/releases/download?product=community&type=Linux"
 file burp.sh          # should say "POSIX shell script executable", not "HTML document"
 chmod +x burp.sh
