@@ -210,9 +210,11 @@ Use `PDF Report` or `Print Report` in the menu to keep a copy of the report with
 
 ## Challenge: The Empty Report ##
 
-Scan the **InsecureBankv2** app, a well-known intentionally vulnerable banking app. Download it from:
+Scan the **InsecureBankv2** app, a well-known intentionally vulnerable banking app. Download it:
 
-https://raw.githubusercontent.com/dineshshetty/Android-InsecureBankv2/master/InsecureBankv2.apk
+```bash
+wget -O InsecureBankv2.apk 'https://raw.githubusercontent.com/dineshshetty/Android-InsecureBankv2/master/InsecureBankv2.apk'
+```
 
 The manifest side is full of findings: exported activities, an exported receiver and provider, `debuggable=true`, and StrandHogg 2.0 warnings. But look at `Code Analysis`, `Android API`, and `URLs`.
 
