@@ -74,6 +74,12 @@ adb shell am start -a android.intent.action.VIEW -d http://neverssl.com
 
 Back in Burp, go to **Proxy -> HTTP history**. You should see `GET /` to `http://neverssl.com` with status `200` and title **NeverSSL - Connecting ...**, followed by requests to a random `*.neverssl.com` host for `/online` (that is neverssl redirecting itself). Click a row to see the full request and response.
 
+>![IMPORTANT]
+>If the requests don't all appear on burp, press the **>** button on the emulator
+>
+><img width="134" height="51" alt="Screenshot From 2026-10-01 17-20-53" src="https://github.com/user-attachments/assets/c5ce163e-cd45-48f4-8de6-b29e08dcb542" />
+
+
 ![](images/burp_http_history.png)
 
 If you see it, the proxy is working. If not, jump to Troubleshooting.
