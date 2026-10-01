@@ -72,12 +72,7 @@ Run each command below in the Terminal. Press **Enter** after each command and w
    jadx --version
    ```
 
-<!-- SCREENSHOT SETUP A — Tools installed on Ubuntu.
-Show the output of java -version and jadx --version after completing setup.
-Highlight the Java version and JADX 1.5.6 so learners can recognise success.
-Replace this comment with:
-![Java and JADX installed on Ubuntu with their versions displayed](images/00a-tools-installed.png)
--->
+<img width="1785" height="881" alt="img1" src="https://github.com/user-attachments/assets/e297f5d1-8b45-461d-bfdc-a076e0ac668e" />
 
 ## 2. Download the DIVA APK
 
@@ -125,13 +120,7 @@ DIVA is the intentionally insecure Android app we will examine. We will download
 
 The left panel lists the APK's contents. **Source code** contains the reconstructed program, and **Resources** contains supporting files. Opening an item displays it in the larger panel on the right.
 
-<!-- SCREENSHOT 01 — Loaded JADX window.
-Show DIVA open. Label Source code, Resources, the main viewing area, and the
-Navigation menu. Label Source code as "Decompiled app code" to connect this
-window to the decompilation step. Keep the APK name visible.
-Replace this comment with:
-![The JADX window with the main areas labelled](images/01-jadx-window.png)
--->
+<img width="1593" height="987" alt="img2" src="https://github.com/user-attachments/assets/3d30fb18-a187-43d7-9c09-a89686d502f5" />
 
 ## 4. Read the Android manifest
 
@@ -142,16 +131,7 @@ The **manifest** is the app's configuration file. It identifies the app, lists r
 3. Scroll to the beginning of the file.
 4. Locate the fields marked in the screenshot and read them alongside the table below.
 
-<!-- SCREENSHOT 02 — Annotated AndroidManifest.xml.
-Show the top of the file through the closing intent-filter for MainActivity.
-Use numbered boxes matching the table: 1 package; 2 minSdkVersion and
-targetSdkVersion; 3 the three uses-permission lines; 4 debuggable and
-allowBackup; 5 MainActivity with its MAIN action and LAUNCHER category.
-Make all values legible. This screenshot must show exactly which fields the
-learner should notice, not just an unannotated editor window.
-Replace this comment with:
-![The five groups of manifest fields used in this walkthrough](images/02-manifest-annotated.png)
--->
+<img width="1648" height="954" alt="img3" src="https://github.com/user-attachments/assets/aca082be-90ea-4837-bd5e-94887c364520" />
 
 | Marker | What you should see | What it tells us |
 | --- | --- | --- |
@@ -210,12 +190,7 @@ We will now search for a log message without knowing which class contains it.
 3. Wait for the result in `jakhar.aseem.diva.LogActivity`.
 4. Double-click that result to open the matching code.
 
-<!-- SCREENSHOT 05 — Text search.
-Show diva-log in the search box, Code selected, Auto search off, the Search
-button, and the LogActivity result. Label the query, Code box, and result.
-Replace this comment with:
-![Finding the diva-log text in the application's code](images/05-text-search.png)
--->
+<img width="1538" height="1022" alt="img4" src="https://github.com/user-attachments/assets/0872d8e4-4fed-48cc-941e-6ee5b4749065" />
 
 Look at the method called `checkout()`. It reads an input field and calls another method:
 
@@ -298,12 +273,7 @@ You should see two directories:
 resources  sources
 ```
 
-<!-- SCREENSHOT 08 — Completed export.
-Show the export command, INFO - done, and the output of ls exported. Make sure
-the command is run from the Ubuntu lab folder created in Section 2.
-Replace this comment with:
-![The completed JADX export and its output folders](images/08-export.png)
--->
+<img width="1397" height="867" alt="img5" src="https://github.com/user-attachments/assets/9ebca261-2eff-4ad2-8135-f4f3e2fb8927" />
 
 The **`sources`** directory contains the reconstructed Java files. The class we examined earlier is saved as:
 
