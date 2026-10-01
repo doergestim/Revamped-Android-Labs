@@ -25,6 +25,7 @@ cd ~/Android/Sdk/emulator/
 Leave it running. Wait until the home screen is up, then in a new terminal:
 
 ```bash
+cd ~/Android/Sdk/emulator/
 adb root
 adb shell getprop ro.build.version.sdk     # expect 35
 adb shell getprop ro.build.version.release  # expect 15
