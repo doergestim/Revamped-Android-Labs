@@ -103,7 +103,8 @@ frida-ps -U | head
 
 A list of running processes means the two halves are talking.
 
-![](images/fridaps.png)
+<img width="610" height="197" alt="Screenshot From 2026-10-01 11-25-17" src="https://github.com/user-attachments/assets/ebad245e-25d8-48d5-8828-1a0d73ed2dcb" />
+
 
 ## Step 4: Install the Target and Watch It Quit ##
 
