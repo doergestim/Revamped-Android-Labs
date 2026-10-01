@@ -337,8 +337,6 @@ def current_user_id(authorization: str | None = Header(default=None)) -> int:
     except (jwt.PyJWTError, ValueError, KeyError):
         raise HTTPException(401, "Invalid or expired token") from None
 EOF
-
-touch __init__.py
 ```
 
 ## APK Application
