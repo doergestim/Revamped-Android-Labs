@@ -285,7 +285,7 @@ The **`resources`** directory contains decoded supporting files, including `Andr
 
 ---
 
-<b><i>Continuing the course? </br>[Next Lab](../Lab4%20-%20UpdatedBurp_ProxySetup/New-BurpProxySetup.md)</i></b>
+<b><i>Continuing the course? </br>[Next Lab](../Lab6%20-%20RootDetectionBypass/instructions.md)</i></b>
 
 <b><i>Want to go back? </br>[Previous Lab](../Lab4%20-%20UpdatedBurp_ProxySetup/New-BurpProxySetup.md)</i></b>
 
