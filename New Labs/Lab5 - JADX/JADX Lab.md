@@ -273,8 +273,6 @@ You should see two directories:
 resources  sources
 ```
 
-<img width="1397" height="867" alt="img5" src="https://github.com/user-attachments/assets/9ebca261-2eff-4ad2-8135-f4f3e2fb8927" />
-
 The **`sources`** directory contains the reconstructed Java files. The class we examined earlier is saved as:
 
 ```text
@@ -282,6 +280,8 @@ exported/sources/jakhar/aseem/diva/HardcodeActivity.java
 ```
 
 The **`resources`** directory contains decoded supporting files, including `AndroidManifest.xml`. These exported files can be opened in a text editor outside JADX.
+
+<img width="1397" height="867" alt="img5" src="https://github.com/user-attachments/assets/9ebca261-2eff-4ad2-8135-f4f3e2fb8927" />
 
 ---
 
