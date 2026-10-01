@@ -51,6 +51,9 @@ Set the device's global HTTP proxy with adb:
 
 ```bash
 adb shell settings put global http_proxy 10.0.2.2:8080
+```
+
+```bash
 adb shell settings get global http_proxy      # should print 10.0.2.2:8080
 ```
 
