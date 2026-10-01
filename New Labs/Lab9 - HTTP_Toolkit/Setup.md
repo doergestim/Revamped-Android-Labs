@@ -354,5 +354,6 @@ I have uploaded a file with the base64 format of the APK application.
 Install the file in the above directory and then execute the following command:
 
 ```bash
-base64 -d AndroidAPK.txt > AndroidLab.apk
+base64 -d AndroidAPK.txt > AndroidLab.zip
+unzip AndroidLab.zip
 ```
