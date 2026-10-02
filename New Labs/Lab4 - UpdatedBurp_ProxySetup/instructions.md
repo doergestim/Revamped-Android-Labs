@@ -43,7 +43,6 @@ Go to **Proxy -> Proxy settings**. A **Settings** window opens at **Tools -> Pro
 
 Leave it on the default. You do not need to bind it to a special interface. 
 
-While you are on the **Proxy** tab, check that the **Intercept** sub-tab shows **Intercept off** (the default). If intercept is on, every request from the device waits for you to click Forward.
 
 ## Step 3: Point the Emulator at Burp
 
