@@ -35,11 +35,13 @@ The first time Burp starts:
 
 Burp listens on `127.0.0.1:8080` by default, and that is all we need. Confirm it:
 
+While you are on the **Proxy** tab, check that the **Intercept** sub-tab shows **Intercept off** (the default). If intercept is on, every request from the device waits for you to click Forward.
+
 Go to **Proxy -> Proxy settings**. A **Settings** window opens at **Tools -> Proxy**. Under **Proxy listeners** you should see one entry, `127.0.0.1:8080`, with **Running** checked.
 
 ![](images/burp_listener.png)
 
-Leave it on the default. You do not need to bind it to a special interface the way the old Corellium lab did, because of how the emulator reaches your machine (Step 3 explains).
+Leave it on the default. You do not need to bind it to a special interface. 
 
 While you are on the **Proxy** tab, check that the **Intercept** sub-tab shows **Intercept off** (the default). If intercept is on, every request from the device waits for you to click Forward.
 
