@@ -47,7 +47,7 @@ Now we can press forward slash (`/`) to initiate a search of the output.
 
 We want to search for activities, so let's type `activity` and hit `Enter`:
 
-![less command](/images/Screenshot%20From%202026-10-02%2011-01-01.png)
+![less command](./images/Screenshot%20From%202026-10-02%2011-01-01.png)
 
 If done correctly, you should see this:
 
