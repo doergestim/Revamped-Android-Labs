@@ -111,13 +111,19 @@ To decrypt HTTPS, Burp presents its own certificate to the device, and the clien
 
 Then navigate to the .der file.
 
+Click on the three lines in the upper-left corner.
+
 <img width="81" height="67" alt="image" src="https://github.com/user-attachments/assets/0c4f4476-a663-4884-909e-46ca7c18b2f3" />
 
+Select Android SDK
 
 <img width="170" height="59" alt="image" src="https://github.com/user-attachments/assets/9da56e1b-2f90-4043-a52d-d42e73d75ff2" />
 
+Then Download.
 
 <img width="114" height="41" alt="image" src="https://github.com/user-attachments/assets/5aa31c8a-460a-4517-b483-73ff64ac34a8" />
+
+Then the der file.
 
 
 <img width="119" height="151" alt="image" src="https://github.com/user-attachments/assets/e1217552-4e02-4142-8e65-bc298401e062" />
