@@ -129,8 +129,16 @@ Then the der file.
 <img width="119" height="151" alt="image" src="https://github.com/user-attachments/assets/e1217552-4e02-4142-8e65-bc298401e062" />
 
 
+Then, select back and then User credentials.
 
-![](images/burp_user_cert.png)
+<img width="168" height="57" alt="image" src="https://github.com/user-attachments/assets/e6409f36-afa0-4654-9153-32fbf0809cab" />
+
+
+You should be able to see the cert:
+
+<img width="232" height="153" alt="image" src="https://github.com/user-attachments/assets/d736e20b-7489-43da-a94b-806e87e9bb94" />
+
+
 
 ## Step 6: What the User Store Does and Does Not Get You
 
