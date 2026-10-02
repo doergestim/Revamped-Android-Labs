@@ -70,6 +70,10 @@ On a typical Intel or AMD laptop this is `x86_64`. On an Apple-silicon Mac it is
 
 ## Step 3: Install frida-server on the Emulator 
 
+***SPECIAL NOTE!!!  Frida server is already installed on the class VM.  The instructions are below if you ever need to install.
+
+BEGIN INSTALL INSTRUCTIONS..  WHICH YOU DO NOT NEED ON THE VM BECAUSE IT IS INSTALLED!!!!!
+
 <img width="51" height="52" alt="Screenshot From 2026-10-01 11-12-01" src="https://github.com/user-attachments/assets/061ee35d-fadd-4be8-b9d6-c4d560fd7021" />
 
 
@@ -92,6 +96,9 @@ adb shell "/data/local/tmp/frida-server &"
 >That last command holds the shell open while the server runs. Open another terminal for the next steps. If it exits immediately, re-run `adb root` first: the server needs root.
 
 Back on your machine, confirm the client can talk to the server (`-U` means USB/local device):
+
+END OPTIONAL INSTALL INSTRUCTIONS!!!!!!  WHICH YOU DO NOT NEED ON THE VM AS IT IS INSTALLED!!!
+
 
 ```bash
 cd ~/Android/Sdk/emulator/
