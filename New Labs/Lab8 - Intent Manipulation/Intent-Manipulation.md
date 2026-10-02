@@ -28,13 +28,13 @@ apktool d final.apk
 
 This command will take the `final.apk` file and decompress it (since it is a zip) into multiple different directories.
 
-![Apktool d command](/images/Screenshot%20From%202026-10-02%2010-59-38.png)
+![Apktool d command](./images/img01.png)
 
 This allows us to go through and look at the `manifest.xml` file.
 
 Once this process finishes, go ahead and navigate into the `final` directory and run `ls` to list the contents of the folder:
 
-![ls command](/images/Screenshot%20From%202026-10-02%2011-00-26.png)
+![ls command](./images/img02.png)
 As you can see, we now have a file named `AndroidManifest.xml`. This is where we will be looking for the intents that we can access and manipulate.
 
 Let's continue by running the following command:
@@ -47,11 +47,11 @@ Now we can press forward slash (`/`) to initiate a search of the output.
 
 We want to search for activities, so let's type `activity` and hit `Enter`:
 
-![less command](./images/Screenshot%20From%202026-10-02%2011-01-01.png)
+![less command](./images/img03.png)
 
 If done correctly, you should see this:
 
-![Searching for activity](/images/Screenshot%20From%202026-10-02%2011-01-30.png)
+![Searching for activity](./images/img04.png)
 
 These are all of the exported activities. The following is an expansion of one of the entries to provide more context:
 
@@ -84,7 +84,7 @@ The following command executes the specified activity after the `-n` option.
 
 The name of each activity present in the application can be found in the [manifest file](https://www.blackhillsinfosec.com/field-guide-to-the-android-manifest-file/), but for this example, we will use the expanded entry from earlier:
 
-![Expanded activity](/images/red2.png)
+![Expanded activity](./images/img05.png)
 
 In the expanded entry, we see that the activity name is `.AccountDetails`, so we will substitute that into the above command and run it in our terminal:
 
@@ -92,11 +92,11 @@ In the expanded entry, we see that the activity name is `.AccountDetails`, so we
 adb shell am start -n com.bhis.thehackerbank/.{ACTIVITY NAME}
 ```
 
-![Intent Command](/images/red3.png)
+![Intent Command](./images/img06.png)
 
 Shortly after making the command the app is starting our intent.
 
-![Output of first Intent Command](/images/red4.png)
+![Output of first Intent Command](./images/img07.png)
 
 We can also pass data when starting intents with ADB. For example, running the below command results in a different result than running the command above.
 
@@ -104,11 +104,11 @@ We can also pass data when starting intents with ADB. For example, running the b
 adb shell am start -n com.bhis.thehackerbank/.AccountDetails --es "USER_COOKIE" "nothinginparticular"
 ```
 
-![Second Intent Command](/images/Screenshot%20From%202026-10-02%2012-30-20.png)
+![Second Intent Command](./images/img08.png)
 
 When executed correctly, the app will behave slightly differently and give us even more information, and you should something similar to the following:
 
-![Output of second intent command](/images/red5.png)
+![Output of second intent command](./images/img09.png)
 
 The second command requires us to know the name of the intent extra. These can be found by looking at the source code in a program such as `jadx`.
 
