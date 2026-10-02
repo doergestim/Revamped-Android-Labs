@@ -20,7 +20,7 @@ Apktool is a software used for decompiling and building again apk files.
 
 The quickest way of installing it is on their official website:
 
-![s](/home/zzz/Desktop/Students_labs/android-labs/Intent-Manipulation/images/Screenshot%20From%202026-10-01%2015-02-10.png)
+![s](./images/setup_img.png)
 
 
 
