@@ -109,6 +109,17 @@ To decrypt HTTPS, Burp presents its own certificate to the device, and the clien
 4. The file picker opens on **Recent** and may say **No items**, because a file pushed with adb is not listed there. Tap the **menu** (three lines, top left) -> **Downloads**, then tap **BurpCA.cer**. On an emulator with no screen lock it installs straight away; if you have a PIN set, you are asked for it.
 5. Confirm it landed in the user store: **Settings -> Security & privacy -> More security & privacy -> Encryption & credentials -> Trusted credentials -> User** tab. You should see **PortSwigger** (**PortSwigger CA**) listed.
 
+Then navigate to the .der file.
+
+<img width="81" height="67" alt="image" src="https://github.com/user-attachments/assets/0c4f4476-a663-4884-909e-46ca7c18b2f3" />
+
+<img width="170" height="59" alt="image" src="https://github.com/user-attachments/assets/9da56e1b-2f90-4043-a52d-d42e73d75ff2" />
+
+<img width="114" height="41" alt="image" src="https://github.com/user-attachments/assets/5aa31c8a-460a-4517-b483-73ff64ac34a8" />
+
+<img width="119" height="151" alt="image" src="https://github.com/user-attachments/assets/e1217552-4e02-4142-8e65-bc298401e062" />
+
+
 ![](images/burp_user_cert.png)
 
 ## Step 6: What the User Store Does and Does Not Get You
