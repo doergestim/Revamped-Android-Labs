@@ -628,3 +628,11 @@ if __name__ == "__main__":
     main()
 EOF
 ```
+
+## APK Application
+
+Install the **TeamsNotes.apk** application in the following folder:
+
+```bash
+cd ~/Android/Sdk/BurpSF2AIAnalysis
+```
