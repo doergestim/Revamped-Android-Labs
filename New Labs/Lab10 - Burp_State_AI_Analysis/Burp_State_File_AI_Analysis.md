@@ -96,7 +96,7 @@ adb -s 127.0.0.1:5555 install -r TeamNotes.apk
 
 The terminal should display **Success**.
 
-![image](./attachments/img7.png)
+![image](./attachments/img07.png)
 
 Go back to the Android VM and find the **TeamNotes** application in the launcher.
 
