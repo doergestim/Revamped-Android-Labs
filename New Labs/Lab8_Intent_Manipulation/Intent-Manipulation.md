@@ -7,6 +7,13 @@ If your device isn't booted yet, launch it with the following, look at [Lab Setu
 
 
 ### Prerequisites
+Before installing anything let's make prepared folder for all of the files.
+
+```bash
+cd ~/Android/Sdk
+mkdir Intent_Manipulation
+cd Intent_Manipulation
+```
 
 You will need to add jre so the apktool can work. Do it with this command in terminal.
 
@@ -29,39 +36,15 @@ The quickest way of installing it is on their official website:
 
 ![Linux instaltion process](./images/setup_photo.png)
 
-First of all we visit their website:
-
-https://apktool.org/docs/install
-
-Then we click the `linux wrapper script` with right click, save link as apktool.
-
-![Linux wrapper script](./images/setup_01.png)
-
-![Linux wrapper script downloaded](./images/apktool_script_on_desktop.png)
-
-Next we click the green link that will redirect us to downloading page. Then we pick the first option of apktool and we click it.
-
-![Installing proccess](./images/Installing.png)
-
-![Installing proccess further](./images/Installing_further.png)
-
-Now we are renaming the apktool that we just downloaded. 
-
-![Renaming the jar file](./images/renaming.png)
-
->[!NOTE]
-> We can use `mv` just to rename the file. First name of a file after `mv` is the name of a file that we want to change and the second one is the desired name of the file.
-
-Following step require us to move both of the files into ```/usr/local/bin``` folder. We can do it with mv command.
-
+Let's download the necessary files:
 ``` bash
-sudo mv apktool.jar /usr/local/bin 
+sudo wget -O /usr/local/bin/apktool.jar \
+https://github.com/iBotPeaches/Apktool/releases/download/v2.12.0/apktool_2.12.0.jar
+ 
+sudo wget -O /usr/local/bin/apktool \
+https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool
 ```
-``` bash
-sudo mv apktool /usr/local/bin
-```
->[!NOTE]
->`Mv` command is used for moving files as well. First after the command is the file name and the second is the desired file destination. In order to move those files into this certain directory we need `super user privilages`. This is why we use `sudo` command
+
 
 Now it is the time that we make both of the files executable. What it means is that we give a file execute permission, meaning the system is allowed to run it as a program or script.
 
