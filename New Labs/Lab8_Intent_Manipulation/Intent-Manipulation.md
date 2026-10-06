@@ -14,14 +14,14 @@ cd ~/Android/Sdk
 mkdir Intent_Manipulation
 cd Intent_Manipulation
 ```
-
+![Folder Creation](./images/folder_creation.png)
 You will need to add jre so the apktool can work. Do it with this command in terminal.
 
 ```bash
 sudo apt update
 sudo apt install -y default-jre
 ```
-
+![Downloading jre](./images/jre.png)
 ### Installing apktool
 
 Apktool is a software used for decompiling and building again apk files.
@@ -44,22 +44,19 @@ https://github.com/iBotPeaches/Apktool/releases/download/v2.12.0/apktool_2.12.0.
 sudo wget -O /usr/local/bin/apktool \
 https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool
 ```
-
+![Downloading apktool](./images/Downloading_apktool.png)
 
 Now it is the time that we make both of the files executable. What it means is that we give a file execute permission, meaning the system is allowed to run it as a program or script.
 
 ``` bash
-chmod +x /usr/local/bin/apktool
+sudo chmod +x /usr/local/bin/apktool
+sudo chmod +x /usr/local/bin/apktool.jar
 ```
-
-``` bash
-chmod +x /usr/local/bin/apktool.jar
-```
-![Giving executive permissions](./images/Exe_permissions.png)
+![Giving executive permissions](./images/Permissions.png)
 
 Now we try to open apktool in CLI (terminal).
 
-![Opening apktool](./images/opening_apktool.png)
+![Opening apktool](./images/apktool.png)
 
 This is how you should see it.
 
@@ -88,13 +85,17 @@ apktool d final.apk
 
 This command will take the `final.apk` file and decompress it (since it is a zip) into multiple different directories.
 
-![Apktool d command](./images/img01.png)
+![Apktool d command](./images/decompiling.png)
 
 This allows us to go through and look at the `manifest.xml` file.
 
 Once this process finishes, go ahead and navigate into the `final` directory and run `ls` to list the contents of the folder:
 
-![ls command](./images/img02.png)
+``` bash
+cd ./final
+ls
+```
+![ls command](./images/GoingIntoFolder.png)
 As you can see, we now have a file named `AndroidManifest.xml`. This is where we will be looking for the intents that we can access and manipulate.
 
 Let's continue by running the following command:
@@ -149,10 +150,10 @@ The name of each activity present in the application can be found in the [manife
 In the expanded entry, we see that the activity name is `.AccountDetails`, so we will substitute that into the above command and run it in our terminal:
 
 ```bash
-adb shell am start -n com.bhis.thehackerbank/.{ACTIVITY NAME}
+adb shell am start -n com.bhis.thehackerbank/.AccountDetails
 ```
 
-![Intent Command](./images/img06.png)
+![Intent Command](./images/first_intent.png)
 
 Shortly after making the command the app is starting our intent.
 
@@ -164,7 +165,7 @@ We can also pass data when starting intents with ADB. For example, running the b
 adb shell am start -n com.bhis.thehackerbank/.AccountDetails --es "USER_COOKIE" "nothinginparticular"
 ```
 
-![Second Intent Command](./images/img08.png)
+![Second Intent Command](./images/second_intent.png)
 
 When executed correctly, the app will behave slightly differently and give us even more information, and you should something similar to the following:
 
