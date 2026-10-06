@@ -11,7 +11,8 @@ If your device isn't booted yet, launch it with the following, look at [Lab Setu
 You will need to add jre so the apktool can work. Do it with this command in terminal.
 
 ```bash
-sudo apt update sudo apt install -y default-jre
+sudo apt update
+sudo apt install -y default-jre
 ```
 
 ### Installing apktool
