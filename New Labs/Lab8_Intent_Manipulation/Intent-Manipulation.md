@@ -26,7 +26,7 @@ Apktool is a software used for decompiling and building again apk files.
 
 The quickest way of installing it is on their official website:
 
-![Linux instaltion process](/images/setup_photo.png)
+![Linux instaltion process](./images/setup_photo.png)
 
 First of all we visit their website:
 
@@ -34,19 +34,19 @@ https://apktool.org/docs/install
 
 Then we click the `linux wrapper script` with right click, save link as apktool.
 
-![Linux wrapper script](/images/setup_01.png)
+![Linux wrapper script](./images/setup_01.png)
 
-![Linux wrapper script downloaded](/images/apktool_script_on_desktop.png)
+![Linux wrapper script downloaded](./images/apktool_script_on_desktop.png)
 
 Next we click the green link that will redirect us to downloading page. Then we pick the first option of apktool and we click it.
 
-![Installing proccess](/images/Installing.png)
+![Installing proccess](./images/Installing.png)
 
-![Installing proccess further](/images/Installing_further.png)
+![Installing proccess further](./images/Installing_further.png)
 
 Now we are renaming the apktool that we just downloaded. 
 
-![Renaming the jar file](/images/renaming.png)
+![Renaming the jar file](./images/renaming.png)
 
 >[!NOTE]
 > We can use `mv` just to rename the file. First name of a file after `mv` is the name of a file that we want to change and the second one is the desired name of the file.
@@ -71,11 +71,11 @@ chmod +x /usr/local/bin/apktool
 ``` bash
 chmod +x /usr/local/bin/apktool.jar
 ```
-![Giving executive permissions](/images/Exe_permissions.png)
+![Giving executive permissions](./images/Exe_permissions.png)
 
 Now we try to open apktool in CLI (terminal).
 
-![Opening apktool](/images/opening_apktool.png)
+![Opening apktool](./images/opening_apktool.png)
 
 This is how you should see it.
 
