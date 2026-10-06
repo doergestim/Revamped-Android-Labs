@@ -141,6 +141,7 @@ apktool
 apktool.jar
 ```
 
+<img width="810" height="118" alt="image" src="https://github.com/user-attachments/assets/3c81dd61-df73-414f-beef-b29e1323fd50" />
 
 
 ## 8. Move Apktool to /usr/local/bin
@@ -161,13 +162,7 @@ Add executable permissions to both Apktool files.
 sudo chmod +x /usr/local/bin/apktool
 sudo chmod +x /usr/local/bin/apktool.jar
 ```
-
-The two commands can also be written as one command:
-
-```bash
-sudo chmod +x /usr/local/bin/apktool /usr/local/bin/apktool.jar
-```
-
+ 
 ## 10. Verify the installed files
 
 Check that the files are present in `/usr/local/bin` and have executable permissions.
@@ -178,7 +173,8 @@ ls -l /usr/local/bin/apktool*
 
 The permissions should include `x`, indicating that the files are executable.
 
-<!-- Add screenshot here -->
+<img width="832" height="158" alt="image" src="https://github.com/user-attachments/assets/063fe0ac-8b2e-48b4-9f71-a9459305e665" />
+
 
 ## 11. Verify that Apktool is available in PATH
 
@@ -194,6 +190,9 @@ The expected output is:
 /usr/local/bin/apktool
 ```
 
+<img width="731" height="82" alt="image" src="https://github.com/user-attachments/assets/e1a2f035-191c-4e62-8893-5685c0d65c9b" />
+
+
 ## 12. Verify the Apktool version
 
 Run Apktool and print its installed version.
@@ -208,17 +207,7 @@ The expected version is:
 3.0.3
 ```
 
-<!-- Add screenshot here -->
-
-## 13. Display the Apktool help page
-
-As a final test, display the command line help.
-
-```bash
-apktool --help
-```
-
-If the help page is displayed without errors, Apktool is installed correctly and ready to use.
+<img width="570" height="85" alt="image" src="https://github.com/user-attachments/assets/43812b19-24c0-406f-94ec-94db9358a091" />
 
 ## Final verification
 
@@ -236,30 +225,33 @@ A working setup should show:
 - `/usr/local/bin/apktool`
 - Apktool version `3.0.3`
 
-At this point, the system is ready to decode and rebuild APK files with Apktool.
+
+<img width="821" height="209" alt="image" src="https://github.com/user-attachments/assets/4024fd3a-b19d-4a9c-8e7a-2523e52c82f9" />
 
 
-# Prerequisites
+## Cleanup 
 
-You will need to add jre so the apktool can work. Do it with this command.
+Run these commands to remove the created directory : 
 
 ```bash
-sudo apt update sudo apt install -y default-jre
+cd ~
+rmdir ~/apktool-setup
 ```
 
-# Installing apktool
+The directory should not exist anymore :
 
-Apktool is a software used for decompiling and building again apk files.
+<img width="683" height="153" alt="image" src="https://github.com/user-attachments/assets/126c1dfc-f225-4288-9bd6-8f4f455f733f" />
+
+
+Now let's try to run **apktool**:
+
+<img width="866" height="806" alt="image" src="https://github.com/user-attachments/assets/f71e0f71-b5b6-4312-9122-279bc0cf9852" />
+
+Running apktool without additional arguments confirms that the installation is working correctly. The command starts Apktool successfully and displays the available commands and usage information.
 
 
 
-> [!Note]
-> 
-> decompiling - taking the file that is ready to be put on the phone as an application and stripping it into file
-
-The quickest way of installing it is on their official website:
-
-![s](./images/setup_img.png)
+# At this point, the system is ready to decode and rebuild APK files with Apktool! 
 
 
 
