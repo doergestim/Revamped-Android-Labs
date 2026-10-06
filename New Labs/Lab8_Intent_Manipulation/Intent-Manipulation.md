@@ -59,7 +59,7 @@ sudo mv apktool.jar /usr/local/bin
 ``` bash
 sudo mv apktool /usr/local/bin
 ```
->![NOTE]
+>[!NOTE]
 >`Mv` command is used for moving files as well. First after the command is the file name and the second is the desired file destination. In order to move those files into this certain directory we need `super user privilages`. This is why we use `sudo` command
 
 Now it is the time that we make both of the files executable. What it means is that we give a file execute permission, meaning the system is allowed to run it as a program or script.
