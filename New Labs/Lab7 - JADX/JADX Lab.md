@@ -39,11 +39,10 @@ Run each command below in the Terminal. Press **Enter** after each command and w
 
    `default-jre` installs the **Java runtime** needed by JADX. `curl` downloads files, `ca-certificates` supports HTTPS certificate verification, `unzip` extracts JADX's ZIP file, and `tar` with `gzip` extracts DIVA's archive.
 
-3. Create a download folder and download **JADX 1.5.6** from its official GitHub release:
+3. CD into ~/Downloads and download **JADX 1.5.6** from its official GitHub release:
 
    ```bash
-   mkdir -p "$HOME/Downloads"
-   cd "$HOME/Downloads"
+   cd ~/Downloads
    curl --fail --location --output jadx-1.5.6.zip https://github.com/skylot/jadx/releases/download/v1.5.6/jadx-1.5.6.zip
    ```
 
