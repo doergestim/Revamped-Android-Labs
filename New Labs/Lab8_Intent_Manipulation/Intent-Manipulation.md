@@ -66,6 +66,11 @@ This is how you should see it.
 > First, please download the following file.
 > 
 > https://github.com/doergestim/Revamped-Android-Labs/blob/main/tools/final.apk
+>
+> After, use the following command to install the apk into the emulated phone:
+> ```bash
+> adb install final.apk
+> ```
 
 ## What is an intent?
 
