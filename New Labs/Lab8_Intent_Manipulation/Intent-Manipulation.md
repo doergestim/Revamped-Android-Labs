@@ -15,6 +15,7 @@ mkdir Intent_Manipulation
 cd Intent_Manipulation
 ```
 ![Folder Creation](./images/folder_creation.png)
+
 You will need to add jre so the apktool can work. Do it with this command in terminal.
 
 ```bash
