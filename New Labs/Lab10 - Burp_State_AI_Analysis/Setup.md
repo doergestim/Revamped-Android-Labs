@@ -635,4 +635,6 @@ Install the **TeamsNotes.apk** application in the following folder:
 
 ```bash
 cd ~/Android/Sdk/BurpSF2AIAnalysis
+wget https://github.com/doergestim/Revamped-Android-Labs/raw/refs/heads/main/New%20Labs/Lab10%20-%20Burp_State_AI_Analysis/TeamNotes.apk
+adb install TeamNotes.apk
 ```
