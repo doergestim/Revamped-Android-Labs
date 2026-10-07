@@ -158,7 +158,7 @@ The WebView Browser Tester from the last lab trusts the user store, so it is not
 adb shell settings put global http_proxy 10.0.2.2:8080
 ```
 
-2. Install the app **after** Step 3, then open it:
+2. Install the app **after** Step 3, then open it [You can download from the repo](https://github.com/doergestim/Revamped-Android-Labs/blob/main/New%20Labs/Lab5%20-%20Importing_Certificate_to_System_Trust_Store/MSTG-Android-Java.apk):
 
 ```bash
 adb install MSTG-Android-Java.apk
