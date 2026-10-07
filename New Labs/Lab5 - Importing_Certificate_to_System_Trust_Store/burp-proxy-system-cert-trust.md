@@ -148,68 +148,12 @@ Then on the device: **Settings -> Security & privacy -> More security & privacy 
 
 ![](images/system_cert.png)
 
-## Step 5: Intercept HTTPS From an App That Ignores the User Store
+## Step 5: Intercept HTTPS 
 
-The WebView Browser Tester from the last lab trusts the user store, so it is not a fair test here. You need a client that trusts **only** the system store, which is what almost every real app does. This lab uses the **MASTG Hacking Playground** (`MSTG-Android-Java.apk`, the app you scanned in the MobSF lab). It targets API 28 and has no network security config, so by Android's default it trusts **system CAs only** and ignores the user store. It also does not pin its certificate on the screen used below.
+Now open the browser on the VM and send data to https://www.google.com
 
-1. Make sure Burp is running with Intercept off, and re-apply the proxy (it may have reset when you restarted the emulator):
+<img width="84" height="75" alt="image" src="https://github.com/user-attachments/assets/d7c32e14-8a2c-4d74-b6a5-174c9f06bf2a" />
 
-```bash
-adb shell settings put global http_proxy 10.0.2.2:8080
-```
+<img width="296" height="255" alt="image" src="https://github.com/user-attachments/assets/e5903528-135d-47b9-9d5d-9e87a3bbb902" />
 
-2. Install the app **after** Step 3, then open it [You can download from the repo](https://github.com/doergestim/Revamped-Android-Labs/blob/main/New%20Labs/Lab5%20-%20Importing_Certificate_to_System_Trust_Store/MSTG-Android-Java_fix.apk):
-
-```bash
-adb install MSTG-Android-Java.apk
-```
-
-   On the device, open **Attack me if u can**, scroll down, and tap **OMTG_NETW_001_SECURE_CHANNEL**. The screen loads two pages:
-    * **1. Insecure web page** (`http://example.com`) shows *Webpage not available ... net::ERR_CLEARTEXT_NOT_PERMITTED*. That is expected: apps targeting API 28+ block plain HTTP by default, so it never reaches Burp.
-    * **2. Secure web page** (`https://example.com`) shows the Example Domain page. That request went through Burp.
-
-   For comparison: if you open the same screen **before** Step 3, panel 2 stays blank and Burp's **Event log** shows `The client failed to negotiate a TLS connection to example.com:443: (certificate_unknown) Received fatal alert: certificate_unknown`. That happens even though Burp's CA is still in the user store from the last lab, which proves the app ignores the user store.
-
-3. In Burp -> **Proxy -> HTTP history**, you should see `https://example.com` `GET /` `200`, title **Example Domain**, with a tick in the **TLS** column. Click it: the request shows the app's WebView User-Agent (it ends in `; wv)`), and the response shows the readable HTML. Burp decrypted HTTPS from an app that only trusts the system store.
-
-![](images/https_decrypted.png)
-
->[!NOTE]
->Apps that use **certificate pinning** will still refuse Burp's certificate even from the system store. That is a separate problem, usually solved at runtime with Frida (see the root detection lab for the same hooking technique).
-
-## Step 6: Clean Up (optional)
-
-Remove the proxy so later work is not routed through a closed Burp, and close the test app (an app that is already running keeps using the old proxy until it is stopped):
-
-```bash
-adb shell settings put global http_proxy :0
-adb shell am force-stop sg.vp.owasp_mobile.omtg_android
-```
-
-The system-store overlay is temporary, but closing the emulator does not remove it (Quick Boot resumes it). To remove it, reboot the device:
-
-```bash
-adb reboot
-```
-
-After the reboot, the System tab no longer lists PortSwigger.
-
-## Summary ##
-
-| Step | Why |
-| --- | --- |
-| Android 14+ moved the store to the Conscrypt APEX | A plain push to `/system/etc/security/cacerts` no longer works |
-| tmpfs overlay + bind into APEX and Zygote | Makes the system trust store writable in memory so apps pick up Burp's CA |
-| `<subject_hash_old>.0` filename, 644, SELinux label | Android looks CAs up by hashed name and requires the right perms and label |
-| Restart Settings / KeyChain / test app | Only processes started after the overlay see it |
-| Not persistent | `adb reboot` or a cold boot wipes the overlay (re-run Step 3); a Quick Boot resume keeps it |
-| System store | Apps that ignore the user store (like the MASTG app) now trust Burp, so their HTTPS decrypts (except pinned apps) |
-
-***
-
-<b><i>Continuing the course? </br>[Next Lab](/navigation.md)</i></b>
-
-<b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_04_Burp_Proxy_Setup/instructions.md)</i></b>
-
-<b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>
-
+Now, go back to burp and see the traffic.
