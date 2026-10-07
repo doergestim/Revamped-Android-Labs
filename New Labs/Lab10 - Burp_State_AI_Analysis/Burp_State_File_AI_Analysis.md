@@ -18,28 +18,6 @@ The guided walkthrough ends with reviewing the AI's output. You will then test i
 
 **Burp Suite** is an application security testing platform. In this lab, its proxy records the communication between the Android application and its API. Selecting an exchange in **Proxy → HTTP history** allows you to examine both its request and response.
 
-## TeamNotes application and access policy
-
-**TeamNotes** is a small productivity application with notes, search, team profiles and workspace statistics. Its Android interface looks like a normal application; the security observations are found in the API traffic.
-
-Use these lab credentials:
-
-| Field | Value |
-|---|---|
-| Email | `alice@example.com` |
-| Password | `Password123!` |
-| User ID | `2` |
-| Role | `user` |
-
-The intended access policy is:
-
-- Members may read, create, edit and delete their **own** notes.
-- Notes are private. This version of TeamNotes has no note-sharing feature.
-- Members may view basic team information such as names and departments.
-- Workspace-wide administrative statistics should require the **admin** role.
-
-This policy matters when interpreting the AI output. An endpoint's name alone cannot establish whether access is unauthorized.
-
 ## Environment Setup
 
 Execute the following commands in your terminal.
@@ -675,11 +653,33 @@ EOF
 
 ### APK Application
 
-Install the [TeamsNotes.apk](https://github.com/doergestim/Revamped-Android-Labs/blob/main/New%20Labs/Lab10%20-%20Burp_State_AI_Analysis/TeamNotes.apk)**TeamsNotes.apk** application in the following folder:
+Install the [TeamsNotes.apk](https://github.com/doergestim/Revamped-Android-Labs/blob/main/New%20Labs/Lab10%20-%20Burp_State_AI_Analysis/TeamNotes.apk) application in the following folder:
 
 ```
 ~/Android/Sdk/BurpSF2AIAnalysis
 ```
+
+## TeamNotes application and access policy
+
+**TeamNotes** is a small productivity application with notes, search, team profiles and workspace statistics. Its Android interface looks like a normal application; the security observations are found in the API traffic.
+
+Use these lab credentials:
+
+| Field | Value |
+|---|---|
+| Email | `alice@example.com` |
+| Password | `Password123!` |
+| User ID | `2` |
+| Role | `user` |
+
+The intended access policy is:
+
+- Members may read, create, edit and delete their **own** notes.
+- Notes are private. This version of TeamNotes has no note-sharing feature.
+- Members may view basic team information such as names and departments.
+- Workspace-wide administrative statistics should require the **admin** role.
+
+This policy matters when interpreting the AI output. An endpoint's name alone cannot establish whether access is unauthorized.
 
 ## Launch Android VM
 
