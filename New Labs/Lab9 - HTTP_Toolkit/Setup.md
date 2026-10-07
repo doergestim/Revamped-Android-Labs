@@ -341,7 +341,7 @@ EOF
 
 ## APK Application
 
-Install this application in the following folder:
+Install the [app-debug.apk](https://github.com/doergestim/Revamped-Android-Labs/blob/main/New%20Labs/Lab9%20-%20HTTP_Toolkit/app-debug.apk) application in the following folder:
 
 ```bash
 cd ~/Android/Sdk/HttpToolKit_Lab
