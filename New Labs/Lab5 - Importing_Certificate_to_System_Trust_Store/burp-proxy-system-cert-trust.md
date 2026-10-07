@@ -152,8 +152,14 @@ Then on the device: **Settings -> Security & privacy -> More security & privacy 
 
 Now open the browser on the VM and send data to https://www.google.com
 
-<img width="84" height="75" alt="image" src="https://github.com/user-attachments/assets/d7c32e14-8a2c-4d74-b6a5-174c9f06bf2a" />
+<img width="150" height="175" alt="image" src="https://github.com/user-attachments/assets/d7c32e14-8a2c-4d74-b6a5-174c9f06bf2a" />
+
+
 
 <img width="296" height="255" alt="image" src="https://github.com/user-attachments/assets/e5903528-135d-47b9-9d5d-9e87a3bbb902" />
 
+
 Now, go back to burp and see the traffic.
+
+<img width="830" height="436" alt="image" src="https://github.com/user-attachments/assets/002d1ce0-fb87-4edb-98de-bcaee798ab3b" />
+
