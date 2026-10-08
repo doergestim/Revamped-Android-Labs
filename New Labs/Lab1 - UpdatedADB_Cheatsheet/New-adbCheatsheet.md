@@ -6,6 +6,32 @@
 
 If your device isn't booted yet, launch it with the following, look at [Lab Setup](/New%20Labs/NewLab_Setup.md/#Launching%the%Device)
 
+# Launching the Device
+
+Start by opening a terminal:
+
+![](/New%20Labs/attachments/terminalinubuntu.png)
+
+Then run the following to launch Android Studio:
+
+```bash
+android-studio
+```
+
+Once it launches, you will see the following window.<br>
+Click `More Actions` and then `Virtual Device Manager`.
+
+![](/New%20Labs/attachments/androidWelcomePage.png)
+
+Then, you will see the following window.<br>
+Click the `Play` icon next to the `Pixel 9` device to power it on.
+
+![](/New%20Labs/attachments/turnondevice.png)
+
+Behold! Your very own emulated Virtual Android!
+
+![](/New%20Labs/attachments/devicewindow.png)
+
 Then execute the following command to connect with **ADB (Android Debug Bridge)** to the Android VM.
 
 ```bash
