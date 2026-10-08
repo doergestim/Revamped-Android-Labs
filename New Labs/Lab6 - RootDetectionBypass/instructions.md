@@ -40,7 +40,7 @@ frida --version
 
 ## Step 2: Start the Emulator and Confirm Root
 
-Start the Pixel_9 emulator (Android Studio, or straight from a terminal):
+Start the Pixel_9 emulator (Android Studio, or straight from a terminal). On a new terminal:
 
 ```bash
 cd ~/Android/Sdk/emulator/
