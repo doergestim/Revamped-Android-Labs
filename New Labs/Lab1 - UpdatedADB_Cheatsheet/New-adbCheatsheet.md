@@ -6,8 +6,16 @@
 
 If your device isn't booted yet, launch it with the following, look at [Lab Setup](/New%20Labs/NewLab_Setup.md/#Launching%the%Device)
 
+Then execute the following command to connect with **ADB (Android Debug Bridge)** to the Android VM.
+
+```bash
+adb connect 127.0.0.1:5555
+```
+
+![](/New%20Labs/attachments/Lab1/adbConnect.png)
+
 To verify access to your Android device, use adb's devices command.<br>
-Let's open a new terminal and run the following:
+In the current terminal, run the following command:
 
 ```bash
 adb devices
@@ -15,10 +23,14 @@ adb devices
 
 ![](/New%20Labs/attachments/Lab1/adbDevices.png)
 
+Android emulators commonly use port `5554` for console communication and port `5555` for ADB connections. As a result, ADB may display two entries (`emulator-5554` and `127.0.0.1:5555`), even though both refer to the same Android emulator.
+
+The `-s` parameter allows you to specify which Android device to target when executing ADB commands, especially when multiple devices are connected.
+
 With adb connection, you can gain an interactive shell on the device by running the following commands: 
 
 ```bash
-adb shell
+adb -s 127.0.0.1:5555 shell
 su
 id
 ```
@@ -34,7 +46,7 @@ Go ahead and enter `exit` twice to leave the shell.
 If you already know exactly what you're looking for, you can also use adb's shell command to run commands interactively, even to pipe output to your local testing system. For example, maybe you're researching the security of Android's KeyChain. The following command will run on the Android device and pipe the output to your local VM. 
 
 ```bash
-adb shell pm list packages | grep key
+adb -s 127.0.0.1:5555 shell pm list packages | grep key
 ```
 
 ![](/New%20Labs/attachments/Lab1/grepKey.png)
@@ -58,7 +70,7 @@ wget https://f-droid.org/F-Droid.apk
 Next, let's install it.
 
 ```bash
-adb install F-Droid.apk
+adb -s 127.0.0.1:5555 install F-Droid.apk
 ```
 
 ![](/New%20Labs/attachments/Lab1/installFdroid.png)
@@ -68,7 +80,7 @@ If the app you are testing is from the Google Play store, then you will want to 
 To find the package name, use Android's package manager utility, `pm`, to list all of the package names and pipe the output to `grep` in order to search for the package that you are testing.
 
 ```bash
-adb shell pm list packages | grep fdroid
+adb -s 127.0.0.1:5555 shell pm list packages | grep fdroid
 ```
 
 ![](/New%20Labs/attachments/Lab1/listPackages.png)
@@ -76,7 +88,7 @@ adb shell pm list packages | grep fdroid
 Use `pm` again, with the package name, to find the full path to the APK.
 
 ```bash
-adb shell pm path org.fdroid.fdroid
+adb -s 127.0.0.1:5555 shell pm path org.fdroid.fdroid
 ```
 
 ![](/New%20Labs/attachments/Lab1/findPath.png)
@@ -93,7 +105,7 @@ The official explanation for why the name dynamically changes is because they ha
 That long, messy string is the full file path that we will use to copy the APK file from the device. With adb's `pull` command, let's run the following:
 
 ```bash
-adb pull /data/app/[Your unique directory string]/base.apk
+adb -s 127.0.0.1:5555 pull /data/app/[Your unique directory string]/base.apk
 ```
 
 >[!TIP] 
@@ -101,7 +113,7 @@ adb pull /data/app/[Your unique directory string]/base.apk
 
 ![](/New%20Labs/attachments/Lab1/copyString.png)
 
-Now paste the path after `adb pull` 
+Now paste the path after `adb -s 127.0.0.1:5555 pull`
 
 ![](/New%20Labs/attachments/Lab1/adbPullPath.png)
 
@@ -120,7 +132,7 @@ One way is to use some of logcat's built in filter mechanisms, which will filter
 Let's run the following command:
 
 ```bash
-adb logcat | grep fdroid
+adb -s 127.0.0.1:5555 logcat | grep fdroid
 ```
 
 ![](/New%20Labs/attachments/Lab1/grepFdroid.png)
@@ -132,16 +144,16 @@ If you think that the app might be spawning new processes or making inter-proces
 Next, we need to launch Fdroid. Do so by running the following:
 
 ```bash
-adb shell monkey -p org.fdroid.fdroid 1
+adb -s 127.0.0.1:5555 shell monkey -p org.fdroid.fdroid 1
 ```
 
 >[!Note] 
 >Remember, your PID will be different than what is shown below.
 
 ```bash
-adb shell ps | head -n 1
-adb shell ps | grep fdroid
-adb logcat | grep [Pid]
+adb -s 127.0.0.1:5555 shell ps | head -n 1
+adb -s 127.0.0.1:5555 shell ps | grep fdroid
+adb -s 127.0.0.1:5555 logcat | grep [Pid]
 ```
 
 ![](/New%20Labs/attachments/Lab1/grepPid.png)
