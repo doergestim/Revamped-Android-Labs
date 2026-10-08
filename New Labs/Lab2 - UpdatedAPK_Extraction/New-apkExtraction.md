@@ -11,6 +11,16 @@ If your device isn't booted yet, launch it with the following, look at [Lab Setu
 
 We need to start by getting the package name for the application.<br>
 
+First let's create the **Lab folder** and download **fdroid**: 
+
+```bash 
+mkdir -p ~/Android/Labs/Lab2_APK_Extraction
+cd ~/Android/Labs/Lab2_APK_Extraction 
+wget https://f-droid.org/F-Droid.apk -O F-Droid.apk
+```
+
+<img width="793" height="350" alt="image" src="https://github.com/user-attachments/assets/698a9349-7f6f-4972-852e-909a6db30874" />
+
 To find the package name, use Android's package manager utility, `pm`, to list all of the package names and pipe the output to `grep` in order to search for the package that you are testing.
 
 ```bash
