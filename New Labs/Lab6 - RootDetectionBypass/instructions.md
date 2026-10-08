@@ -17,32 +17,6 @@ There is no single "am I rooted?" call in Android, so apps stack up cheap heuris
 
 Each check is usually a method returning a boolean, and the app trips if any return `true`. That is the weakness we exploit: force those methods to return `false` and the app believes it is on a clean device.
 
-# Launching the Device
-
-Start by opening a terminal:
-
-![](/New%20Labs/attachments/terminalinubuntu.png)
-
-Then run the following to launch Android Studio:
-
-```bash
-android-studio
-```
-
-Once it launches, you will see the following window.<br>
-Click `More Actions` and then `Virtual Device Manager`.
-
-![](/New%20Labs/attachments/androidWelcomePage.png)
-
-Then, you will see the following window.<br>
-Click the `Play` icon next to the `Pixel 9` device to power it on.
-
-![](/New%20Labs/attachments/turnondevice.png)
-
-Behold! Your very own emulated Virtual Android!
-
-![](/New%20Labs/attachments/devicewindow.png)
-
 ## Step 1: Install Frida
 
 Frida has two halves that must be the **same version**: a client on your machine (`frida-tools`) and a server that runs on the device (`frida-server`).
