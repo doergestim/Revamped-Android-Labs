@@ -9,7 +9,9 @@ If your device isn't booted yet, launch it with the following, look at [Lab Setu
 To verify access to your Android device, use adb's devices command.<br>
 Let's open a new terminal and run the following:
 
-<pre>adb devices</pre>
+```bash
+adb devices
+```
 
 ![](/New%20Labs/attachments/Lab1/adbDevices.png)
 
@@ -31,7 +33,9 @@ Go ahead and enter `exit` twice to leave the shell.
 
 If you already know exactly what you're looking for, you can also use adb's shell command to run commands interactively, even to pipe output to your local testing system. For example, maybe you're researching the security of Android's KeyChain. The following command will run on the Android device and pipe the output to your local VM. 
 
-<pre>adb shell pm list packages | grep key</pre>
+```bash
+adb shell pm list packages | grep key
+```
 
 ![](/New%20Labs/attachments/Lab1/grepKey.png)
 
