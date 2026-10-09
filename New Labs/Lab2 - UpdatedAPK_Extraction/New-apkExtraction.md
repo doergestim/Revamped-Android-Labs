@@ -4,12 +4,34 @@
 #### This lab is the UPDATED VERSION
 <hr>
 
-If your device isn't booted yet, launch it with the following, look at [Lab Setup](/New%20Labs/NewLab_Setup.md/#Launching%the%Device)
+First, let's launch the Android emulator. If your emulator is already running, you can skip this step.
 
+Start by opening a terminal:
+
+![](/New%20Labs/attachments/terminalinubuntu.png)
+
+Then run the following to launch Android Studio:
+<pre>android-studio</pre>
+
+Once it launches, you will see the following window.<br>
+Click `More Actions` and then `Virtual Device Manager`.
+
+![](/New%20Labs/attachments/androidWelcomePage.png)
+
+Then, you will see the following window.<br>
+Click the `Play` icon next to the `Pixel 9` device to power it on.
+
+![](/New%20Labs/attachments/turnondevice.png)
+
+Behold! Your very own emulated Virtual Android!
+
+![](/New%20Labs/attachments/devicewindow.png)
 
 ## Downloading the APK
 
-We need to start by getting the package name for the application.<br>
+We need to start by getting the package name for the application. Let's open a new terminal: <br>
+
+![](/New%20Labs/attachments/terminalinubuntu.png)
 
 First let's create the **Lab folder** and download **fdroid**: 
 
@@ -21,7 +43,13 @@ wget https://f-droid.org/F-Droid.apk -O F-Droid.apk
 
 <img width="793" height="350" alt="image" src="https://github.com/user-attachments/assets/698a9349-7f6f-4972-852e-909a6db30874" />
 
-To find the package name, use Android's package manager utility, `pm`, to list all of the package names and pipe the output to `grep` in order to search for the package that you are testing.
+Now that we have downloaded **F-Droid** on Ubuntu, let's install it on the Android emulator: 
+
+```bash
+adb install -r F-Droid.apk
+```
+
+To find the package name, use Android's package manager utility, `pm`, to list installed packages and pipe the output to `grep` to find F-Droid.
 
 ```bash
 adb shell pm list packages | grep fdroid
@@ -29,7 +57,7 @@ adb shell pm list packages | grep fdroid
 
 ![](/New%20Labs/attachments/Lab1/listPackages.png)
 
-To download the APK from the device you will need the applications full path. To get it,  run the following command:
+To extract the APK from the device, we first need its full path. Run the following command:
 
 ```bash
 adb shell pm path org.fdroid.fdroid
@@ -49,7 +77,7 @@ adb pull [PATH_TO_APP] [OUTFILE_NAME]
 
 ## Running MobSF
 
-[MobSF](https://mobsf.github.io/docs/#/) is already installed on your VM. To run the docker container, run this command:
+[MobSF](https://mobsf.github.io/docs/#/) can be run in a Docker container on your VM. Run the following command:
 
 ```bash
 sudo docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
@@ -59,7 +87,7 @@ Enter the VM password if/when prompted.
 
 ![](/Labs/LAB_02_APK_Extraction/images/mobsflaunch.png)
 
-Now navigate to http://0.0.0.0:8000 in your VM web browser.
+Now navigate to http://127.0.0.1:8000 in your VM web browser.
 
 ![](/Labs/LAB_02_APK_Extraction/images/webbrowsernavigate.png)
 
