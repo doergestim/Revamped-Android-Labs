@@ -41,7 +41,7 @@ cd ~/Android/Labs/Lab2_APK_Extraction
 wget https://f-droid.org/F-Droid.apk -O F-Droid.apk
 ```
 
-<img width="793" height="350" alt="image" src="https://github.com/user-attachments/assets/698a9349-7f6f-4972-852e-909a6db30874" />
+<img width="787" height="328" alt="image" src="https://github.com/user-attachments/assets/8e39a5c4-a95a-4807-a593-b0631afd3ea5" />
 
 Now that we have downloaded **F-Droid** on Ubuntu, let's install it on the Android emulator: 
 
@@ -49,13 +49,15 @@ Now that we have downloaded **F-Droid** on Ubuntu, let's install it on the Andro
 adb install -r F-Droid.apk
 ```
 
+<img width="787" height="108" alt="image" src="https://github.com/user-attachments/assets/c520be4f-d6c1-42c4-9528-2917732d768e" />
+
 To find the package name, use Android's package manager utility, `pm`, to list installed packages and pipe the output to `grep` to find F-Droid.
 
 ```bash
 adb shell pm list packages | grep fdroid
 ```
 
-![](/New%20Labs/attachments/Lab1/listPackages.png)
+<img width="1039" height="118" alt="image" src="https://github.com/user-attachments/assets/222d80e2-2443-4d7d-8983-dff0ad56fb46" />
 
 To extract the APK from the device, we first need its full path. Run the following command:
 
@@ -63,24 +65,40 @@ To extract the APK from the device, we first need its full path. Run the followi
 adb shell pm path org.fdroid.fdroid
 ```
 
-Copy the line in the output that ends in `base.apk` as shown below:
+Copy the APK path ending in **base.apk**, excluding the **"package:"** prefix, as shown below:
 
-![](/New%20Labs/attachments/Lab2/copyBaseApk.png)
+<img width="1045" height="102" alt="image" src="https://github.com/user-attachments/assets/581bf60a-6e8b-41e8-b03e-040895a6efda" />
 
-Next, run the final command. Make sure you give it a different output name this time!
+Next, run the final command. Make sure you give it a different output name. For this instance we'll use **"analyze-me.apk"** : 
 
 ```bash
-adb pull [PATH_TO_APP] [OUTFILE_NAME]
+adb pull [PATH_TO_APP] analyze-me.apk
 ```
 
-![](/New%20Labs/attachments/Lab2/renameApk.png)
+<img width="1054" height="126" alt="image" src="https://github.com/user-attachments/assets/beae059a-9267-4783-8b48-73ef0ef334b3" />
 
 ## Running MobSF
+
+First, check if Docker is installed:
+
+```bash
+sudo docker --version
+```
+
+If Docker is not installed, run the following commands:
+
+```bash
+sudo apt update
+sudo apt install -y docker.io
+sudo systemctl enable --now docker
+```
+
+<img width="1900" height="555" alt="image" src="https://github.com/user-attachments/assets/db1152bf-3840-478a-976c-4f4d64db8fd8" />
 
 [MobSF](https://mobsf.github.io/docs/#/) can be run in a Docker container on your VM. Run the following command:
 
 ```bash
-sudo docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
+sudo docker run -it --rm -p 127.0.0.1:8000:8000 opensecurity/mobile-security-framework-mobsf:latest
 ```
 
 Enter the VM password if/when prompted.
@@ -97,7 +115,7 @@ Once loaded, go ahead and click "Upload and Analyze", and upload an APK file.
 
 ![](/Labs/LAB_02_APK_Extraction/images/openapk.png)
 
-Processing the APK file will take a while, so let's continue on. Let it keep running in the background as we will use it for future labs.
+Processing the APK may take a while. Keep the MobSF container running and continue with the lab.
 
 ## Analyzing Other Apps
 You can also test out any app you'd like from the Play Store. To do this you will need to install `OpenGApps`. This will give you access to the Google Play Store. This can be done from the "Apps" tab in Corellium.
