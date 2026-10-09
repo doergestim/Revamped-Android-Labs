@@ -109,7 +109,10 @@ Now navigate to http://127.0.0.1:8000 in your VM web browser.
 
 <img width="1080" height="681" alt="image" src="https://github.com/user-attachments/assets/f86e26ba-2eae-4094-b901-9c4f64b62d9e" />
 
-Enter the VM password when prompted: 
+If prompted to log in, use the default MobSF credentials:
+
+- **Username:** `mobsf`
+- **Password:** `mobsf` 
 
 <img width="693" height="590" alt="image" src="https://github.com/user-attachments/assets/15845bab-0700-4e0a-b5b4-e871d30e10aa" />
 
