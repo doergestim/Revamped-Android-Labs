@@ -75,7 +75,7 @@ On a typical Intel or AMD laptop this is `x86_64`. On an Apple-silicon Mac it is
 
 Download the `frida-server` build that matches **both** your Frida version (Step 1) and your ABI (Step 2) from the Frida releases page: https://github.com/frida/frida/releases, make sure to click "Show More Assets", the server won't be at the very top
 
-The file is named `frida-server-<version>-android-<abi>.xz`. For version `17.19.0` on an `x86_64` emulator that is `frida-server-17.19.0-android-x86_64.xz`. Map the ABI to Frida's name: `x86_64` -> `x86_64`, `arm64-v8a` -> `arm64`.
+The file is named `frida-server-<version>-android-<abi>.xz`. For version `17.23.1` on an `x86_64` emulator that is `frida-server-17.23.1-android-x86_64.xz`. Map the ABI to Frida's name: `x86_64` -> `x86_64`, `arm64-v8a` -> `arm64`.
 
 Decompress it, push it to the device, and run it:
 
