@@ -4,6 +4,8 @@
 #### This lab is the UPDATED VERSION
 <hr>
 
+If your device isn't booted yet, launch it with the following, look at [Lab Setup](/New%20Labs/NewLab_Setup.md/#Launching%the%Device)
+
 First, let's launch the Android emulator. If your emulator is already running, you can skip this step.
 
 Start by opening a terminal:
@@ -101,36 +103,67 @@ sudo systemctl enable --now docker
 sudo docker run -it --rm -p 127.0.0.1:8000:8000 opensecurity/mobile-security-framework-mobsf:latest
 ```
 
-Enter the VM password if/when prompted.
-
-![](/Labs/LAB_02_APK_Extraction/images/mobsflaunch.png)
+<img width="1132" height="602" alt="image" src="https://github.com/user-attachments/assets/86ad2d7c-b33f-4036-ab9d-cc451423d07c" />
 
 Now navigate to http://127.0.0.1:8000 in your VM web browser.
 
-![](/Labs/LAB_02_APK_Extraction/images/webbrowsernavigate.png)
+<img width="1080" height="681" alt="image" src="https://github.com/user-attachments/assets/f86e26ba-2eae-4094-b901-9c4f64b62d9e" />
 
-Once loaded, go ahead and click "Upload and Analyze", and upload an APK file. 
+Enter the VM password when prompted: 
 
-![](/Labs/LAB_02_APK_Extraction/images/uploadandanalyze.png)
+<img width="693" height="590" alt="image" src="https://github.com/user-attachments/assets/15845bab-0700-4e0a-b5b4-e871d30e10aa" />
 
-![](/Labs/LAB_02_APK_Extraction/images/openapk.png)
+Once loaded, click "Upload & Analyze" and select the `analyze-me.apk` file from your lab directory.
+
+<img width="839" height="651" alt="image" src="https://github.com/user-attachments/assets/f8879ac0-8149-4dad-a4cb-51c6e58fd378" />
+
+<img width="1199" height="386" alt="image" src="https://github.com/user-attachments/assets/0d16aec3-d5af-471d-b747-abb58d8024a7" />
 
 Processing the APK may take a while. Keep the MobSF container running and continue with the lab.
 
+Once the analysis is complete, MobSF generates a static analysis report.
+
+The report includes information about the application's permissions, exported components, signing certificates, and potential security issues.
+
+<img width="1710" height="803" alt="image" src="https://github.com/user-attachments/assets/82d1b7a1-a3d9-4644-a231-09c4c4cbc5cf" />
+
+We will explore these findings in more detail in the next lab, using a deliberately vulnerable Android application.
+
 ## Analyzing Other Apps
-You can also test out any app you'd like from the Play Store. To do this you will need to install `OpenGApps`. This will give you access to the Google Play Store. This can be done from the "Apps" tab in Corellium.
+## Analyzing Other Apps
 
-![](/Labs/LAB_02_APK_Extraction/images/installopengapps.png)
+You can also analyze other Android applications using the emulator.
 
->[!Note]
->You will need to log-in with a Google account before you can download any apps
+If your Android Virtual Device (AVD) includes the Google Play Store, you can download and install applications directly from it.
 
-Then you can simply install apps from the Play Store as you normally would.
+>[!NOTE]
+>You will need to sign in with a Google account to download applications from the Play Store.
+
+Alternatively, you can download an APK from a trusted source and install it using ADB.
+
+First, navigate to your lab directory:
+
+```bash
+cd ~/Android/Labs/Lab2_APK_Extraction
+```
+
+Then install the downloaded APK:
+
+```bash
+adb install application.apk
+```
+
+Replace `application.apk` with the name of your downloaded APK file.
+
+Once installed, follow the previous steps to locate and extract the application's APK for analysis.
+
+>[!NOTE]
+>Some applications use multiple APK files. If `adb shell pm path` returns multiple paths, extracting only `base.apk` may not capture the complete application.
 
 ***                                                                 
 
 <b><i>Continuing the course? </br>[Next Lab](/New%20Labs/Lab3%20-%20MobSFlive/instructions.md)</i></b>
 
-<b><i>Want to go back? </br>[Previous Lab](/Labs/LAB_01_adb_basics/adb_cheatsheet.md)</i></b>
+<b><i>Want to go back? </br>[Previous Lab](/New%20Labs/Lab1%20-%20UpdatedADB_Cheatsheet/New-adbCheatsheet.md)</i></b>
 
 <b><i>Looking for a different lab? </br>[Lab Directory](/navigation.md)</i></b>
