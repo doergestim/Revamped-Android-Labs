@@ -84,7 +84,7 @@ DIVA is the intentionally insecure Android app we will examine. We will download
    cd "$HOME/Desktop/Labs/JADX"
    ```
 
-2. Download the archive containing DIVA:
+2. Download the DIVA APK:
 
    ```bash
    wget -O diva.apk "https://raw.githubusercontent.com/doergestim/Revamped-Android-Labs/main/New%20Labs/Lab7%20-%20JADX/diva.apk"
