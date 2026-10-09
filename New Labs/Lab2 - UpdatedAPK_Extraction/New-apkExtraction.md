@@ -53,6 +53,16 @@ adb install -r F-Droid.apk
 
 <img width="787" height="108" alt="image" src="https://github.com/user-attachments/assets/c520be4f-d6c1-42c4-9528-2917732d768e" />
 
+*F-Droid* should now be visible in the emulator app menu. Let's check! 
+
+In the android emulator, swipe up using your mouse to open the app menu. F-Droid should already be installed : 
+
+<img width="533" height="867" alt="image" src="https://github.com/user-attachments/assets/db59c2b3-cad7-4026-a2b3-520c4bc0d070" />
+
+<br>
+
+<img width="461" height="819" alt="image" src="https://github.com/user-attachments/assets/cc742338-51a2-4113-8630-02778ebc7f36" />
+
 To find the package name, use Android's package manager utility, `pm`, to list installed packages and pipe the output to `grep` to find F-Droid.
 
 ```bash
@@ -133,35 +143,103 @@ The report includes information about the application's permissions, exported co
 We will explore these findings in more detail in the next lab, using a deliberately vulnerable Android application.
 
 ## Analyzing Other Apps
-## Analyzing Other Apps
 
-You can also analyze other Android applications using the emulator.
+You can also extract APKs from applications installed directly through the Android interface.
 
-If your Android Virtual Device (AVD) includes the Google Play Store, you can download and install applications directly from it.
+Open **F-Droid** on your Android emulator and search for **Open Camera**.
 
->[!NOTE]
->You will need to sign in with a Google account to download applications from the Play Store.
+<img width="464" height="829" alt="image" src="https://github.com/user-attachments/assets/ccde5723-68df-4593-9c46-e41d810edfe8" />
 
-Alternatively, you can download an APK from a trusted source and install it using ADB.
+<br>
 
-First, navigate to your lab directory:
+<img width="466" height="826" alt="image" src="https://github.com/user-attachments/assets/b40db286-b434-430d-9bdc-fa5d60002499" />
+
+<br>
+
+<img width="482" height="829" alt="image" src="https://github.com/user-attachments/assets/2c2e3ab4-c112-4d7c-8777-70c55bdbb873" />
+
+<br>
+
+<img width="469" height="825" alt="image" src="https://github.com/user-attachments/assets/fb1209d5-3cf2-47fe-8fe6-5b4dec0d624c" />
+
+<br>
+
+<img width="476" height="826" alt="image" src="https://github.com/user-attachments/assets/d880d041-2abc-4d4a-8bca-d497f4263aae" />
+
+<br>
+
+When prompted, open Settings and enable Allow from this source to let F-Droid install the application.
+<img width="502" height="839" alt="image" src="https://github.com/user-attachments/assets/48d22de7-e457-4a08-b05b-2d44b5cc7daf" />
+
+<br>
+
+<img width="355" height="554" alt="image" src="https://github.com/user-attachments/assets/8a0a1a44-e49b-4561-9724-df1f833c8a8b" />
+
+<br>
+
+<img width="476" height="818" alt="image" src="https://github.com/user-attachments/assets/1e69e056-201b-4a66-92cc-df8fb20aea46" />
+
+<br>
+
+Once installed, return to your Ubuntu terminal and find the application's package name:
 
 ```bash
-cd ~/Android/Labs/Lab2_APK_Extraction
+adb shell pm list packages | grep -i opencamera
 ```
 
-Then install the downloaded APK:
+<img width="1101" height="94" alt="image" src="https://github.com/user-attachments/assets/15f78ad2-d7a3-4b6b-9a46-fe8dc5d3c900" />
+
+Find the installed APK's location:
 
 ```bash
-adb install application.apk
+adb shell pm path net.sourceforge.opencamera
 ```
 
-Replace `application.apk` with the name of your downloaded APK file.
+<img width="1044" height="59" alt="image" src="https://github.com/user-attachments/assets/cb520839-faa9-480c-bca4-3773e569336c" />
 
-Once installed, follow the previous steps to locate and extract the application's APK for analysis.
+Extract the APK using the path returned above, excluding the `package:` prefix:
+
+```bash
+adb pull [PATH_TO_APP] OpenCamera-extracted.apk
+```
+
+<img width="1861" height="59" alt="image" src="https://github.com/user-attachments/assets/ee96b73c-7fb3-4532-9f82-4c64bbef8714" />
+
+
+You can now upload the extracted APK to MobSF for static analysis.
+
+## Using ADB with Physical Android Devices
+
+The same APK extraction process works with physical Android devices, including many applications installed through the Google Play Store.
+
+To connect a physical Android device:
+
+1. Enable **Developer Options** and **USB Debugging** on your phone.
+2. Connect the phone to your computer using a USB data cable.
+3. Accept the USB debugging authorization prompt on your phone.
+
+Verify the connection:
+
+```bash
+adb devices -l
+```
+
+<img width="1211" height="117" alt="image" src="https://github.com/user-attachments/assets/da56da3a-20f2-4ec7-addf-8410605f60b0" />
+
+For example, a physical Google Pixel 9 might appear as:
+
+```text
+List of devices attached
+3A041FDF600ABC    device product:tokay model:Pixel_9 device:tokay transport_id:1
+```
+
+The device identifier will differ from the example above.
+
+Once connected, you can use the same `pm list packages`, `pm path`, and `adb pull` commands to extract installed APKs.
 
 >[!NOTE]
->Some applications use multiple APK files. If `adb shell pm path` returns multiple paths, extracting only `base.apk` may not capture the complete application.
+>Some applications use split APKs, meaning that extracting only `base.apk` might not provide the complete application. Extracting an APK does not include the application's private user data.
+
 
 ***                                                                 
 
