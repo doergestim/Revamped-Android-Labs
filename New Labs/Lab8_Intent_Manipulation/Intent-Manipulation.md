@@ -46,20 +46,18 @@ You will need to add jre so the apktool can work. Do it with this command in ter
 sudo apt update
 sudo apt install -y default-jre
 ```
+
+![Update](./images/update.png)
+
 ![Downloading jre](./images/jre.png)
+
 ### Installing apktool
 
 Apktool is a software used for decompiling and building again apk files.
 
-
-
 > [!Note]
 > 
 > decompiling - taking the file that is ready to be put on the phone as an application and stripping it into file
-
-The quickest way of installing it is on their official website:
-
-![Linux instaltion process](./images/setup_photo.png)
 
 Let's download the necessary files:
 ``` bash
@@ -69,7 +67,9 @@ https://github.com/iBotPeaches/Apktool/releases/download/v2.12.0/apktool_2.12.0.
 sudo wget -O /usr/local/bin/apktool \
 https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool
 ```
-![Downloading apktool](./images/Downloading_apktool.png)
+![Downloading apktool](./images/Downloading_apktool1.png)
+
+![Downloading apktool](./images/Downloading_apktool2.png)
 
 Now it is the time that we make both of the files executable. What it means is that we give a file execute permission, meaning the system is allowed to run it as a program or script.
 
@@ -85,6 +85,16 @@ Now we try to open apktool in CLI (terminal).
 
 This is how you should see it.
 
+### Connect ADB to the Android VM
+
+In the same terminal, execute the following commands to connect to the Android VM using **ADB (Android Debug Bridge)**:
+
+```bash
+adb devices
+adb root
+```
+
+![image](./images/adbconnection.png)
 
 > [!IMPORTANT] 
 > 
@@ -125,7 +135,9 @@ Once this process finishes, go ahead and navigate into the `final` directory and
 cd ./final
 ls
 ```
+
 ![ls command](./images/GoingIntoFolder.png)
+
 As you can see, we now have a file named `AndroidManifest.xml`. This is where we will be looking for the intents that we can access and manipulate.
 
 Let's continue by running the following command:
