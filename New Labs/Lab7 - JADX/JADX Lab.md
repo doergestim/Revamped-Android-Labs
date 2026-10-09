@@ -15,7 +15,7 @@
 
 We will examine **DIVA**, short for **Damn Insecure and Vulnerable App**, created by **Payatu**, a cybersecurity company. DIVA is a training app containing deliberate security mistakes, such as passwords written directly into code and sensitive information saved without encryption.
 
-The file `diva-beta.apk` is DIVA's **APK**, the package used to distribute an Android app. It contains the compiled program and supporting files.
+The file `diva.apk` is DIVA's **APK**, the package used to distribute an Android app. It contains the compiled program and supporting files.
 
 You will install the tools and download DIVA in the first two sections. Opening the APK in JADX lets us inspect it without running the Android app; an Android emulator is not required.
 
