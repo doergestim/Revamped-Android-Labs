@@ -10,17 +10,42 @@ Your goal is to analyze the results and note down anything that stands out for l
 >[!NOTE]
 >MobSF.live is a shared server. If an upload hangs or the site is busy, wait a few minutes and try again. MobSF.live only does **static** analysis; ignore the `Start Dynamic Analysis` option.
 
+# Launching the Device
+
+If the emulated android device is already launched, **you can skip this part**!
+
+Start by opening a terminal:
+
+![](/New%20Labs/attachments/terminalinubuntu.png)
+
+Then run the following to launch Android Studio:
+<pre>android-studio</pre>
+
+Once it launches, you will see the following window.<br>
+Click `More Actions` and then `Virtual Device Manager`.
+
+![](/New%20Labs/attachments/androidWelcomePage.png)
+
+Then, you will see the following window.<br>
+Click the `Play` icon next to the `Pixel 9` device to power it on.
+
+![](/New%20Labs/attachments/turnondevice.png)
+
+Behold! Your very own emulated Virtual Android!
+
+![](/New%20Labs/attachments/devicewindow.png)
+
 ## Step 1: Get the Target APK ##
 
 We will use the **OWASP MASTG Hacking Playground** app as the worked example. It is intentionally vulnerable and open-source, so it is safe to upload.
 
 ### Download it
 
-Download it by clicking this link in your browser:
+Download it by clicking this link in your Ubuntu browser:
 
 https://github.com/OWASP/MASTG-Hacking-Playground/releases/download/1.1/MSTG-Android-Java.apk
 
-Or from a terminal:
+Or from a terminal in Ubuntu:
 
 ```bash
 wget https://github.com/OWASP/MASTG-Hacking-Playground/releases/download/1.1/MSTG-Android-Java.apk
@@ -32,15 +57,21 @@ Now get the file's SHA256 hash and write it down. You will compare it with the h
 sha256sum MSTG-Android-Java.apk
 ```
 
+<img width="866" height="316" alt="image" src="https://github.com/user-attachments/assets/ae92010b-47f4-49ff-a3f5-1607c200278f" />
 
 
 ## Step 2: Upload and Scan ##
 
 In your web browser, open https://mobsf.live
-
-Click `Upload & Analyze` and select your APK. Your browser asks you to confirm that the upload will be publicly available; click `OK`.
+Click `Upload & Analyze` and select the `MSTG-Android-Java.apk` file downloaded in Step 1. Your browser asks you to confirm that the upload will be publicly available; click `OK`.
 
 ![MobSF.live home page with the Upload & Analyze button highlighted](images/mobsflive_upload.png)
+
+<img width="1201" height="930" alt="image" src="https://github.com/user-attachments/assets/58c2a1ae-5543-4ca6-9653-cb5fde5ba63d" />
+
+<img width="894" height="271" alt="image" src="https://github.com/user-attachments/assets/78228eea-b0ca-456a-a231-93b8aec28576" />
+
+<img width="1901" height="408" alt="image" src="https://github.com/user-attachments/assets/a46575fa-edde-4d45-952b-65f13c802c3f" />
 
 You land on the `Scan Queue` page. The scan usually takes one to a few minutes depending on the app size and how busy the server is. When your file's status changes to `Success`, click `View Report` in its row to open the static report. If someone already scanned the exact same file, MobSF.live skips the queue and opens the existing report straight away.
 
@@ -229,17 +260,17 @@ Bonus: MobSF reports that the `PostLogin` activity is exported. Open `View Andro
 
 Optional, on your emulator: test it. InsecureBankv2 targets Android 5.1 (API 22). Android 14 refuses to install apps that target below API 23, and Android 15 (the Pixel 9 emulator) refuses anything below API 24, so a plain `adb install` fails with `INSTALL_FAILED_DEPRECATED_SDK_VERSION`. Pass `--bypass-low-target-sdk-block` to install it anyway:
 
-```bash
-mv InsecureBankv2.apk ~/Android/Sdk/emulator/
-cd ~/Android/Sdk/emulator/
-./emulator -list-avds
-./emulator -avd Pixel_9
-```
-
-Then open a new terminal once the emulator has spun up:
+With the Pixel 9 emulator running, install the InsecureBankv2 APK downloaded earlier. Run these commands in a new terminal:
 
 ```bash
 adb install --bypass-low-target-sdk-block InsecureBankv2.apk
+```
+
+Now, let's try to bypass the login screen.
+
+The following command uses Android's Activity Manager (`am`) to launch the exported `PostLogin` activity directly, without entering any credentials:
+
+```bash
 adb shell am start -n com.android.insecurebankv2/.PostLogin
 ```
 
