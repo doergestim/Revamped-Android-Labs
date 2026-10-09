@@ -71,7 +71,7 @@ Run each command below in the Terminal. Press **Enter** after each command and w
    jadx --version
    ```
 
-<img width="1785" height="881" alt="img1" src="https://github.com/user-attachments/assets/e297f5d1-8b45-461d-bfdc-a076e0ac668e" />
+<img width="1059" height="343" alt="img01" src="https://github.com/user-attachments/assets/79d4d424-ee2f-41d8-b8cc-210342cdb7ac" />
 
 ## 2. Download the DIVA APK
 
@@ -87,22 +87,16 @@ DIVA is the intentionally insecure Android app we will examine. We will download
 2. Download the archive containing DIVA:
 
    ```bash
-   curl --fail --location --output diva-beta.tar.gz https://www.payatu.com/wp-content/uploads/2016/01/diva-beta.tar.gz
+   wget -O diva.apk "https://raw.githubusercontent.com/doergestim/Revamped-Android-Labs/main/New%20Labs/Lab7%20-%20JADX/diva.apk"
    ```
 
-3. Extract the APK:
+3. Confirm that the APK is present:
 
    ```bash
-   tar -xzf diva-beta.tar.gz
+   ls -lh diva.apk
    ```
 
-4. Confirm that the APK is present:
-
-   ```bash
-   ls -lh diva-beta.apk
-   ```
-
-   You should see `diva-beta.apk` listed with a size of approximately **1.5 MB**. This is the file you will open in JADX.
+   You should see `diva.apk` listed with a size of approximately **1.5 MB**. This is the file you will open in JADX.
 
 ## 3. Open and decompile the APK
 
@@ -112,14 +106,14 @@ DIVA is the intentionally insecure Android app we will examine. We will download
 1. Open the APK in JADX to begin decompilation:
 
    ```bash
-   jadx-gui diva-beta.apk
+   jadx-gui diva.apk
    ```
 
 2. Wait for the JADX window to open and finish loading.
 
 The left panel lists the APK's contents. **Source code** contains the reconstructed program, and **Resources** contains supporting files. Opening an item displays it in the larger panel on the right.
 
-<img width="1593" height="987" alt="img2" src="https://github.com/user-attachments/assets/3d30fb18-a187-43d7-9c09-a89686d502f5" />
+<img width="892" height="434" alt="img02" src="https://github.com/user-attachments/assets/0f19e47f-427d-4d6c-bf5d-ded0c716aa5b" />
 
 ## 4. Read the Android manifest
 
@@ -130,7 +124,7 @@ The **manifest** is the app's configuration file. It identifies the app, lists r
 3. Scroll to the beginning of the file.
 4. Locate the fields marked in the screenshot and read them alongside the table below.
 
-<img width="1648" height="954" alt="img3" src="https://github.com/user-attachments/assets/aca082be-90ea-4837-bd5e-94887c364520" />
+<img width="1280" height="600" alt="img03" src="https://github.com/user-attachments/assets/c157a1ba-e166-4ce1-a6bd-858f567e8f5a" />
 
 | Marker | What you should see | What it tells us |
 | --- | --- | --- |
@@ -249,12 +243,12 @@ The stored data normally belongs to the app's private area, so this finding does
 
 Earlier, you used `jadx-gui` to decompile and inspect the app in the graphical interface. Here, you will use the command-line program `jadx` to decompile the APK and **save the resulting code and resources to a folder**.
 
-1. Close the JADX window, don't save any changes andreturn to the Terminal. The export command works independently of the GUI.
+1. Close the JADX window, don't save any changes and return to the Terminal. The export command works independently of the GUI.
 2. Enter:
 
    ```bash
    cd "$HOME/Desktop/Labs/JADX"
-   jadx -d exported diva-beta.apk
+   jadx -d exported diva.apk
    ```
 
    The `-d exported` option tells JADX to write its output into a folder named `exported`.
@@ -280,7 +274,7 @@ exported/sources/jakhar/aseem/diva/HardcodeActivity.java
 
 The **`resources`** directory contains decoded supporting files, including `AndroidManifest.xml`. These exported files can be opened in a text editor outside JADX.
 
-<img width="1397" height="867" alt="img5" src="https://github.com/user-attachments/assets/9ebca261-2eff-4ad2-8135-f4f3e2fb8927" />
+<img width="1243" height="553" alt="img04" src="https://github.com/user-attachments/assets/adc11a11-bad5-43cc-b800-1a8dedda9f5d" />
 
 ---
 
