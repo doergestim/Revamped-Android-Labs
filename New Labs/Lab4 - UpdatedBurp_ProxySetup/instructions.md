@@ -4,16 +4,18 @@ Burp Suite sits between the app and the internet so you can watch, pause, and ch
 
 By the end you will see the emulator's web traffic appear in Burp's HTTP history. Full HTTPS interception for every app needs Burp's CA in the **system** trust store, which is the next lab; this lab gets the proxy working, captures HTTP, installs the CA to the **user** store, and explains the gap.
 
-Start the emulator from terminal:
+Start the emulator from a terminal:
 
 ```bash
 cd ~/Android/Sdk/emulator/
 ./emulator -avd Pixel_9
 ```
 
+<img width="1237" height="910" alt="image" src="https://github.com/user-attachments/assets/723bcbd4-d376-461a-a768-10fc75da8c03" />
+
 ## Step 1: Install and Start Burp
 
-Open a terminal and run:
+Open another terminal and run:
 
 ```bash
 cd ~/Android/Sdk/emulator/
@@ -29,7 +31,12 @@ The first time Burp starts:
 1. A **Terms and Conditions** window appears. Read it and click **I Accept**.
 2. A **New release ready to install** pop-up may appear in the corner of the project window. Close it with the **X** (or click **Update on next restart**); the lab works on the version you just installed.
 3. Leave **Temporary project in memory** selected, then **Next**.
+
+<img width="844" height="574" alt="image" src="https://github.com/user-attachments/assets/18dbc138-5d04-4a56-b164-03d9b6b4bf78" />
+
 4. Leave **Use Burp defaults** selected, then **Start Burp**.
+   
+<img width="851" height="578" alt="image" src="https://github.com/user-attachments/assets/14f365d7-11c4-4a3b-94ef-d30b6c7404f2" />
 
 ## Step 2: Check Burp's Proxy Listener
 
@@ -58,10 +65,44 @@ adb shell settings put global http_proxy 10.0.2.2:8080
 adb shell settings get global http_proxy      # should print 10.0.2.2:8080
 ```
 
+<img width="834" height="76" alt="image" src="https://github.com/user-attachments/assets/2a12bd5a-b61b-4966-9f5f-506cd6bcaeff" />
+
 That is the quickest method and does not depend on the image. Step 7 shows how to undo it.
 
 >[!NOTE]
 >GUI alternative: on the device, **Settings -> Network & internet -> Internet**, tap the gear next to **AndroidWifi**, tap the **pencil** (Modify) icon at the top right, open **Advanced options**, set **Proxy** to **Manual**, host `10.0.2.2`, port `8080`, **Save**. This is a per-Wi-Fi setting, separate from the adb global proxy above: while the adb proxy is set, this screen still shows Proxy **None**. Use one method, not both.
+
+<img width="442" height="809" alt="image" src="https://github.com/user-attachments/assets/3d0c798d-b19b-4803-849b-4952e741e41c" />
+
+<br>
+
+<img width="448" height="809" alt="image" src="https://github.com/user-attachments/assets/efd1dec9-b671-4b15-b82b-6c300a4737b5" />
+
+<br>
+
+<img width="462" height="810" alt="image" src="https://github.com/user-attachments/assets/43715af0-bf56-4d30-875f-e9156d203a2d" />
+
+<br>
+
+<img width="455" height="811" alt="image" src="https://github.com/user-attachments/assets/db969fc3-2f84-4b45-a231-64cb04724c9c" />
+
+<br>
+
+<img width="441" height="805" alt="image" src="https://github.com/user-attachments/assets/1f817adf-d8c3-4b2d-9028-009122fd51ec" />
+
+<br>
+
+<img width="446" height="804" alt="image" src="https://github.com/user-attachments/assets/28eb153d-693a-4998-b495-0d212d342da9" />
+
+<br>
+
+<img width="455" height="809" alt="image" src="https://github.com/user-attachments/assets/37452ef2-0596-4383-811a-d88ff7a4c0af" />
+
+<br> 
+
+<img width="460" height="810" alt="image" src="https://github.com/user-attachments/assets/17d91294-5ee3-4a83-a014-05ca28f91657" />
+
+
 
 ## Step 4: Capture Plain HTTP
 
