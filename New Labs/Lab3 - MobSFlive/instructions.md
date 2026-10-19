@@ -308,7 +308,7 @@ Copy this table into your notes and fill it in for each app you scan (MASTG, Ins
 
 ***
 
-<b><i>Continuing the course? </br>[Next Lab](/New%20Labs/Lab4%20-%20UpdatedBurp_ProxySetup/New-BurpProxySetup.md)</i></b>
+<b><i>Continuing the course? </br>[Next Lab](/New%20Labs/Lab4%20-%20UpdatedBurp_ProxySetup/instructions.md)</i></b>
 
 <b><i>Want to go back? </br>[Previous Lab](/New%20Labs/Lab2%20-%20UpdatedAPK_Extraction/New-apkExtraction.md)</i></b>
 
