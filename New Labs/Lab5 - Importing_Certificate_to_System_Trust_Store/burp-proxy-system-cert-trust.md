@@ -1,89 +1,203 @@
 # Import Burp's Certificate to the System Trust Store
 
-In the Burp proxy lab you put Burp's CA in the **user** store and saw the limit: most apps ignore user-installed CAs, so their HTTPS stayed opaque (you likely saw TLS errors in Burp's Event log for the emulator's own background connections). This lab puts Burp's CA in the **system** store, which those apps trust, so Burp can decrypt their HTTPS too.
+In this lab, you will install Burp Suite, connect an Android emulator to its proxy, and add Burp's certificate to Android's **system trust store**. You will then view decrypted HTTPS traffic from the emulator's browser. All setup is included below; you can begin with a fresh course VM.
 
-On the Pixel_9 (Android 15 / API 35) this is more involved than it used to be. Read the next box before you start.
+## Before You Start
 
->[!IMPORTANT]
->**Android 14 changed where system CAs live.** They used to be plain files in `/system/etc/security/cacerts/`. Since Android 14 (API 34) the trust store is served from the **Conscrypt APEX** at `/apex/com.android.conscrypt/cacerts`, which is read-only and immutable, so a simple push into `/system` does nothing. The method below gets around that with a temporary overlay. Two consequences:
->
-> * You need **root** (`adb root`), so an **AOSP / Google APIs** image, not Google Play.
-> * The overlay is **not persistent**. A reboot (`adb reboot`) or a cold boot wipes it, and then you re-run Step 3. Closing the emulator window and starting it again is **not** a reboot: the emulator saves a Quick Boot snapshot on exit and resumes it, overlay included.
+Use the **Ubuntu x86_64 VM supplied for this course**. Its base image provides the Android SDK at `~/Android/Sdk`, ADB, and the **Pixel_9 emulator running Android 15 / API 35** with a root-capable AOSP image and WebView Browser Tester. You also need internet access and permission to run `sudo`.
 
->[!NOTE]
->Burp generates its CA once per installation. If you reinstalled Burp since the last lab, export the current CA now; an old cert will not match and HTTPS will still fail. Burp's automatic updates keep the same CA.
+The steps below install Burp and the additional Ubuntu tools used in this lab. Run Ubuntu commands in the VM's Terminal, rather than on your own computer.
 
-## Step 1: Start the Emulator Writable and Get Root
+> [!IMPORTANT]
+> This lab requires **`adb root`**. Use the supplied course emulator; Google Play system images do not allow this root access. Android 15 reads system certificates from `/apex/com.android.conscrypt/cacerts`, so we will create a temporary overlay for that store.
 
-Shut the emulator down if it is running, then start it with `-writable-system`:
+## Step 1: Install and Start Burp Suite
+
+Open a Terminal in Ubuntu. Run each command and wait for it to finish:
 
 ```bash
-cd ~/Android/Sdk/emulator/
-./emulator -avd Pixel_9 -writable-system
+sudo apt update
+sudo apt install -y curl ca-certificates openssl file
 ```
 
-Leave it running. Wait until the home screen is up, then in a new terminal:
+`curl` downloads the installer, `ca-certificates` supports secure downloads, `file` checks the downloaded file type, and `openssl` converts and inspects certificates.
+
+Create a working folder and download **Burp Suite Community Edition**:
 
 ```bash
-cd ~/Android/Sdk/emulator/
-adb root
-adb shell getprop ro.build.version.sdk     # expect 35
-adb shell getprop ro.build.version.release  # expect 15
+mkdir -p "$HOME/Desktop/Labs/SystemTrust"
+cd "$HOME/Desktop/Labs/SystemTrust"
+curl --fail --location --output burp.sh "https://portswigger.net/burp/releases/download?product=community&type=Linux"
+file burp.sh
 ```
 
-`adb root` should print `restarting adbd as root`, or `adbd is already running as root` if the emulator resumed a snapshot where root was already on. Either is fine. If it says it cannot run as root in production builds, your AVD is a Google Play image; use a Google APIs / AOSP image instead.
-
-## Step 2: Prepare the Certificate
-
-Android names each system CA file after a hash of its subject, with a `.0` extension. Convert Burp's CA to PEM if needed, compute the hash, and build the file:
+The last command should identify a **shell script**, not an HTML page. Start the installer:
 
 ```bash
-## convert DER to PEM if your export is DER
-openssl x509 -inform DER -in ~/BurpCA.der -out ~/BurpCA.pem
-
-HASH=$(openssl x509 -inform PEM -subject_hash_old -in ~/BurpCA.pem | head -1)
-echo "filename will be ${HASH}.0"
-cp ~/BurpCA.pem ~/${HASH}.0
-openssl x509 -inform PEM -text -fingerprint -in ~/BurpCA.pem >> ~/${HASH}.0
-adb push ~/${HASH}.0 /data/local/tmp/${HASH}.0
+chmod +x burp.sh
+./burp.sh
 ```
 
-The hash is different for every Burp installation (for example `9a5ba575`), so yours will not match anyone else's. Keep `HASH` set in this terminal; Step 3 and Troubleshooting use it.
+In the installation window, click **Next**, keep the default installation folder and shortcuts, and finish the installation. Open Ubuntu's application menu, search for **Burp Suite Community Edition**, and launch it.
 
-## Step 3: Overlay the System Store (the APEX method)
+In Burp's startup windows:
 
-The idea: copy the existing system certificates into a writable temp directory, add Burp's, mount that over `/system/etc/security/cacerts` as a temporary filesystem, then bind-mount it into the places running apps actually read from, including the Conscrypt APEX and the Zygote process that every app is forked from.
+1. Read and accept the terms if prompted.
+2. Select **Temporary project in memory**, then **Next**.
+3. Select **Use Burp defaults**, then **Start Burp**.
 
-You do this from a root shell **on the device**. Open one:
+**Keep Burp open for the rest of the lab.** The proxy receives traffic only while Burp is running.
+
+## Step 2: Start Android and Connect ADB
+
+Close any running Android emulator. In a **second Ubuntu terminal**, start the supplied Pixel_9:
 
 ```bash
-adb shell
+cd ~/Android/Sdk/emulator
+./emulator -avd Pixel_9 -port 5554 -writable-system -no-snapshot
 ```
 
-The prompt now ends in `#`, which means you are root on the emulator. Everything until `exit` below runs on the device, not on your machine.
+This starts the emulator with a writable system image and disables loading or saving Quick Boot snapshots. Leave this terminal open and wait until Android's home screen appears.
 
-1. The device shell does not know the `HASH` you set on your machine in Step 2, so set it again here. Use **your** hash from Step 2's `echo` line:
+Return to your **first Ubuntu terminal**. Use this terminal for the remaining commands:
+
+```bash
+export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
+adb devices
+```
+
+Look for **`emulator-5554`** with the status **`device`**. The `-port 5554` option above fixes this emulator's serial, so every device command below selects it explicitly.
+
+Restart ADB on the emulator with root privileges and check the Android version:
+
+```bash
+adb -s emulator-5554 root
+adb -s emulator-5554 wait-for-device
+adb -s emulator-5554 shell id
+adb -s emulator-5554 shell getprop ro.build.version.sdk
+adb -s emulator-5554 shell getprop ro.build.version.release
+```
+
+The results should include **`uid=0(root)`**, **`35`**, and **`15`**. If root is refused, stop here: the emulator is not using the required course image.
+
+## Step 3: Configure and Check the Proxy
+
+In Burp, open **Proxy → Proxy settings**. Under **Proxy listeners**, confirm that **`127.0.0.1:8080`** has **Running** checked. If the listener is missing, click **Add**, set **Bind to port** to `8080` and **Bind to address** to **Loopback only**, then click **OK**.
+
+![Burp's proxy listener running on 127.0.0.1:8080](images/burp_listener.png)
+
+Close the settings window. Open **Proxy → Intercept** and make sure the button says **Intercept is off**. This lets requests continue without waiting for you to forward them manually.
+
+In your first Ubuntu terminal, point Android at Burp:
+
+```bash
+adb -s emulator-5554 shell settings put global http_proxy 10.0.2.2:8080
+adb -s emulator-5554 shell settings get global http_proxy
+```
+
+The output should be **`10.0.2.2:8080`**. Inside the Android emulator, `10.0.2.2` reaches the Ubuntu VM's localhost, where Burp is listening.
+
+## Step 4: Check That HTTP Traffic Reaches Burp
+
+Check the connection with a plain HTTP page:
+
+```bash
+adb -s emulator-5554 shell am start -a android.intent.action.VIEW -d http://neverssl.com -p org.chromium.webview_shell
+```
+
+If Android asks which app to use, choose **WebView Browser Tester**. If the address appears without loading, press the **>** button beside it.
+
+In Burp, open **Proxy → HTTP history**. Select a request to `neverssl.com` and look at its request and response. This confirms that Android is sending traffic through Burp before we change certificate trust.
+
+![HTTP traffic from the emulator appearing in Burp](images/burp_http_history.png)
+
+If no request appears, check the listener's **Running** box, the proxy value above, and that **Intercept is off** before continuing.
+
+## Step 5: Export This Burp Installation's Certificate
+
+Burp uses its own certificate authority (CA) to inspect HTTPS. Android must trust the certificate from the **Burp installation you are using now**.
+
+In your Ubuntu terminal, print the exact location where you will save it:
+
+```bash
+printf '%s\n' "$HOME/BurpCA.der"
+```
+
+For the course account, this is normally **`/home/ubuntu/BurpCA.der`**. Use the full path printed by your terminal in the following dialog.
+
+1. In Burp, open **Proxy → Proxy settings**.
+2. Under **Proxy listeners**, click **Import / export CA certificate**.
+3. Under **Export**, select **Certificate in DER format**, then **Next**.
+4. Enter the full path printed above, including **`BurpCA.der`**. Confirm replacement if that file already exists.
+5. Click **Next**, then **Close** after the export succeeds.
+
+<!-- AUTHOR SCREENSHOT — Show the certificate export dialog with "Certificate in DER format" selected, followed by the full BurpCA.der output path. Place the screenshots here. -->
+
+Confirm that the exported file exists and can be read:
+
+```bash
+ls -l "$HOME/BurpCA.der"
+openssl x509 -inform DER -in "$HOME/BurpCA.der" -noout -subject -issuer
+```
+
+The certificate details should identify **PortSwigger**. We will install this certificate directly into the system store; installing it into the user store is not a prerequisite.
+
+## Step 6: Prepare the Certificate
+
+Android names each system CA file after a hash of its subject, followed by `.0`. Convert the DER certificate to PEM, calculate that hash, and copy the certificate to Android:
+
+```bash
+openssl x509 -inform DER -in "$HOME/BurpCA.der" -out "$HOME/BurpCA.pem"
+HASH=$(openssl x509 -inform PEM -subject_hash_old -noout -in "$HOME/BurpCA.pem")
+echo "Certificate filename: ${HASH}.0"
+cp "$HOME/BurpCA.pem" "$HOME/${HASH}.0"
+adb -s emulator-5554 push "$HOME/${HASH}.0" "/data/local/tmp/${HASH}.0"
+```
+
+**Keep the hash shown in your terminal visible.** It is specific to your certificate, so it may differ from the examples and screenshots.
+
+## Step 7: Overlay the System Trust Store
+
+We will copy Android's existing CA certificates into a temporary, writable store, add Burp's CA, and make Android's app processes use that store.
+
+> [!WARNING]
+> **Keep the emulator running after this step.** The certificate overlay is temporary. A reboot or closing this emulator session removes it. After restarting Android with the Step 2 command, repeat Steps 6–8 before testing HTTPS again.
+
+Open a root shell **inside Android**:
+
+```bash
+adb -s emulator-5554 shell
+```
+
+The prompt should end in **`#`**. All commands in this step, until `exit`, run inside Android.
+
+1. Set `HASH` in this device shell. **Replace `9a5ba575` below with your own hash from Step 6**, without the `.0` extension:
 
 ```bash
 HASH=9a5ba575
+ls -l "/data/local/tmp/${HASH}.0"
 ```
 
-2. Copy the current system certificates out of the read-only APEX into a writable folder:
+The `ls` command should show the certificate you pushed. If it says the file does not exist, correct `HASH` before continuing.
+
+2. Record the original certificate count and copy the certificates from the read-only APEX store:
 
 ```bash
+BEFORE=$(ls /apex/com.android.conscrypt/cacerts | wc -l)
+echo "Original certificate count: $BEFORE"
 mkdir -p -m 755 /data/local/tmp/ca-copy
 cp /apex/com.android.conscrypt/cacerts/* /data/local/tmp/ca-copy/
 ```
 
-3. Mount an empty in-memory filesystem (tmpfs) over the old system CA folder, then fill it with the stock certificates plus Burp's:
+3. Mount an empty in-memory filesystem over the old system CA folder. Fill it with the existing certificates and Burp's certificate:
 
 ```bash
 mount -t tmpfs tmpfs /system/etc/security/cacerts
 cp /data/local/tmp/ca-copy/* /system/etc/security/cacerts/
-cp /data/local/tmp/$HASH.0 /system/etc/security/cacerts/
+cp "/data/local/tmp/${HASH}.0" /system/etc/security/cacerts/
 ```
 
-4. Give every file the owner, permissions and SELinux label Android expects for system CAs:
+4. Set the ownership, permissions, and SELinux label expected for system certificates:
 
 ```bash
 chown root:root /system/etc/security/cacerts/*
@@ -91,13 +205,13 @@ chmod 644 /system/etc/security/cacerts/*
 chcon u:object_r:system_security_cacerts_file:s0 /system/etc/security/cacerts/*
 ```
 
-5. Bind-mount the new folder over the APEX trust store. This changes what this shell sees:
+5. Bind the new store over the APEX certificate folder for this shell:
 
 ```bash
 mount --bind /system/etc/security/cacerts /apex/com.android.conscrypt/cacerts
 ```
 
-6. Do the same bind inside the Zygote process's mount namespace. Every app is forked from Zygote, so apps launched **after** this see Burp's CA:
+6. Apply the same bind inside **Zygote**, the process Android uses to start apps. Paste the complete block:
 
 ```bash
 for z in $(pidof zygote) $(pidof zygote64); do
@@ -106,65 +220,63 @@ for z in $(pidof zygote) $(pidof zygote64); do
 done
 ```
 
-None of these commands print anything when they work. If any line prints an error, stop and see Troubleshooting. On the x86_64 Pixel_9 image only `zygote64` exists (no 32-bit `zygote`), so the loop runs once.
+Apps started from these Zygote processes after the change can use the new store. The commands above normally produce no output. If any command reports an error, stop at that command before proceeding.
 
-7. Quick check, then leave the device shell:
+7. Check the count, then leave the Android shell:
 
 ```bash
-ls /apex/com.android.conscrypt/cacerts | wc -l
+echo "Before: $BEFORE"
+echo "After: $(ls /apex/com.android.conscrypt/cacerts | wc -l)"
 exit
 ```
 
-The count should be one more than before. On the Pixel_9 image that is `146` (145 stock certificates + Burp's).
+On a fresh emulator, the second count should be **one higher**. The starting count varies with the system image.
 
-Back on your machine (where `HASH` is still set from Step 2), confirm the cert and the Zygote bind:
-
-```bash
-adb shell ls -lZ /apex/com.android.conscrypt/cacerts/${HASH}.0
-adb shell 'grep cacerts /proc/$(pidof zygote64)/mountinfo'
-```
-
-The first should show `-rw-r--r-- 1 root root u:object_r:system_security_cacerts_file:s0` and the file. The second should list a `tmpfs` mount on `/apex/com.android.conscrypt/cacerts`. That line means the bind reached Zygote.
-
-This is an overlay in memory, not a change to the real image. Do **not** reboot after this step: a reboot wipes the overlay. If you do reboot, repeat Step 3 (the cert you pushed in Step 2 is still in `/data/local/tmp`).
-
-
-## Step 4: Verify the Cert Is in the System Store
-
-Apps that were already running before Step 3 (Settings and the KeyChain service behind it are among them) still see the old store. Restart both first:
+You are now back in Ubuntu. Check the certificate and the Zygote mount:
 
 ```bash
-adb shell am force-stop com.android.settings
-adb shell am force-stop com.android.keychain
+adb -s emulator-5554 shell ls -lZ "/apex/com.android.conscrypt/cacerts/${HASH}.0"
+adb -s emulator-5554 shell 'grep cacerts /proc/$(pidof zygote64)/mountinfo'
 ```
 
-Then on the device: **Settings -> Security & privacy -> More security & privacy -> Encryption & credentials -> Trusted credentials -> System** tab, then scroll to **PortSwigger** (listed alphabetically, between NetLock and QuoVadis, as PortSwigger / PortSwigger CA).
+The first command should show your file with **`-rw-r--r--`**, owner **`root root`**, and label **`u:object_r:system_security_cacerts_file:s0`**. The second should include a mount at **`/apex/com.android.conscrypt/cacerts`** backed by **`tmpfs`**.
 
->[!NOTE]
->Encryption & credentials is in the **Security** section near the bottom of More security & privacy; scroll down to see it. If you cannot find the menu, search the Settings app for "trusted credentials".
+## Step 8: Verify the Certificate in Android Settings
 
->[!TIP]
->If PortSwigger is missing, you skipped the force-stop. Settings was opened before the overlay and still reads the old store.
+Settings and its certificate service may have started before the overlay. Restart them from the Ubuntu terminal:
 
-![](images/system_cert.png)
+```bash
+adb -s emulator-5554 shell am force-stop com.android.settings
+adb -s emulator-5554 shell am force-stop com.android.keychain
+```
 
-## Step 5: Intercept HTTPS 
+On Android, open **Settings → Security & privacy → More security & privacy → Encryption & credentials → Trusted credentials**. Select the **System** tab and scroll to **PortSwigger / PortSwigger CA**.
 
-Now open the browser on the VM and send data to https://www.google.com
+**Encryption & credentials** is near the bottom of the More security & privacy page. You can also search Android Settings for **trusted credentials**.
 
-The icon is the little Android robot.
+![PortSwigger CA listed in Android's system trust store](images/system_cert.png)
 
-<img width="150" height="175" alt="image" src="https://github.com/user-attachments/assets/d7c32e14-8a2c-4d74-b6a5-174c9f06bf2a" />
+Confirm that the certificate is on the **System** tab before proceeding.
 
+## Step 9: View Decrypted HTTPS Traffic
 
-You can type the url from your host keyboard.  
+Restart **WebView Browser Tester** so it starts after the certificate overlay. In your Ubuntu terminal, run:
 
-<img width="296" height="255" alt="image" src="https://github.com/user-attachments/assets/e5903528-135d-47b9-9d5d-9e87a3bbb902" />
+```bash
+adb -s emulator-5554 shell am force-stop org.chromium.webview_shell
+adb -s emulator-5554 shell am start -a android.intent.action.VIEW -d https://www.google.com -p org.chromium.webview_shell
+```
 
+Use the browser **inside the Android emulator**. Its icon is the small Android robot:
 
-Now, go back to burp and see the traffic.
+<img width="150" height="175" alt="WebView Browser Tester icon" src="https://github.com/user-attachments/assets/d7c32e14-8a2c-4d74-b6a5-174c9f06bf2a" />
 
-<img width="830" height="436" alt="image" src="https://github.com/user-attachments/assets/002d1ce0-fb87-4edb-98de-bcaee798ab3b" />
+If necessary, enter **`https://www.google.com`** in its address bar and press **>** to load the page. The page should open without a certificate warning.
 
-All done!
+<img width="296" height="255" alt="Entering an HTTPS URL in the Android browser" src="https://github.com/user-attachments/assets/e5903528-135d-47b9-9d5d-9e87a3bbb902" />
 
+Return to Burp's **Proxy → HTTP history**. Find a request to **`www.google.com`**, select it, and inspect the **Request** and **Response** panes. You should be able to read the HTTP headers and response content carried over HTTPS.
+
+<img width="830" height="436" alt="Decrypted HTTPS traffic visible in Burp" src="https://github.com/user-attachments/assets/002d1ce0-fb87-4edb-98de-bcaee798ab3b" />
+
+You have now installed Burp's CA in the system trust store and used it to inspect the browser's HTTPS traffic. Apps with certificate pinning or their own trust rules may still reject Burp's certificates.
